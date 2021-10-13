@@ -50,7 +50,7 @@ form_to_rmd_template <- function(x,
                                  file = NULL,
                                  title = NULL,
                                  author = NULL,
-                                 date = '`r format(Sys.time(), "%H:%M:%S on %Y-%m-%d %Z (UTC%z)")`',
+                                 date = '`r format(Sys.time(), "%Y-%m-%d at %H:%M:%S %Z (UTC%z)")`',
                                  output = "html_document",
                                  yaml = list(title = title,
                                              author = author,
@@ -59,7 +59,7 @@ form_to_rmd_template <- function(x,
                                  includeYAML = TRUE,
                                  chunkOpts = "echo=FALSE, results='hide'",
                                  justify = FALSE,
-                                 headingLevel = 1,
+                                 headingLevel = 2,
                                  showSpecification = FALSE,
                                  preventOverwriting = preregr::opts$get('preventOverwriting'),
                                  silent = preregr::opts$get('silent')) {
@@ -116,16 +116,20 @@ form_to_rmd_template <- function(x,
       htmlComment(
         c(
           "This preregistration template was written by `preregr` at",
-          format(Sys.time(), '%H:%M:%S on %Y-%m-%d %Z (UTC%z)')
+          format(Sys.time(), '%Y-%m-%d at %H:%M:%S %Z (UTC%z)')
         )
       ),
       ""
     );
 
+  formSpecificationChunkLabel <-
+    paste0("preregr-formSpecification-",
+           preregr::randomSlug(6));
+
   ### Include form specification chunk
   res <- c(
     res,
-    paste0("```{r formSpecification", chunkOpts, "}"),
+    paste0("```{r ", formSpecificationChunkLabel, chunkOpts, "}"),
     "```",
     ""
   );
@@ -133,7 +137,7 @@ form_to_rmd_template <- function(x,
   ### Add setup chunk
   res <- c(
     res,
-    paste0("```{r setup",
+    paste0("```{r preregr-setup-", preregr::randomSlug(6),
            chunkOpts, "}"),
     "",
     "###-------------------------------------------------------------------",
@@ -156,6 +160,7 @@ form_to_rmd_template <- function(x,
 
     res <- c(
       res,
+      "",
       "<!------------------------------------------------------------------->",
       "<!--------    GENERAL (PRE)REGISTRATION FORM INSTRUCTIONS    -------->",
       "<!------------------------------------------------------------------->",
@@ -219,8 +224,9 @@ form_to_rmd_template <- function(x,
 
       res <- c(
         res,
-        paste0("```{r ",
-               section, "-", currentItemId,
+        paste0("```{r preregr-",
+               section, "-", currentItemId, "-",
+               preregr::randomSlug(6),
                chunkOpts, "}"),
         "",
         "###-------------------------------------------------------------------",
@@ -253,11 +259,13 @@ form_to_rmd_template <- function(x,
 
   res <- c(
     res,
-    paste0("```{r, show-form-contents",
-           gsub("results=['\"a-zA-Z0-9_]+ *,? ?", "", chunkOpts),
+    paste0("```{r, preregr-show-form-contents-",
+           preregr::randomSlug(6),
+           gsub(",? ?results=['\"a-zA-Z0-9_]+", "", chunkOpts),
            "}"),
     "preregr::prereg_knit_item_content(",
-    "  preregrObject",
+    "  preregrObject,",
+    paste0("  headingLevel = ", headingLevel),
     ");",
     "```",
     ""
@@ -271,7 +279,9 @@ form_to_rmd_template <- function(x,
     htmlComment(c("Here, the form specification is included. ",
                   "This chunk is executed earlier on though.")),
     "",
-    "```{r formSpecification, echo=FALSE, eval=FALSE}",
+    paste0("```{r ",
+           formSpecificationChunkLabel,
+           ", echo=FALSE, eval=FALSE}"),
     "",
     paste0(formObjectName, " <- "),
     paste0("  ", utils::capture.output(dput(x, control="all"))),
@@ -373,7 +383,11 @@ htmlComment <- function(x,
       x,
       rep(after, length(x)),
       unlist(lapply(nchar(x), function(i) {
-        return(paste(rep(padding, pad_to - i), collapse=""));
+        if (i < pad_to) {
+          return(paste(rep(padding, pad_to - i), collapse=""));
+        } else {
+          return(" ");
+        }
       })),
       post
     );

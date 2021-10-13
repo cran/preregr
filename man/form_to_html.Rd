@@ -33,9 +33,11 @@ x, invisibly
 Convert a (pre)registration form to html
 }
 \examples{
-preregr::form_create(
-  "Example form",
-  version = "1"
-) |>
-  preregr::form_to_html();
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Extract the form and show it as HTML
+preregr::form_to_html(
+  examplePrereg_1
+);
 }

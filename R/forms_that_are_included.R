@@ -1,5 +1,5 @@
 ### Easily update all forms
-# updateAllForms <- TRUE;
+updateAllForms <- FALSE;
 
 #' Inclusive Systematic Review Registration Form
 #'
@@ -25,7 +25,7 @@ if (exists("updateAllForms") && updateAllForms) {
 
   localBackupFile <-
     here::here(
-      "inst", "extdata", "preregr-spec-incl-sysrev-reg-form.xlsx"
+      "inst", "extdata", "preregr-form_inclSysRev_v0_92.xlsx"
     );
 
   form_inclSysRev_v0_92 <-
@@ -60,7 +60,7 @@ if (exists("updateAllForms") && updateAllForms) {
 
   localBackupFile <-
     here::here(
-      "inst", "extdata", "preregr-spec-prp-quant-form.xlsx"
+      "inst", "extdata", "preregr-form_prpQuant_v1.xlsx"
     );
 
   form_prpQuant_v1 <-
@@ -97,7 +97,7 @@ if (exists("updateAllForms") && updateAllForms) {
 
   localBackupFile <-
     here::here(
-      "inst", "extdata", "preregr-spec-preregQE-form.xlsx"
+      "inst", "extdata", "preregr-form_preregQE_v0_93.xlsx"
     );
 
   form_preregQE_v0_93 <-
@@ -106,6 +106,10 @@ if (exists("updateAllForms") && updateAllForms) {
       localBackup = localBackupFile,
       silent=FALSE
     );
+
+  # preregr::prereg_spec_to_yaml(
+  #
+  # );
 
   usethis::use_data(form_preregQE_v0_93, overwrite=TRUE);
 }
@@ -140,7 +144,7 @@ if (exists("updateAllForms") && updateAllForms) {
 
   localBackupFile <-
     here::here(
-      "inst", "extdata", "preregr-spec-OSFprereg-form.xlsx"
+      "inst", "extdata", "preregr-form_OSFprereg_v1.xlsx"
     );
 
   form_OSFprereg_v1 <-
@@ -151,4 +155,90 @@ if (exists("updateAllForms") && updateAllForms) {
     );
 
   usethis::use_data(form_OSFprereg_v1, overwrite=TRUE);
+}
+
+
+#' Inclusive General-Purpose Registration Form
+#'
+#' This Inclusive General-Purpose Registration Form is intended as a
+#' general-purpose registration form. The form is designed to be applicable
+#' across disciplines (i.e., psychology, economics, law, physics, or any other
+#' field) and across study types (i.e., qualitative studies, quantitative
+#' studies, experiments, systematic reviews, case studies, archive studies,
+#' comparative legal studies, or any other type of study). This form,
+#' therefore, is a fall-back for more specialized forms and can be used if
+#' no specialized form or registration platform is available. If at all
+#' possible, it is recommended to use a specialized form, since this
+#' inclusive general-purpose registration form achieves that inclusiveness
+#' and general-purposeness at the cost of specificity.
+#'
+#' @format A (pre)registration form specification
+#'
+"form_generalPurpose_v1"
+
+#' An example (pre)registration specification using the Inclusive
+#' General-Purpose Registration Form
+#'
+#' This is a simple and relatively short partially completed (pre)registration
+#' specification.
+#'
+#' @format An example of a (pre)registration specification
+#'
+"examplePrereg_1"
+
+### Inclusive General-Purpose Registration Form
+if (exists("updateAllForms") && updateAllForms) {
+
+  gSheet_url <-
+    "https://docs.google.com/spreadsheets/d/1YFqO9Nr-A3UI1FEkn99z8s2LB7VhE7Lp9gdBiOuHAgA";
+
+  localBackupFile <-
+    here::here(
+      "inst", "extdata", "preregr-form_generalPurpose_v1.xlsx"
+    );
+
+  yamlFile <-
+    here::here(
+      "inst", "extdata", "preregr-spec-example1.yml"
+    );
+
+  form_generalPurpose_v1 <-
+    preregr::form_fromSpreadsheet(
+      gSheet_url,
+      localBackup = localBackupFile,
+      silent=FALSE
+    );
+
+  usethis::use_data(form_generalPurpose_v1, overwrite=TRUE);
+
+  ### We also store a completed version of this form; also in in YAML and JSON
+  examplePrereg_1 <-
+    preregr::prereg_initialize(
+      form_generalPurpose_v1
+    );
+
+  examplePrereg_1 <-
+    preregr::prereg_specify(
+      examplePrereg_1,
+      discipline = "Thaumatology",
+      title = "Cabbages cast in moderation: a comparative analysis",
+      authors = "Littlebottom, C., Dibbler, C., & Aching, T."
+    );
+
+  examplePrereg_1_asYAML <-
+    preregr::prereg_spec_to_yaml(
+      examplePrereg_1
+    );
+
+  #tools::showNonASCII(paste0(examplePrereg_1_asYAML, collapse=""));
+
+  preregr::prereg_spec_to_yaml(
+    examplePrereg_1,
+    file = yamlFile
+  );
+
+  #tools::showNonASCIIfile(yamlFile);
+
+  usethis::use_data(examplePrereg_1, overwrite=TRUE);
+
 }

@@ -21,16 +21,12 @@ This function shows the specified content for the items in a
 (pre)registration, or in one or more sections.
 }
 \examples{
-examplePreReg <-
-  preregr::prereg_initialize(
-    "inclSysRev_v0_92"
-  ) |>
-    preregr::prereg_specify(
-      title = "Example Study",
-      authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-      nonExistent_item = "This can't be stored anywhere"
-    ) |>
-    prereg_show_item_content(
-      section="metadata"
-    );
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Show the item content for the "metadata" section
+examplePrereg_1 |>
+  preregr::prereg_show_item_content(
+    section="metadata"
+  );
 }

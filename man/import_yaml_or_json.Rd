@@ -21,9 +21,11 @@ Convert a (pre)registration specification from YAML or JSON
 examplePreregFile <-
   system.file(
     "extdata",
-    "preregr-spec-incl-sysrev-reg.yml",
+    "preregr-spec-example1.yml",
     package = "preregr"
   );
+
+### Load it and show which items are completed
 preregr::yaml_to_prereg_spec(
   examplePreregFile
 ) |>

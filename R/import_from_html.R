@@ -16,26 +16,12 @@
 #' ### Temporary file to save to
 #' tmpFile <- tempfile(fileext = ".html");
 #'
-#' ### Create example preregistration
-#' preregrExample <-
-#'   preregr::prereg_initialize(
-#'     "inclSysRev_v0_92"
-#'   ) |>
-#'   preregr::prereg_specify(
-#'     title = "Example Study",
-#'     authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-#'     nonExistent_item = "This can't be stored anywhere"
-#'   ) |>
-#'   preregr::prereg_justify(
-#'     item = "primary_research_question",
-#'     content = "Example content",
-#'     decision = "decision ...",
-#'     justification = "justification ..."
-#'   );
+#' ### Load an example (pre)registration specification
+#' data("examplePrereg_1", package = "preregr");
 #'
 #' ### Save it to an HTML file
 #' preregr::prereg_spec_to_html(
-#'   preregrExample,
+#'   examplePrereg_1,
 #'   file = tmpFile
 #' );
 #'

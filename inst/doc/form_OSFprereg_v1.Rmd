@@ -1,8 +1,8 @@
 ---
-title: "OSF Prereg form"
+title: "Form: OSF Prereg form"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{OSF Prereg form}
+  %\VignetteIndexEntry{Form: OSF Prereg form}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

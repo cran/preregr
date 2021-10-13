@@ -13,30 +13,32 @@
 #' @return x, invisibly
 #' @export
 #'
-#' @examples examplePreReg <-
-#'   preregr::prereg_initialize(
-#'     "inclSysRev_v0_92"
-#'   ) |>
-#'     preregr::prereg_specify(
-#'       title = "Example Study",
-#'       authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-#'       nonExistent_item = "This can't be stored anywhere"
-#'     ) |>
-#'     preregr::prereg_next_item();
+#' @examples ### Load an example (pre)registration specification
+#' data("examplePrereg_1", package = "preregr");
+#'
+#' ### Check next item
+#' examplePrereg_1 |>
+#'   preregr::prereg_next_item();
 #'
 #' ### Specify content for this item
-#' examplePreReg <-
+#' examplePrereg_1 <-
 #'   preregr::prereg_specify(
-#'     examplePreReg,
-#'     target_discipline = "Psychology"
+#'     examplePrereg_1,
+#'     funding = paste0(
+#'       "No funding. There's never any ",
+#'       "funding for this kind of stuff."
+#'     )
 #'   );
 #'
-#' ### Get the next item
-#' preregr::prereg_next_item(examplePreReg);
+#' ### Get the next three items
+#' preregr::prereg_next_item(
+#'   examplePrereg_1,
+#'   nrOfItems = 3
+#' );
 #'
 prereg_next_item <- function(x,
-                             section = NULL,
-                             nrOfItems = 1) {
+                             nrOfItems = 1,
+                             section = NULL) {
 
   objectName <- deparse(substitute(x));
 
@@ -77,12 +79,17 @@ prereg_next_item <- function(x,
 
   if (is.null(section)) {
     sectionsToShow <- x$form$sections$section_id;
-  } else {
+  } else if (any(section %in% x$form$sections$section_id)) {
     sectionsToShow <-
       intersect(
         x$form$sections$section_id,
         section
       );
+  } else {
+    stop("None of the section(s) you specified exists in the form! ",
+         "You specified ", vecTxtQ(section),
+         ", and the form has sections: ",
+         vecTxtQ(unique(x$form$sections$section_id)), ".");
   }
 
   itemsToCheck <-

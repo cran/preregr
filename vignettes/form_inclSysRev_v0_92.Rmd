@@ -1,8 +1,8 @@
 ---
-title: "Inclusive Systematic Review Registration Form"
+title: "Form: Inclusive Systematic Review Registration Form"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Inclusive Systematic Review Registration Form}
+  %\VignetteIndexEntry{Form: Inclusive Systematic Review Registration Form}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

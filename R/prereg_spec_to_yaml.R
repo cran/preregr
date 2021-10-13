@@ -16,15 +16,14 @@
 #' @export
 #' @rdname export_to_yaml_or_json
 #'
-#' @examples preregr::prereg_initialize(
-#'   "inclSysRev_v0_92"
-#' ) |>
-#'   preregr::prereg_specify(
-#'     title = "Example Study",
-#'       authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-#'     nonExistent_item = "This can't be stored anywhere"
-#'   ) |>
-#'   preregr::prereg_spec_to_yaml();
+#' @examples
+#' ### Load an example (pre)registration specification
+#' data("examplePrereg_1", package = "preregr");
+#'
+#' ### Export to YAML
+#' preregr::prereg_spec_to_yaml(
+#'   examplePrereg_1
+#' );
 prereg_spec_to_yaml <- function(x,
                                 includeFormSpec = TRUE,
                                 file = NULL) {

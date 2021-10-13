@@ -10,13 +10,14 @@
 #' @return x, invisibly
 #' @export
 #'
-#' @examples preregr::form_create(
+#' @examples ### An empty form
+#' preregr::form_create(
 #'   "Example form",
 #'   version = "1"
 #' ) |>
 #'   preregr::form_show();
 #'
-#' ### For a complete form
+#' ### A complete form
 #' preregr::prereg_initialize("inclSysRev_v0_92") |>
 #'   preregr::form_show();
 form_show <- function(x,

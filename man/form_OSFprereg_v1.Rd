@@ -28,7 +28,7 @@ the Preregistration Challenge, an education campaign designed to
 initiate preregistration as a habit prior to data collection in basic
 research, funded by the Laura and John Arnold Foundation (now Arnold
 Ventures) and conducted by the Center for Open Science. More information
-is available at https://cos.io/prereg, and other templates are available
-at: https://osf.io/zab38/"
+is available at https://www.cos.io/initiatives/prereg/, and other templates
+are available at: https://osf.io/zab38/"
 }
 \keyword{datasets}

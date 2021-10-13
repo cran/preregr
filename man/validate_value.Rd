@@ -40,7 +40,7 @@ The message resulting from the validation (i.e. an error or "").
 This function validates a value. Before validation, it checks
 the validation expression and optionally performs replacements, where the
 replacement strings (delimited by the validation replacement delimiters,
-by default, \verb{<<} and \verb{>>}) are
+by default, \verb{\{\{} and \verb{\}\}}) are
 replaced by the first valid corresponding value from the
 \code{replacementSources} (working through those sources consecutively, i.e.
 only looking in the second one of the first one doesn't contain a valid
@@ -50,15 +50,15 @@ nonzero length).
 }
 \details{
 To change the validation replacement delimiters, use
-\code{preregr::opts$set(validation_replacementDelimiters = c("<<", ">>"));}.
+\code{preregr::opts$set(validation_replacementDelimiters = c("{{", "}}"));}.
 }
 \examples{
 ### Set some validation variables
 validationStatement <-
   paste(
     "is.na(VALUE) ||",
-    "(VALUE \%in\% <<validValues>>) ||",
-    "(VALUE \%in\% <<testField>>)"
+    "(VALUE \%in\% {{validValues}}) ||",
+    "(VALUE \%in\% {{testField}})"
   );
 replacementSources <-
   list(
@@ -69,7 +69,7 @@ errorMessages <-
   "No valid test value passed!";
 
 ### Run a passing validation
-validate_value(
+preregr::validate_value(
   "testValue",
   validations = validationStatement,
   replacementSources = replacementSources,
@@ -78,7 +78,7 @@ validate_value(
 
 
 ### Run a failing validation
-validate_value(
+preregr::validate_value(
   "A testvalue that won't pass",
   validations = validationStatement,
   replacementSources = replacementSources,

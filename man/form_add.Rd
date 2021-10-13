@@ -52,6 +52,7 @@ The modified (pre)registration form
 Add an instruction, section, or item to a (pre)registration form
 }
 \examples{
+### Create an empty example form
 exampleForm <-
   preregr::form_create(
     title = "Example form",
@@ -104,6 +105,9 @@ exampleForm <-
       "a registration to update your plans after the data came ",
       "in; or to document pragmatic changes in plans."
     )
-  ) |>
-  preregr::form_show();
+  );
+
+### Show the result of our hard labour
+preregr::form_show(exampleForm);
+
 }

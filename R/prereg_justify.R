@@ -20,19 +20,21 @@
 #' @return x, invisibly
 #' @export
 #'
-#' @examples preregExampl <-
-#' preregr::prereg_initialize(
-#'   "inclSysRev_v0_92"
-#' ) |>
-#'   preregr::prereg_justify(
-#'     item = "title",
-#'     content = "Example title",
-#'     decision = "We decide to call this study 'Example title'.",
-#'     justification = "It seems a fitting title for an example."
+#' @examples ### Start with an empty form, then specify and justify
+#' ### content for an item.
+#' preregExampl <-
+#'   preregr::prereg_initialize(
+#'     "inclSysRev_v0_92"
 #'   ) |>
-#'   preregr::prereg_show_item_completion(
-#'     section="metadata"
-#'   );
+#'     preregr::prereg_justify(
+#'       item = "title",
+#'       content = "Example title",
+#'       decision = "We decide to call this study 'Example title'.",
+#'       justification = "It seems a fitting title for an example."
+#'     ) |>
+#'     preregr::prereg_show_item_completion(
+#'       section="metadata"
+#'     );
 prereg_justify <- function(x,
                            item,
                            decision = NULL,

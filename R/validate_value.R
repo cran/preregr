@@ -3,7 +3,7 @@
 #' This function validates a value. Before validation, it checks
 #' the validation expression and optionally performs replacements, where the
 #' replacement strings (delimited by the validation replacement delimiters,
-#' by default, `<<` and `>>`) are
+#' by default, `{{` and `}}`) are
 #' replaced by the first valid corresponding value from the
 #' `replacementSources` (working through those sources consecutively, i.e.
 #' only looking in the second one of the first one doesn't contain a valid
@@ -12,7 +12,7 @@
 #' nonzero length).
 #'
 #' To change the validation replacement delimiters, use
-#' `preregr::opts$set(validation_replacementDelimiters = c("<<", ">>"));`.
+#' `preregr::opts$set(validation_replacementDelimiters = c("{{", "}}"));`.
 #'
 #' @param VALUE The value to validate.
 #' @param validations The validations, a vector or list that will be
@@ -37,8 +37,8 @@
 #' validationStatement <-
 #'   paste(
 #'     "is.na(VALUE) ||",
-#'     "(VALUE %in% <<validValues>>) ||",
-#'     "(VALUE %in% <<testField>>)"
+#'     "(VALUE %in% {{validValues}}) ||",
+#'     "(VALUE %in% {{testField}})"
 #'   );
 #' replacementSources <-
 #'   list(
@@ -49,7 +49,7 @@
 #'   "No valid test value passed!";
 #'
 #' ### Run a passing validation
-#' validate_value(
+#' preregr::validate_value(
 #'   "testValue",
 #'   validations = validationStatement,
 #'   replacementSources = replacementSources,
@@ -58,7 +58,7 @@
 #'
 #'
 #' ### Run a failing validation
-#' validate_value(
+#' preregr::validate_value(
 #'   "A testvalue that won't pass",
 #'   validations = validationStatement,
 #'   replacementSources = replacementSources,
@@ -78,6 +78,11 @@ validate_value <- function(VALUE,
   validation <- first_valid_value(validations);
 
   if (is.character(validation)) {
+
+    validation_replacementDelimiters <-
+      gsub("\\{", "\\\\{", validation_replacementDelimiters);
+    validation_replacementDelimiters <-
+      gsub("\\}", "\\\\}", validation_replacementDelimiters);
 
     regex <- paste0(validation_replacementDelimiters[1],
                     "([a-zA-Z0-9_]*)",

@@ -37,13 +37,13 @@ x, invisibly
 Specify the content for one or more (pre)registration items
 }
 \examples{
-preregExampl <-
-preregr::prereg_initialize(
-  "inclSysRev_v0_92"
-) |>
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Specify some fields and show the results
+examplePrereg_1 |>
   preregr::prereg_specify(
-    title = "Example Study",
-    authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
+    tasks_and_roles = "All authors contributed equally",
     nonExistent_item = "This can't be stored anywhere",
     start_date = "2021-9-01"
   ) |>

@@ -42,22 +42,18 @@ will be returned as a character vector.
 Convert a (pre)registration specification to YAML or JSON
 }
 \examples{
-preregr::prereg_initialize(
-  "inclSysRev_v0_92"
-) |>
-  preregr::prereg_specify(
-    title = "Example Study",
-      authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-    nonExistent_item = "This can't be stored anywhere"
-  ) |>
-  preregr::prereg_spec_to_json();
-preregr::prereg_initialize(
-  "inclSysRev_v0_92"
-) |>
-  preregr::prereg_specify(
-    title = "Example Study",
-      authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-    nonExistent_item = "This can't be stored anywhere"
-  ) |>
-  preregr::prereg_spec_to_yaml();
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Export to YAML
+preregr::prereg_spec_to_json(
+  examplePrereg_1
+);
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Export to YAML
+preregr::prereg_spec_to_yaml(
+  examplePrereg_1
+);
 }

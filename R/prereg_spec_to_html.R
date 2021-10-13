@@ -1,5 +1,9 @@
 #' Convert a (pre)registration specification to html
 #'
+#' Use this function to export your (pre)registration specification to an
+#' HTML file. To instead embed it in an R Markdown file, use
+#' [preregr::prereg_knit_item_content()].
+#'
 #' @param x The (pre)registration object (as produced by a call to
 #' [preregr::prereg_initialize()]).
 #' @param file Optionally, a file to save the html to.
@@ -8,24 +12,16 @@
 #' @param headingLevel The level of the top-most headings.
 #' @param silent Whether to be silent or chatty.
 #'
-#' @return x, invisibly
+#' @return The produced HTML, which will print in the viewer in RStudio.
 #' @export
 #'
-#' @examples preregr::prereg_initialize(
-#'   "inclSysRev_v0_92"
-#' ) |>
-#'   preregr::prereg_specify(
-#'     title = "Example Study",
-#'     authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-#'     nonExistent_item = "This can't be stored anywhere"
-#'   ) |>
-#'   preregr::prereg_justify(
-#'     item = "primary_research_question",
-#'     content = "Example content",
-#'     decision = "decision ...",
-#'     justification = "justification ..."
-#'   ) |>
-#'   preregr::prereg_spec_to_html();
+#' @examples ### Load an example (pre)registration specification
+#' data("examplePrereg_1", package = "preregr");
+#'
+#' ### Convert it to HTML and show the result
+#' preregr::prereg_spec_to_html(
+#'   examplePrereg_1
+#' );
 prereg_spec_to_html <- function(x,
                                 file = NULL,
                                 section = NULL,
@@ -39,7 +35,7 @@ prereg_spec_to_html <- function(x,
                   package = "preregr")
     );
 
-  Encoding(res) <- "UTF-8";
+  #Encoding(res) <- "UTF-8";
 
   if (!is.null(file)) {
 
@@ -48,11 +44,15 @@ prereg_spec_to_html <- function(x,
     }
 
     if (dir.exists(dirname(file))) {
-      markdown::markdownToHTML(
-        text = res,
-        output = file
+      knittedFile <-
+        knitr::knit2html(
+          text = as.character(res)
+        );
+      writeLines(
+        knittedFile,
+        file
       );
-      msg("Knitted the (pre)registration specification to a HTML '",
+      msg("Knitted the (pre)registration specification to HTML file '",
           file, "'.\n",
           silent = silent);
     } else {

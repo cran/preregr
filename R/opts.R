@@ -147,7 +147,7 @@ opts$defaults <-
                                   c("[^a-zA-Z0-9;)(,._/`-]", " ")),
 
     ### For validation
-    validation_replacementDelimiters = c("<<", ">>"),
+    validation_replacementDelimiters = c("{{", "}}"),
 
     ### Used throughout for working with files
     encoding = "UTF-8",

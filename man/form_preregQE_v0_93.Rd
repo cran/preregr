@@ -3,12 +3,12 @@
 \docType{data}
 \name{form_preregQE_v0_93}
 \alias{form_preregQE_v0_93}
-\title{Preregistration Template for Quantitative Ethnographic Studies}
+\title{Preregistration Template for Qualitative and Quantitative Ethnographic Studies}
 \format{
 A (pre)registration form specification
 }
 \source{
-\doi{ http://dx.doi.org/10.23668/psycharchives.4584}
+\doi{http://dx.doi.org/10.23668/psycharchives.4584}
 }
 \usage{
 form_preregQE_v0_93
@@ -18,7 +18,7 @@ A preregistration is a way to design your research project before you
 begin and to document your decisions, rationale. A template such as
 this one can be employed to think about what you want to do and how,
 and subsequently, if you wish, you can submit the finished preregistration
-to a registry, such as OSF’s (https://osf.io/registries). This template
+to a registry, such as OSF’s (https://osf.io/registries/). This template
 was developed to aid the preregistration of quantitative ethnographic
 studies, but due to its modular nature, it can be employed for qualitative
 studies as well.

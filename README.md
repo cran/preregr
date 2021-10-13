@@ -1,19 +1,24 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src='img/hex-logo.png' align="right" height="200" /> preregr 📦
+# <img src='man/figures/logo.png' align="right" height="138" /> preregr 📦
 
 ## Specify (Pre)Registrations and Export Them Human- And Machine-Readably
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/preregr)](https://CRAN.R-project.org/package=preregr)
+
+[![Dependency
+status](https://tinyverse.netlify.com/badge/preregr)](https://CRAN.R-project.org/package=preregr)
+
 [![Pipeline
 status](https://gitlab.com/r-packages/preregr/badges/main/pipeline.svg)](https://gitlab.com/r-packages/preregr/-/commits/main)
 
 [![Coverage
-status](https://codecov.io/gl/r-packages/preregr/branch/prod/graph/badge.svg)](https://codecov.io/gl/r-packages/preregr?branch=main)
+status](https://codecov.io/gl/r-packages/preregr/branch/main/graph/badge.svg)](https://app.codecov.io/gl/r-packages/preregr?branch=main)
 
-<!-- [![Dependency status](https://tinyverse.netlify.com/badge/preregr)](https://CRAN.R-project.org/package=preregr) -->
 <!-- badges: end -->
 
 The pkgdown website for this project is located at
@@ -92,7 +97,7 @@ There are currently six vignettes introducing `preregr`:
 
 ## Included (pre)registration forms
 
-At the moment, four forms come pre-installed with `preregr`:
+At the moment, five forms come pre-installed with `preregr`:
 
 -   [The OSF prereg
     form](https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html);
@@ -104,6 +109,8 @@ At the moment, four forms come pre-installed with `preregr`:
 -   [Preregistration Template for Qualitative and Quantitative
     Ethnographic
     Studies](https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html);
+-   [Inclusive General-Purpose Registration
+    Form](https://r-packages.gitlab.io/preregr/articles/form_generalPurpose_v1.html);
 
 Of course, it would be great to add more! Check out the vignette about
 [specifing a (pre) registration form using a

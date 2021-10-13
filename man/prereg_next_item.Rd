@@ -4,16 +4,16 @@
 \alias{prereg_next_item}
 \title{Show the next item to specify content for}
 \usage{
-prereg_next_item(x, section = NULL, nrOfItems = 1)
+prereg_next_item(x, nrOfItems = 1, section = NULL)
 }
 \arguments{
 \item{x}{The (pre)registration object (as produced by a call to
 \code{\link[=prereg_initialize]{prereg_initialize()}}).}
 
+\item{nrOfItems}{The number of items to complete to show.}
+
 \item{section}{The section(s) to search; pass \code{NULL} (the default) to show
 everything.}
-
-\item{nrOfItems}{The number of items to complete to show.}
 }
 \value{
 x, invisibly
@@ -24,25 +24,27 @@ for which to specify content (searching through all sections or through
 a selection of sections).
 }
 \examples{
-examplePreReg <-
-  preregr::prereg_initialize(
-    "inclSysRev_v0_92"
-  ) |>
-    preregr::prereg_specify(
-      title = "Example Study",
-      authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-      nonExistent_item = "This can't be stored anywhere"
-    ) |>
-    preregr::prereg_next_item();
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Check next item
+examplePrereg_1 |>
+  preregr::prereg_next_item();
 
 ### Specify content for this item
-examplePreReg <-
+examplePrereg_1 <-
   preregr::prereg_specify(
-    examplePreReg,
-    target_discipline = "Psychology"
+    examplePrereg_1,
+    funding = paste0(
+      "No funding. There's never any ",
+      "funding for this kind of stuff."
+    )
   );
 
-### Get the next item
-preregr::prereg_next_item(examplePreReg);
+### Get the next three items
+preregr::prereg_next_item(
+  examplePrereg_1,
+  nrOfItems = 3
+);
 
 }

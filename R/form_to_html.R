@@ -12,11 +12,13 @@
 #' @return x, invisibly
 #' @export
 #'
-#' @examples preregr::form_create(
-#'   "Example form",
-#'   version = "1"
-#' ) |>
-#'   preregr::form_to_html();
+#' @examples ### Load an example (pre)registration specification
+#' data("examplePrereg_1", package = "preregr");
+#'
+#' ### Extract the form and show it as HTML
+#' preregr::form_to_html(
+#'   examplePrereg_1
+#' );
 form_to_html <- function(x,
                          file = NULL,
                          section = NULL,
@@ -32,7 +34,7 @@ form_to_html <- function(x,
                   package = "preregr")
     );
 
-  Encoding(res) <- "UTF-8";
+  # Encoding(res) <- "UTF-8";
 
   if (!is.null(file)) {
 
@@ -41,11 +43,16 @@ form_to_html <- function(x,
     }
 
     if (dir.exists(dirname(file))) {
-      markdown::markdownToHTML(
-        text = res,
-        output = file
+      knittedFile <-
+        knitr::knit2html(
+          text = as.character(res)
+        );
+      writeLines(
+        knittedFile,
+        file
       );
-      msg("Knitted the (pre)registration form to a HTML '",
+
+      msg("Knitted the (pre)registration form to HTML file '",
           file, "'.\n",
           silent = silent);
     } else {

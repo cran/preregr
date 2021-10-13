@@ -10,13 +10,13 @@ form_to_rmd_template(
   file = NULL,
   title = NULL,
   author = NULL,
-  date = "`r format(Sys.time(), \\"\%H:\%M:\%S on \%Y-\%m-\%d \%Z (UTC\%z)\\")`",
+  date = "`r format(Sys.time(), \\"\%Y-\%m-\%d at \%H:\%M:\%S \%Z (UTC\%z)\\")`",
   output = "html_document",
   yaml = list(title = title, author = author, date = date, output = output),
   includeYAML = TRUE,
   chunkOpts = "echo=FALSE, results='hide'",
   justify = FALSE,
-  headingLevel = 1,
+  headingLevel = 2,
   showSpecification = FALSE,
   preventOverwriting = preregr::opts$get("preventOverwriting"),
   silent = preregr::opts$get("silent")
@@ -72,7 +72,13 @@ the start of the Rmd template; otherwise, it is set to \code{FALSE}.}
 x, invisibly
 }
 \description{
-Convert a (pre)registration form to an R Markdown template
+This function creates an R Markdown template from a {preregr}
+(pre)registrations form specification. Pass it the URL to a Google
+Sheet holding the (pre)registration form specification (in {preregr}
+format), see the
+"\href{https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html}{Creating a form from a spreadsheet}"
+vignette), the path to a file with a spreadsheet holding such a
+specification, or a loaded or imported {preregr} (pre)registration form.
 }
 \examples{
 preregr::form_create(

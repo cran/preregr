@@ -52,8 +52,8 @@ or \code{sav} files. Normally, you don't use this, but instead you
 use \code{\link[=form_fromSpreadsheet]{form_fromSpreadsheet()}}.
 }
 \examples{
-### This requires an internet connection!
-\dontrun{
+\donttest{
+### Note that this example requires an internet connection!
 read_spreadsheet(
   paste0(
     "https://docs.google.com/",

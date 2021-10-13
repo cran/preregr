@@ -26,25 +26,19 @@ all sections are included).}
 \item{silent}{Whether to be silent or chatty.}
 }
 \value{
-x, invisibly
+The produced HTML, which will print in the viewer in RStudio.
 }
 \description{
-Convert a (pre)registration specification to html
+Use this function to export your (pre)registration specification to an
+HTML file. To instead embed it in an R Markdown file, use
+\code{\link[=prereg_knit_item_content]{prereg_knit_item_content()}}.
 }
 \examples{
-preregr::prereg_initialize(
-  "inclSysRev_v0_92"
-) |>
-  preregr::prereg_specify(
-    title = "Example Study",
-    authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-    nonExistent_item = "This can't be stored anywhere"
-  ) |>
-  preregr::prereg_justify(
-    item = "primary_research_question",
-    content = "Example content",
-    decision = "decision ...",
-    justification = "justification ..."
-  ) |>
-  preregr::prereg_spec_to_html();
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Convert it to HTML and show the result
+preregr::prereg_spec_to_html(
+  examplePrereg_1
+);
 }

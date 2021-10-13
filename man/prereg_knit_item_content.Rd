@@ -23,16 +23,13 @@ This function inserts the specified content for the items in a
 (pre)registration, or in one or more sections, into an R Markdown file.
 }
 \examples{
-examplePreReg <-
-  preregr::prereg_initialize(
-    "inclSysRev_v0_92"
-  ) |>
-    preregr::prereg_specify(
-      title = "Example Study",
-      authors = "Littlebottom, C., Dibbler, C., & Aching, T.",
-      nonExistent_item = "This can't be stored anywhere"
-    ) |>
-    preregr::prereg_knit_item_content(
-      section="metadata"
-    );
+### Load an example (pre)registration specification
+data("examplePrereg_1", package = "preregr");
+
+### Knit the contents of the "metadata" section
+### as an R Markdown partial
+examplePrereg_1 |>
+  preregr::prereg_knit_item_content(
+    section="metadata"
+  );
 }

@@ -19,6 +19,27 @@ form_fromSpreadsheet <- function(x,
       silent = silent
     );
 
+  res$items$item_id <-
+    trimws(res$items$item_id);
+
+  sanitizedItemIds <-
+    gsub("[^a-zA-Z0-9_]", "", res$items$item_id);
+
+  illegalIds <- res$items$item_id != sanitizedItemIds;
+  if (any(illegalIds)) {
+    warning(
+      paste0(
+        "Found (and removed) illegal characters in identifiers ",
+        vecTxtQ(res$items$item_id[illegalIds]),
+        ". They were changed to ",
+        vecTxtQ(sanitizedItemIds[illegalIds]),
+        "."
+      )
+    );
+  }
+
+  res$items$item_id <- sanitizedItemIds;
+
   res$metadata$content[res$metadata$field == "date"] <-
     format(
       number_as_xl_date(
