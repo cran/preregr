@@ -362,7 +362,7 @@ rComment <- function(x,
 }
 
 htmlComment <- function(x,
-                        padding = "-",
+                        padding = "~",
                         length = 70,
                         pre = "<!-- ",
                         after = " ",

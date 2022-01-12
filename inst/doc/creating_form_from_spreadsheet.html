@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>In addition to being able to specify <a href="https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html">(pre)registration forms from within R</a>, you can also specify the form using a spreadsheet. You can use an Excel file (<code>.xlsx</code>) or a Google Sheet.</p>
+<p>In addition to being able to specify <a href="https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html">(pre)registration forms from within R</a> or <a href="https://r-packages.gitlab.io/preregr/articles/importing_form_from_url.html">importing it from the URL of an existing form</a>, you can also specify the form using a spreadsheet. You can use an Excel file (<code>.xlsx</code>) or a Google Sheet. An empty spreadsheet is <a href="https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing">available here</a>.</p>
 <div id="form-specification-format" class="section level1">
 <h1>Form specification format</h1>
 <p>The spreadsheet should have the following worksheet names (in whichever order):</p>
@@ -154,13 +154,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="metadata" class="section level2">
 <h2>Metadata</h2>
-<p>The <code>metadata</code> worksheet contains two columns (in whichever order): <code>heading</code> and <code>description</code>. Every row holds a different bit of metadata. The field name is specified in the <code>field</code> column and the metadata itself is specified in the <code>content</code> column in the corresponding row. Always specify content for at least the following fields: specify the form’s title as <code>title</code>; specify the form’s author(s) as <code>author</code>, specify the date as <code>date</code>, and specify the version as <code>version</code>.</p>
+<p>The <code>metadata</code> worksheet contains two columns (in whichever order): <code>field</code> and <code>content</code>. Every row holds a different bit of metadata. The field name is specified in the <code>field</code> column and the metadata itself is specified in the <code>content</code> column in the corresponding row. Always specify content for at least the following fields: specify the form’s title as <code>title</code>; specify the form’s author(s) as <code>author</code>, specify the date as <code>date</code>, and specify the version as <code>version</code>.</p>
 <p>Regarding versioning, if there is only one version and the creators do not plan to release future version, the recommendation is to set the version to 1.</p>
 <p>If the creators have no clear idea about how to version the form (i.e. there may be improvements in the future), the recommendation is to set the first version to 0.0.1, and roughly adopt the system common for software: increment the first number when the form is substantially updated (e.g. such that preregistrations that used the previous version of the form may no longer be valid given the new version, for example becaue sections were added or removed, or value templates changed, etc), the third number for very small changes (e.g. typos, spelling corrections, clarification or extra explanations, bug fixes in regular expressions in value templates, etc), and the second number for changes in between (e.g. changing the order of items or moving an item to another section, or changing value templates to be more permissive (and so, retaining compatibility with (pre)registrations that used the previous version of the form)). In that case, use version 1.0.0 to signal that the form has reached maturity.</p>
 </div>
 <div id="instructions" class="section level2">
 <h2>Instructions</h2>
-<p>The <code>instructions</code> worksheet contains two columns (in whichever order): <code>heading</code> and <code>description</code>. Every row holds one specific set of instructions in the <code>descriptions</code> columns that will be included under the heading in the <code>heading</code> column.</p>
+<p>The <code>instructions</code> worksheet contains two columns (in whichever order): <code>heading</code> and <code>description</code>. Every row holds one specific set of instructions in the <code>description</code> columns that will be included under the heading in the <code>heading</code> column.</p>
 <p>These instructions can be used for general instructions about the form, such as the intended use cases or references to background materials.</p>
 </div>
 <div id="sections" class="section level2">
@@ -195,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template: <a href="https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ" class="uri">https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ</a> (form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html</a>);</li>
 <li>The Preregistration Template for Quantitative Ethnographic Studies: <a href="https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4" class="uri">https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4</a> (form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html</a>);</li>
 </ul>
+<p>In addition, there’s an empty form <a href="https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing">available here</a>.</p>
 </div>
 <div id="importing-a-form-specified-in-a-spreadsheet" class="section level1">
 <h1>Importing a form specified in a spreadsheet</h1>

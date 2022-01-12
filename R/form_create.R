@@ -1,5 +1,12 @@
 #' Create a new (pre)registration form
 #'
+#' You can use this function to create a new (pre)registration form.
+#' The "Creating a (pre)registration form" vignette explains how this works.
+#' That is available at
+#' <https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html>
+#' or can be shown by running \code{vignette("creating_prereg_form",
+#' package = "preregr")}.
+#'
 #' @param title The form's title
 #' @param version The form's version. If there is only one version and the
 #' creators do not plan to release future version, the recommendation is to

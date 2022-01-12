@@ -8,13 +8,19 @@
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/preregr)](https://CRAN.R-project.org/package=preregr)
+status](https://www.r-pkg.org/badges/version/preregr)](https://cran.r-project.org/package=preregr)
 
 [![Dependency
 status](https://tinyverse.netlify.com/badge/preregr)](https://CRAN.R-project.org/package=preregr)
 
 [![Pipeline
 status](https://gitlab.com/r-packages/preregr/badges/main/pipeline.svg)](https://gitlab.com/r-packages/preregr/-/commits/main)
+
+[![Downloads last
+month](https://cranlogs.r-pkg.org/badges/last-month/preregr?color=brightgreen)](https://cran.r-project.org/package=preregr)
+
+[![Total
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/preregr?color=brightgreen)](https://cran.r-project.org/package=preregr)
 
 [![Coverage
 status](https://codecov.io/gl/r-packages/preregr/branch/main/graph/badge.svg)](https://app.codecov.io/gl/r-packages/preregr?branch=main)

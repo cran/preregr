@@ -1,8 +1,8 @@
 ---
-title: "Form: Preregistration Template for Qualitative and Quantitative Ethnographic Studies"
+title: "Form: Preregistration Template for Qualitative and Quantitative Ethnographic Studies (v0.93)"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Form: Preregistration Template for Qualitative and Quantitative Ethnographic Studies}
+  %\VignetteIndexEntry{Form: Preregistration Template for Qualitative and Quantitative Ethnographic Studies (v0.93)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

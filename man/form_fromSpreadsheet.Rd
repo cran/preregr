@@ -31,5 +31,17 @@ will be downloaded as Excel spreadsheet.}
 The preregr form specification
 }
 \description{
-Import a (pre)registration form specification from a spreadsheet
+With this function, you can import a (pre) registration from a
+spreadsheet. See the "Creating a form from a spreadsheet" vignette
+for more information. That is available at
+\url{https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html}
+or can be shown by running \code{vignette("creating_form_from_spreadsheet",
+package = "preregr")}
+}
+\details{
+An empty simple
+example spreadsheet is available at
+\url{https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60}
+and can be initialized as the \code{almostEmptyForm} form
+with \code{\link[=prereg_initialize]{prereg_initialize()}}
 }

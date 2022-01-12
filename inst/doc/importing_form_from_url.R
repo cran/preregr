@@ -92,12 +92,20 @@ if (!exists('headingLevel') || !is.numeric(headingLevel) || (length(headingLevel
   headingLevel <- 0;
 }
 
+validSectionIds <-
+  x$sections$section_id;
+
+validSectionIds <- validSectionIds[
+  !is.na(validSectionIds) &
+    nchar(validSectionIds) > 0
+];
+
 if (is.null(section)) {
-  sectionsToShow <- x$sections$section_id;
+  sectionsToShow <- validSectionIds;
 } else {
   sectionsToShow <-
     intersect(
-      x$sections$section_id,
+      validSectionIds,
       section
     );
 }

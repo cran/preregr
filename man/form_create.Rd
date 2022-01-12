@@ -43,7 +43,12 @@ form has reached maturity.}
 The \code{preregr} form object prefilled with some examples.
 }
 \description{
-Create a new (pre)registration form
+You can use this function to create a new (pre)registration form.
+The "Creating a (pre)registration form" vignette explains how this works.
+That is available at
+\url{https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html}
+or can be shown by running \code{vignette("creating_prereg_form",
+package = "preregr")}.
 }
 \examples{
 exampleForm <-

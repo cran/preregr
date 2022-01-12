@@ -23,8 +23,6 @@ specs:
     text: Unspecified
   end_date:
     text: Unspecified
-  data_origin:
-    text: Unspecified
   primary_research_question:
     text: Unspecified
   secondary_research_question:
@@ -36,6 +34,12 @@ specs:
   secondary_vars:
     text: Unspecified
   additional_vars:
+    text: Unspecified
+  data_origin:
+    text: Unspecified
+  data_bias_minimization:
+    text: Unspecified
+  data_amount:
     text: Unspecified
   anyware:
     text: Unspecified
@@ -57,12 +61,7 @@ specs:
     text: Unspecified
   misc_analysis_details:
     text: Unspecified
-jstf:
-  sources: []
-  assertions: []
-  justifications: []
-  decisions: []
-  justifier: []
+jstf: []
 form:
   instructions:
     Intended Use:
@@ -95,7 +94,7 @@ form:
         by Van den Akker et al. (2020).
     version:
       field: version
-      content: '1.0'
+      content: '1.1'
   items:
     discipline:
       section_id: metadata
@@ -207,19 +206,6 @@ form:
       item_valueTemplate: date
       item_validValues: .na.character
       item_validation: .na.character
-    data_origin:
-      section_id: methods
-      item_id: data_origin
-      item_label: Data origin
-      item_description: 'Describe the origin of the data you will examine. Data here
-        is meant as a broad term: it refers to primary or secondary data; data you
-        will collect or data that already existed; data that are measurements, recordings,
-        existing documents or reports. Basically, which bits of the world will you
-        look at to answer your research question(s), and how will you obtain those
-        bits?'
-      item_valueTemplate: string
-      item_validValues: .na.character
-      item_validation: .na.character
     primary_research_question:
       section_id: methods
       item_id: primary_research_question
@@ -238,7 +224,8 @@ form:
       item_description: List additional research questions that you will examine,
         but that took less central roles in informing the study's design. Note that
         all analyses pertaining to secondary research questions should normally be
-        reported in the final report.
+        reported in the final report (the difference is that the study's design is
+        mainly geared towards answering the primary research questions).
       item_valueTemplate: string
       item_validValues: .na.character
       item_validation: .na.character
@@ -257,7 +244,7 @@ form:
       section_id: methods
       item_id: main_vars
       item_label: Main variable(s) / outcome(s) / dependent variables
-      item_description: List the concepts or main / dependent / outcome / variables
+      item_description: List the concepts or main / dependent / outcome variables
         you are interested in. If this study concerns one or more associations, list
         the outcome variable(s) or dependent variables. If this study does not concern
         one or more associations, list the main variables of interest here.
@@ -286,6 +273,57 @@ form:
       item_description: Here, list any additional variables you are interested in
         that were not included in the two lists above, such as covariates, moderators,
         or mediators. If there are no additional variables, you can just state that.
+      item_valueTemplate: string
+      item_validValues: .na.character
+      item_validation: .na.character
+    data_origin:
+      section_id: methods
+      item_id: data_origin
+      item_label: Data origin
+      item_description: 'Describe the origin of the data you will examine. Data here
+        is meant as a broad term: it refers to primary or secondary data; data you
+        will collect or data that already existed; data that are measurements, recordings,
+        existing documents or reports. Basically, which bits of the world will you
+        look at to answer your research question(s), and how will you obtain those
+        bits? If your data will be sampled from a larger population, this is where
+        you can describe your sampling procedure and explain why that procedure fits
+        with your goals. If your study does not involve the analysis of data at all,
+        you can also indicate that here (but in that case this form will probably
+        mostly not be applicable).'
+      item_valueTemplate: string
+      item_validValues: .na.character
+      item_validation: .na.character
+    data_bias_minimization:
+      section_id: methods
+      item_id: data_bias_minimization
+      item_label: Data bias minimization
+      item_description: Describe whether any procedures are in place to minimize bias
+        that may be introduced as data are obtained. For example, will masking be
+        applied? If data will be collected by people, will they be masked from the
+        implications of patterns in the data for the research questions? If data will
+        be collected from people (e.g. archivists, clerks, or research participants),
+        will they be masked from the researchers' expectations regarding those data?
+        If data are collected by an automated procedure (e.g. scraping websites),
+        will the algorithms performing the data collection be vetted by others to
+        try to identity biases? If no procedures will be implemented to minimize bias,
+        you can also indicate and explain that here.
+      item_valueTemplate: string
+      item_validValues: .na.character
+      item_validation: .na.character
+    data_amount:
+      section_id: methods
+      item_id: data_amount
+      item_label: Amount of data to be collected
+      item_description: Describe how much data you plan to collect. For example, here
+        you can explain whether you will study one research unit (often referred to
+        as a case study), study the entire population, or how much data you plan to
+        collect and why. If your data consists of archival records, social media data,
+        case law, or chat logs, you can explain how many data sources you will analyse.
+        If you will collect qualitative data, you can describe how much you plan to
+        collect. If you will conduct quantitative analyses, you can describe your
+        sample size computations. In all cases, this is also where you explain why
+        that amount of data is appropriate given your aims. If you have no specific
+        plans for how much data you will collect, you can also explain that here.
       item_valueTemplate: string
       item_validValues: .na.character
       item_validation: .na.character

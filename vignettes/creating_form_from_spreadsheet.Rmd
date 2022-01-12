@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-In addition to being able to specify [(pre)registration forms from within R](https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html), you can also specify the form using a spreadsheet. You can use an Excel file (`.xlsx`) or a Google Sheet.
+In addition to being able to specify [(pre)registration forms from within R](https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html) or [importing it from the URL of an existing form](https://r-packages.gitlab.io/preregr/articles/importing_form_from_url.html), you can also specify the form using a spreadsheet. You can use an Excel file (`.xlsx`) or a Google Sheet. An empty spreadsheet is [available here](https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing).
 
 # Form specification format
 
@@ -28,7 +28,7 @@ The spreadsheet should have the following worksheet names (in whichever order):
 
 ## Metadata
 
-The `metadata` worksheet contains two columns (in whichever order): `heading` and `description`. Every row holds a different bit of metadata. The field name is specified in the `field` column and the metadata itself is specified in the `content` column in the corresponding row. Always specify content for at least the following fields: specify the form's title as `title`; specify the form's author(s) as `author`, specify the date as `date`, and specify the version as `version`.
+The `metadata` worksheet contains two columns (in whichever order): `field` and `content`. Every row holds a different bit of metadata. The field name is specified in the `field` column and the metadata itself is specified in the `content` column in the corresponding row. Always specify content for at least the following fields: specify the form's title as `title`; specify the form's author(s) as `author`, specify the date as `date`, and specify the version as `version`.
 
 Regarding versioning, if there is only one version and the creators do not plan to release future version, the recommendation is to set the version to 1.
 
@@ -36,7 +36,7 @@ If the creators have no clear idea about how to version the form (i.e. there may
 
 ## Instructions
 
-The `instructions` worksheet contains two columns (in whichever order): `heading` and `description`. Every row holds one specific set of instructions in the `descriptions` columns that will be included under the heading in the `heading` column.
+The `instructions` worksheet contains two columns (in whichever order): `heading` and `description`. Every row holds one specific set of instructions in the `description` columns that will be included under the heading in the `heading` column.
 
 These instructions can be used for general instructions about the form, such as the intended use cases or references to background materials.
 
@@ -80,6 +80,8 @@ The spreadsheet specifications for the (pre)registration forms that are included
 - The Inclusive Systematic Review Registration Form: https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8 (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html);
 - The Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template: https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html);
 - The Preregistration Template for Quantitative Ethnographic Studies: https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4 (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html);
+
+In addition, there's an empty form [available here](https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing).
 
 # Importing a form specified in a spreadsheet
 

@@ -1,8 +1,22 @@
 #' Import a (pre)registration form specification from a spreadsheet
 #'
+#' With this function, you can import a (pre) registration from a
+#' spreadsheet. See the "Creating a form from a spreadsheet" vignette
+#' for more information. That is available at
+#' <https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html>
+#' or can be shown by running \code{vignette("creating_form_from_spreadsheet",
+#' package = "preregr")}
+#'
+#' An empty simple
+#' example spreadsheet is available at
+#' <https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60>
+#' and can be initialized as the `almostEmptyForm` form
+#' with [preregr::prereg_initialize()]
+#'
 #' @inheritParams read_spreadsheet
 #'
 #' @return The preregr form specification
+#'
 #' @export
 form_fromSpreadsheet <- function(x,
                                  localBackup = NULL,
@@ -19,26 +33,17 @@ form_fromSpreadsheet <- function(x,
       silent = silent
     );
 
-  res$items$item_id <-
-    trimws(res$items$item_id);
+  res$items$item_id <- sanitize_identifiers(res$items$item_id);
+  res$items$section_id <- sanitize_identifiers(res$items$section_id);
+  res$sections$section_id <- sanitize_identifiers(res$sections$section_id);
+  res$items$item_valueTemplate <- sanitize_identifiers(res$items$item_valueTemplate);
+  res$valueTemplates$identifier <- sanitize_identifiers(res$valueTemplates$identifier);
 
-  sanitizedItemIds <-
-    gsub("[^a-zA-Z0-9_]", "", res$items$item_id);
-
-  illegalIds <- res$items$item_id != sanitizedItemIds;
-  if (any(illegalIds)) {
-    warning(
-      paste0(
-        "Found (and removed) illegal characters in identifiers ",
-        vecTxtQ(res$items$item_id[illegalIds]),
-        ". They were changed to ",
-        vecTxtQ(sanitizedItemIds[illegalIds]),
-        "."
-      )
-    );
+  if (any(is.na(res$items$item_valueTemplate))) {
+    warning("Not all items have a specified value template!");
+    res$items$item_valueTemplate[is.na(res$items$item_valueTemplate)] <-
+      "string";
   }
-
-  res$items$item_id <- sanitizedItemIds;
 
   res$metadata$content[res$metadata$field == "date"] <-
     format(
