@@ -85,7 +85,7 @@ In addition, there's an empty form [available here](https://docs.google.com/spre
 
 # Importing a form specified in a spreadsheet
 
-To import a form specification in a spreadsheet, use [preregr::read_spreadsheet()]. For example:
+To import a form specification in a spreadsheet, use [preregr::form_fromSpreadsheet()](https://r-packages.gitlab.io/preregr/reference/form_fromSpreadsheet.html). For example:
 
 ```{r, eval=FALSE}
 

@@ -1,8 +1,8 @@
 ---
-title: "Form: Preregistration Template for Secondary Data Analysis"
+title: "Form: Preregistration Template for Secondary Data Analysis (v1)"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Form: Preregistration Template for Secondary Data Analysis}
+  %\VignetteIndexEntry{Form: Preregistration Template for Secondary Data Analysis (v1)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

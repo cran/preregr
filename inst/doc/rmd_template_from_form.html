@@ -145,7 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>These templates are basically prestructured R Markdown files. This means the user (i.e. you) will only have to add in the (pre)registration content, knitr it, and you have a human- and machine-readable (pre)registration.</p>
 <div id="generating-a-full-r-markdown-template" class="section level2">
 <h2>Generating a full R Markdown template</h2>
-<p>To generate a full R Markdown template, that can be rendered as a stand-alone document, the <code>preregr::form_to_rmd_template()</code> can be used with its default settings, so you only have to specify the form you want to use (one you created, loaded, imported, or the name of one of the forms that come pre-installed with <code>preregr</code>.</p>
+<p>To generate a full R Markdown template, that can be rendered as a stand-alone document, the <code>preregr::form_to_rmd_template()</code> function can be used with its default settings, so you only have to specify the form you want to use (one you created, loaded, imported, or the name of one of the forms that come pre-installed with <code>preregr</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_to_rmd_template</span>(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;OSFprereg_v1&quot;</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;C:/Path/To/A/File.Rmd&quot;</span></span>
@@ -166,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;!-- Study Information ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~--&gt;</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```{r preregr-study_information-item_1-qojROP, echo=FALSE, results=&#39;hide&#39;}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```{r preregr-study_information-item_1-wENGc5, echo=FALSE, results=&#39;hide&#39;}</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co">-------------------------------------------------------------------</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> Title</span></span>
@@ -190,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```</span></span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```{r preregr-study_information-item_2-4IyJKP, echo=FALSE, results=&#39;hide&#39;}</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```{r preregr-study_information-item_2-TE7LgW, echo=FALSE, results=&#39;hide&#39;}</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co">-------------------------------------------------------------------</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span><span class="al">###</span><span class="co"> Authors</span></span>
@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;!-- Here, the form specification is included. ~~~~~~~~~~~~~~~~~~~~--&gt;</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;!-- This chunk is executed earlier on though. ~~~~~~~~~~~~~~~~~~~~--&gt;</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```{r preregr-formSpecification-p8htZX, echo=FALSE, eval=FALSE}</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ```{r preregr-formSpecification-M2plgy, echo=FALSE, eval=FALSE}</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; preregrFormSpec &lt;- </span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   structure(list(instructions = structure(list(heading = &quot;Introduction&quot;, </span></span>

@@ -20,7 +20,7 @@ These templates are basically prestructured R Markdown files. This means the use
 
 ## Generating a full R Markdown template
 
-To generate a full R Markdown template, that can be rendered as a stand-alone document, the `preregr::form_to_rmd_template()` can be used with its default settings, so you only have to specify the form you want to use (one you created, loaded, imported, or the name of one of the forms that come pre-installed with `preregr`.
+To generate a full R Markdown template, that can be rendered as a stand-alone document, the `preregr::form_to_rmd_template()` function can be used with its default settings, so you only have to specify the form you want to use (one you created, loaded, imported, or the name of one of the forms that come pre-installed with `preregr`.
 
 ```{r, eval=FALSE}
 preregr::form_to_rmd_template(

@@ -1,8 +1,8 @@
 ---
-title: "Form: Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template"
+title: "Form: Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template (v1)"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Form: Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template}
+  %\VignetteIndexEntry{Form: Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template (v1)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
