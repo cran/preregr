@@ -14,7 +14,19 @@
 
 <title>Creating a (pre)registration form</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -24,6 +36,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -125,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -141,7 +334,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>To start creating a (pre)registration form, use <code>preregr::form_create()</code>. Only the title and the version fields are mandatory, but when the author isn’t specified, this is shown as <code>NA</code>. When the date is omitted, today’s date is inserted. The form is prefilled with one instruction, one section, and one item.</p>
+<p>To start creating a (pre)registration form, use
+<code>preregr::form_create()</code>. Only the title and the version
+fields are mandatory, but when the author isn’t specified, this is shown
+as <code>NA</code>. When the date is omitted, today’s date is inserted.
+The form is prefilled with one instruction, one section, and one
+item.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>formExample <span class="ot">&lt;-</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_create</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Minimal form with only a few fields&quot;</span>,</span>
@@ -150,25 +348,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_show</span>();</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- (Pre)registration form ------------------------------------------------------</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── (Pre)registration form ──────────────────────────────────────────────────────</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Title: Minimal form with only a few fields</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Author: Stibbons, P.</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Date: 2022-01-25</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Title: Minimal form with only a few fields</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Author: Stibbons, P.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Date: 2022-08-21</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Instructions ----------------------------------------------------------------</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Instructions ────────────────────────────────────────────────────────────────</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- First instruction --</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── First instruction ──</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Actual instructions</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Sections and items ----------------------------------------------------------</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Sections and items ──────────────────────────────────────────────────────────</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Section: Example Section --</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Section: Example Section ──</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Example Label [example_item]: Example item description</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Example Label [example_item]: Example item description</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
-<p>To add actual content, use <code>preregr::form_add_instruction()</code>, <code>preregr::form_add_section()</code>, and <code>preregr::form_add_item()</code>. If the default instruction, section, and items still exist, they will be replaced.</p>
+<p>To add actual content, use
+<code>preregr::form_add_instruction()</code>,
+<code>preregr::form_add_section()</code>, and
+<code>preregr::form_add_item()</code>. If the default instruction,
+section, and items still exist, they will be replaced.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>formExample <span class="ot">&lt;-</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  formExample <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_add_instruction</span>(</span>
@@ -216,29 +418,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_show</span>();</span>
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- (Pre)registration form ------------------------------------------------------</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── (Pre)registration form ──────────────────────────────────────────────────────</span></span>
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Title: Minimal form with only a few fields</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Author: Stibbons, P.</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Date: 2022-01-25</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Title: Minimal form with only a few fields</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Author: Stibbons, P.</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Date: 2022-08-21</span></span>
 <span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Instructions ----------------------------------------------------------------</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Instructions ────────────────────────────────────────────────────────────────</span></span>
 <span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Instructions --</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Instructions ──</span></span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; This form is simple, so it doesn&#39;t require much instruction. Still, it&#39;s</span></span>
 <span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; advisable to always RTFM, and in the case of (pre)registration forms, the</span></span>
 <span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; instructions are the manual. So better read closely!</span></span>
 <span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Sections and items ----------------------------------------------------------</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Sections and items ──────────────────────────────────────────────────────────</span></span>
 <span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -- Section: Only Section --</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Section: Only Section ──</span></span>
 <span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Study Title [study_title]: Think of a catchy title, preferably with a colon in the middle. Bonus points for pop culture references.</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Study Title [study_title]: Think of a catchy title, preferably with a colon in the middle. Bonus points for pop culture references.</span></span>
 <span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; i Registration type [registration_type]: Describe briefly why you are (pre)registering this study. For example, this might be a preregistration to allow others to know you&#39;re doing this study; or to make it clear you value transparency in science; or to remember your original plans later on. Or this might be a registration to update your plans after the data came in; or to document pragmatic changes in plans.</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Registration type [registration_type]: Describe briefly why you are (pre)registering this study. For example, this might be a preregistration to allow others to know you&#39;re doing this study; or to make it clear you value transparency in science; or to remember your original plans later on. Or this might be a registration to update your plans after the data came in; or to document pragmatic changes in plans.</span></span>
 <span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
-<p>It is also possible to insert the form into an R Markdown document using <code>preregr::form_knit()</code>:</p>
+<p>It is also possible to insert the form into an R Markdown document
+using <code>preregr::form_knit()</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_knit</span>(formExample);</span></code></pre></div>
 <style>
 .preregr {
@@ -276,18 +479,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="preregr-spec-start" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-form-EWF5t2YjJB" class="section level2 preregr-spec-container preregr-spec-full">
+<div id="preregr-form-Nb0ZT31aXY" class="section level2 preregr-spec-container preregr-spec-full">
 <h2>Minimal form with only a few fields</h2>
 <div id="instructions" class="section level3">
 <h3>Instructions</h3>
-<div id="preregr-form-SaZzqQKne7" class="section level4">
+<div id="preregr-form-G758Iwg4kM" class="section level4">
 <h4>Instructions</h4>
-<p>This form is simple, so it doesn’t require much instruction. Still, it’s advisable to always RTFM, and in the case of (pre)registration forms, the instructions are the manual. So better read closely!</p>
+<p>This form is simple, so it doesn’t require much instruction. Still,
+it’s advisable to always RTFM, and in the case of (pre)registration
+forms, the instructions are the manual. So better read closely!</p>
 </div>
 </div>
 <div id="sections-and-items" class="section level3">
 <h3>Sections and items</h3>
-<div id="preregr-form-bVx3H71ZeD" class="section level4">
+<div id="preregr-form-mTIAa3CUr8" class="section level4">
 <h4>Section: Only Section</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -299,7 +504,8 @@ study_title
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Think of a catchy title, preferably with a colon in the middle. Bonus points for pop culture references.
+Think of a catchy title, preferably with a colon in the middle. Bonus
+points for pop culture references.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -312,7 +518,12 @@ registration_type
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe briefly why you are (pre)registering this study. For example, this might be a preregistration to allow others to know you’re doing this study; or to make it clear you value transparency in science; or to remember your original plans later on. Or this might be a registration to update your plans after the data came in; or to document pragmatic changes in plans.
+Describe briefly why you are (pre)registering this study. For example,
+this might be a preregistration to allow others to know you’re doing
+this study; or to make it clear you value transparency in science; or to
+remember your original plans later on. Or this might be a registration
+to update your plans after the data came in; or to document pragmatic
+changes in plans.
 </div>
 </div>
 </div>
@@ -321,7 +532,7 @@ Describe briefly why you are (pre)registering this study. For example, this migh
 <div class="preregr-spec-end" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-data-xL3UEicPg6`" class="preregr preregr-json" data-preregr="{
+<div id="preregr-data-LhZ5Bm7jqD`" class="preregr preregr-json" data-preregr="{
   &quot;form&quot;: {
     &quot;instructions&quot;: {
       &quot;Instructions&quot;: {
@@ -344,7 +555,7 @@ Describe briefly why you are (pre)registering this study. For example, this migh
       },
       &quot;date&quot;: {
         &quot;field&quot;: [&quot;date&quot;],
-        &quot;contents&quot;: [&quot;2022-01-25&quot;]
+        &quot;contents&quot;: [&quot;2022-08-21&quot;]
       }
     },
     &quot;items&quot;: {
@@ -416,14 +627,16 @@ Describe briefly why you are (pre)registering this study. For example, this migh
 }" style="display:none">
 
 </div>
-<p>Alternatively, you can export the form to a local spreadsheet file so you can import it later:</p>
+<p>Alternatively, you can export the form to a local spreadsheet file so
+you can import it later:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_to_xlsx</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  formExample,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;C:/Data/Research/amazing-new-project/prereg-form.xlsx&quot;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
 <div id="a-full-example" class="section level1">
 <h1>A full example</h1>
-<p>For example, this is a general (pre)registration form for systematic reviews:</p>
+<p>For example, this is a general (pre)registration form for systematic
+reviews:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_knit</span>(systematicReview_exampleForm);</span></code></pre></div>
 <style>
 .preregr {
@@ -461,38 +674,94 @@ Describe briefly why you are (pre)registering this study. For example, this migh
 <div class="preregr-spec-start" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-form-4DXBhnTAi5" class="section level2 preregr-spec-container preregr-spec-full">
+<div id="preregr-form-8z0l4mP6uF" class="section level2 preregr-spec-container preregr-spec-full">
 <h2>Inclusive Systematic Review Registration Form</h2>
 <div id="instructions-1" class="section level3">
 <h3>Instructions</h3>
-<div id="preregr-form-fNi2WaZ9RM" class="section level4">
+<div id="preregr-form-xKS9pQHwYB" class="section level4">
 <h4>Intended Use</h4>
-<p>This Systematic Review Registration Form is intended as a general-purpose registration form. The form is designed to be applicable to reviews across disciplines (i.e., psychology, economics, law, physics, or any other field) and across review types (i.e., scoping review, review of qualitative studies, meta-analysis, or any other type of review). That means that the reviewed records may include research reports as well as archive documents, case law, books, poems, etc. This form, therefore, is a fall-back for more specialized forms and can be used if no specialized form or registration platform is available. Below are some currently available specialized registration tools you may consider:</p>
-<p><strong>Specialized Registration Platforms</strong>: - PROSPERO is a database of review protocols for health-related systematic reviews.</p>
-<p><strong>Specialized Guidance</strong>: - The Non-Interventional, Reproducible, and Open (NIRO) Systematic Reviews guideline also includes fields specific to non-interventional reviews.</p>
+<p>This Systematic Review Registration Form is intended as a
+general-purpose registration form. The form is designed to be applicable
+to reviews across disciplines (i.e., psychology, economics, law,
+physics, or any other field) and across review types (i.e., scoping
+review, review of qualitative studies, meta-analysis, or any other type
+of review). That means that the reviewed records may include research
+reports as well as archive documents, case law, books, poems, etc. This
+form, therefore, is a fall-back for more specialized forms and can be
+used if no specialized form or registration platform is available. Below
+are some currently available specialized registration tools you may
+consider:</p>
+<p><strong>Specialized Registration Platforms</strong>: - PROSPERO is a
+database of review protocols for health-related systematic reviews.</p>
+<p><strong>Specialized Guidance</strong>: - The Non-Interventional,
+Reproducible, and Open (NIRO) Systematic Reviews guideline also includes
+fields specific to non-interventional reviews.</p>
 </div>
-<div id="preregr-form-CjKHkXUMaA" class="section level4">
+<div id="preregr-form-JgxH9QTzFr" class="section level4">
 <h4>Relation to reporting guidelines</h4>
-<p>Many disciplines have developed reporting guidelines for specific types of reviews (e.g., ROSES: the RepOrting standards for Systematic Evidence Syntheses in environmental research, and PRISMA: the Preferred Reporting Items for Systematic Reviews and Meta-Analyses). Whereas reporting guidelines were optimized for application after conclusion of a systematic review, this form was optimized to publicly register (‘freeze’) the research plans (or to record adjustments to research plans) before (or during) a systematic review. These different end goals resulted in different choices regarding included items. For example, this form includes a number of questions about planning that are important for a registration but typically not included in reporting guidelines.</p>
-<p>Nonetheless, these reporting guidelines do partly capture the same information as registration forms. For each item in this form, we specified the corresponding PRISMA item (PRISMA items P1-P22 and P25-27 were applicable; P16-P23 cover reporting of results and P24 refers to registration forms like this). Researchers planning to use a specific reporting standard to report the results of their review, should enter the information required by that reporting standard in the corresponding (overarching) fields of this form.</p>
+<p>Many disciplines have developed reporting guidelines for specific
+types of reviews (e.g., ROSES: the RepOrting standards for Systematic
+Evidence Syntheses in environmental research, and PRISMA: the Preferred
+Reporting Items for Systematic Reviews and Meta-Analyses). Whereas
+reporting guidelines were optimized for application after conclusion of
+a systematic review, this form was optimized to publicly register
+(‘freeze’) the research plans (or to record adjustments to research
+plans) before (or during) a systematic review. These different end goals
+resulted in different choices regarding included items. For example,
+this form includes a number of questions about planning that are
+important for a registration but typically not included in reporting
+guidelines.</p>
+<p>Nonetheless, these reporting guidelines do partly capture the same
+information as registration forms. For each item in this form, we
+specified the corresponding PRISMA item (PRISMA items P1-P22 and P25-27
+were applicable; P16-P23 cover reporting of results and P24 refers to
+registration forms like this). Researchers planning to use a specific
+reporting standard to report the results of their review, should enter
+the information required by that reporting standard in the corresponding
+(overarching) fields of this form.</p>
 </div>
-<div id="preregr-form-BhMN6F4zuX" class="section level4">
+<div id="preregr-form-AyPCxOUngu" class="section level4">
 <h4>Instructions for effectively using the form</h4>
-<p>Due to the general intended use of this form, items may not be applicable to all types of reviews. Therefore, none of the items are mandatory. However, the more items you can complete in detail, the more useful your registration will be so check carefully whether you did not accidently omit an item. If an item asks about a procedure you do not plan to use or is not applicable, indicate that in the corresponding field (including, ideally, the underlying reason).</p>
-<p>You should be transparent about any deviations from the preregistration and provide the rationale for these deviations in your final review. If you already foresee some deviations when filling out the form (e.g., you anticipate that you will not have enough studies in a moderator group), provide a contingency plan for these deviations in the relevant parts of the registration.</p>
+<p>Due to the general intended use of this form, items may not be
+applicable to all types of reviews. Therefore, none of the items are
+mandatory. However, the more items you can complete in detail, the more
+useful your registration will be so check carefully whether you did not
+accidently omit an item. If an item asks about a procedure you do not
+plan to use or is not applicable, indicate that in the corresponding
+field (including, ideally, the underlying reason).</p>
+<p>You should be transparent about any deviations from the
+preregistration and provide the rationale for these deviations in your
+final review. If you already foresee some deviations when filling out
+the form (e.g., you anticipate that you will not have enough studies in
+a moderator group), provide a contingency plan for these deviations in
+the relevant parts of the registration.</p>
 </div>
-<div id="preregr-form-VZdILSRnsG" class="section level4">
+<div id="preregr-form-jnxHih3upo" class="section level4">
 <h4>Planned improvements / extensions</h4>
-<p>The aim of this registration form is to be optimally inclusive (i.e., to be usable for registration of any systematic review, regardless of scientific discipline or review type). Because this aim precludes 1:1 correspondence with the existing reporting guidelines, this form is also intended as a basis to develop more specialized forms that do correspond closely to more specific reporting guidelines. Such specialized can include, for example, additional fields, added comments, and worked examples. Please contact the Center of Open Science at <a href="mailto:contact@cos.io" class="email">contact@cos.io</a> if you would like to propose such a specialized version. Below you can find the currently planned improvements/extensions including contact information of the person leading the project. Please do reach out if you want to be involved in any of these projects!</p>
+<p>The aim of this registration form is to be optimally inclusive (i.e.,
+to be usable for registration of any systematic review, regardless of
+scientific discipline or review type). Because this aim precludes 1:1
+correspondence with the existing reporting guidelines, this form is also
+intended as a basis to develop more specialized forms that do correspond
+closely to more specific reporting guidelines. Such specialized can
+include, for example, additional fields, added comments, and worked
+examples. Please contact the Center of Open Science at <a href="mailto:contact@cos.io" class="email">contact@cos.io</a> if you
+would like to propose such a specialized version. Below you can find the
+currently planned improvements/extensions including contact information
+of the person leading the project. Please do reach out if you want to be
+involved in any of these projects!</p>
 <ul>
-<li>A template specifically tailored to meta-analyses in the social sciences, including a tutorial and a worked example (lead: Olmo van den Akker, <a href="mailto:ovdakker@gmail.com" class="email">ovdakker@gmail.com</a>)</li>
-<li>Extend explicit linking to items in other reporting guidelines than PRISMA</li>
+<li>A template specifically tailored to meta-analyses in the social
+sciences, including a tutorial and a worked example (lead: Olmo van den
+Akker, <a href="mailto:ovdakker@gmail.com" class="email">ovdakker@gmail.com</a>)</li>
+<li>Extend explicit linking to items in other reporting guidelines than
+PRISMA</li>
 </ul>
 </div>
 </div>
 <div id="sections-and-items-1" class="section level3">
 <h3>Sections and items</h3>
-<div id="preregr-form-VUTtxHYmWI" class="section level4">
+<div id="preregr-form-CIlGRK0XYy" class="section level4">
 <h4>Section: Metadata</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -543,11 +812,12 @@ tasks_and_roles
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the expected tasks and roles of each author/contributor, for example using the Contributor Roles Taxonomy (CRediT).
+Describe the expected tasks and roles of each author/contributor, for
+example using the Contributor Roles Taxonomy (CRediT).
 </div>
 </div>
 </div>
-<div id="preregr-form-1BcArbTwag" class="section level4">
+<div id="preregr-form-xBJYfabID4" class="section level4">
 <h4>Section: Review methods</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -559,7 +829,10 @@ type_of_review
 </div>
 </div>
 <div class="preregr-item-spec-text">
-This can be, for example, a meta-analysis, evidence map, or a qualitative review. Also indicate whether you used any guidelines, tools or checklists to prepare your protocol, and if so, which ones. PRISMA: 1.
+This can be, for example, a meta-analysis, evidence map, or a
+qualitative review. Also indicate whether you used any guidelines, tools
+or checklists to prepare your protocol, and if so, which ones. PRISMA:
+1.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -572,7 +845,10 @@ review_stages
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate the stages in which you will conduct this review. Common stages are, in this order, the sections of this form (Search, Screening, Extraction, Synthesis), but sometimes other stages are distinguished, such as Preparation, Critical Appraisal, and Reporting.
+Indicate the stages in which you will conduct this review. Common stages
+are, in this order, the sections of this form (Search, Screening,
+Extraction, Synthesis), but sometimes other stages are distinguished,
+such as Preparation, Critical Appraisal, and Reporting.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -585,7 +861,12 @@ current_stage
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate in which stage from the list you specified in the “Review stages” item you are at this moment (i.e., when you freeze this registration). Note that in many contexts, only registrations in earlier stages count as preregistrations. For example, you can use a table to indicate whether you started and/or finished with a certain stage as is customary for PROSPERO registrations.
+Indicate in which stage from the list you specified in the “Review
+stages” item you are at this moment (i.e., when you freeze this
+registration). Note that in many contexts, only registrations in earlier
+stages count as preregistrations. For example, you can use a table to
+indicate whether you started and/or finished with a certain stage as is
+customary for PROSPERO registrations.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -598,7 +879,8 @@ start_date
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate the planned start date, or if you already started, the actual start date.
+Indicate the planned start date, or if you already started, the actual
+start date.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -611,7 +893,9 @@ end_date
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate the planned end date, or if you already completed the review, the actual end date. You can use resources such as PredicTER.org to estimate how long a review will take to complete.
+Indicate the planned end date, or if you already completed the review,
+the actual end date. You can use resources such as PredicTER.org to
+estimate how long a review will take to complete.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -624,7 +908,10 @@ background
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Introduce the topic of your review, its aims, and/or provide a short summary of known literature and what your review adds to this literature. You can describe why the review is needed, as well as which reviews already exist on this or related topics. PRISMA: 2 and 3.
+Introduce the topic of your review, its aims, and/or provide a short
+summary of known literature and what your review adds to this
+literature. You can describe why the review is needed, as well as which
+reviews already exist on this or related topics. PRISMA: 2 and 3.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -637,7 +924,13 @@ primary_research_question
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the specific questions this review is meant to answer (i.e., the questions that ultimately informed the decisions made when designing the search strategy, and screening, extraction, and synthesis plans). You may find it helpful to refer to frameworks such as PICOS where appropriate to pinpoint your research questions. Note that all analyses pertaining to primary research questions should normally be reported in the final report. Prisma: 4.
+List the specific questions this review is meant to answer (i.e., the
+questions that ultimately informed the decisions made when designing the
+search strategy, and screening, extraction, and synthesis plans). You
+may find it helpful to refer to frameworks such as PICOS where
+appropriate to pinpoint your research questions. Note that all analyses
+pertaining to primary research questions should normally be reported in
+the final report. Prisma: 4.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -650,7 +943,10 @@ secondary_research_question
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List additional research questions that you will examine, but that took less central roles in informing the review’s design. Note that all analyses pertaining to secondary research questions should normally be reported in the final report. Prisma: 4.
+List additional research questions that you will examine, but that took
+less central roles in informing the review’s design. Note that all
+analyses pertaining to secondary research questions should normally be
+reported in the final report. Prisma: 4.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -663,7 +959,11 @@ expectations_hypotheses
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe any hypotheses (common for quantitative approaches) and/or expectations you have. These can pertain to your research questions, the types of sources you will find, social and political contexts, and contextual information that you know may color your interpretations and decisions (common for qualitative approaches). PRISMA: 3
+Describe any hypotheses (common for quantitative approaches) and/or
+expectations you have. These can pertain to your research questions, the
+types of sources you will find, social and political contexts, and
+contextual information that you know may color your interpretations and
+decisions (common for qualitative approaches). PRISMA: 3
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -676,7 +976,12 @@ dvs_outcomes_main_vars
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the dependent / outcome / main variables you are interested in. If this review concerns one or more associations, list the outcome variable(s) or dependent variables. If this review does not concern one or more associations (e.g., in reviews of single variables such as prevalences, or descriptive reviews), list the main variables of interest here. PRISMA: 10a.
+List the dependent / outcome / main variables you are interested in. If
+this review concerns one or more associations, list the outcome
+variable(s) or dependent variables. If this review does not concern one
+or more associations (e.g., in reviews of single variables such as
+prevalences, or descriptive reviews), list the main variables of
+interest here. PRISMA: 10a.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -689,7 +994,12 @@ ivs_intervention_treatment
 </div>
 </div>
 <div class="preregr-item-spec-text">
-If this review’s research question(s) concerns one or more associations or effects, list the variable(s) that theoretically cause them or are assumed to otherwise explain the dependent variable(s) / outcome(s). If this is a manipulation, treatment, or intervention, make sure to describe it in full: that means also describing all groups, including any control group(s) or comparator(s). PRISMA: 10b.
+If this review’s research question(s) concerns one or more associations
+or effects, list the variable(s) that theoretically cause them or are
+assumed to otherwise explain the dependent variable(s) / outcome(s). If
+this is a manipulation, treatment, or intervention, make sure to
+describe it in full: that means also describing all groups, including
+any control group(s) or comparator(s). PRISMA: 10b.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -702,7 +1012,9 @@ additional_variables
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, list any additional variables you are interested in that were not included in the two lists above, such as covariates, moderators, or mediators. PRISMA: 10b.
+Here, list any additional variables you are interested in that were not
+included in the two lists above, such as covariates, moderators, or
+mediators. PRISMA: 10b.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -715,7 +1027,10 @@ software
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the software you will use for the review, for instance to store and screen search results, extract data, keep track of decisions, and to synthesize the results. Include version numbers and the operating systems, if applicable. PRISMA: 13d.
+List the software you will use for the review, for instance to store and
+screen search results, extract data, keep track of decisions, and to
+synthesize the results. Include version numbers and the operating
+systems, if applicable. PRISMA: 13d.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -728,7 +1043,9 @@ funding
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the funding sources for everybody that is involved in this review at this stage. If the work is unfunded, please state this as such. PRISMA: 25.
+List the funding sources for everybody that is involved in this review
+at this stage. If the work is unfunded, please state this as such.
+PRISMA: 25.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -741,7 +1058,11 @@ cois
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List any potential conflicts of interest (e.g., if there is a potential outcome of this review that can in any way have negative or positive effects for anybody involved in this review in terms of funding, prestige, or opportunities). If there are no conflicts of interest, please state this as such. PRISMA: 16.
+List any potential conflicts of interest (e.g., if there is a potential
+outcome of this review that can in any way have negative or positive
+effects for anybody involved in this review in terms of funding,
+prestige, or opportunities). If there are no conflicts of interest,
+please state this as such. PRISMA: 16.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -754,11 +1075,17 @@ overlapping_authorships
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Declare whether you expect that anyone involved in this review is a co-author of one of the studies that will likely be included in the review (based on your search strategy) and, if so, how you will address potential bias (i.e., that reviewer is not involved in screening, data extraction, quality assessment, or synthesis of that study). If you are confident that this does not represent a conflict of interest, explain why you think so. PRISMA: 26.
+Declare whether you expect that anyone involved in this review is a
+co-author of one of the studies that will likely be included in the
+review (based on your search strategy) and, if so, how you will address
+potential bias (i.e., that reviewer is not involved in screening, data
+extraction, quality assessment, or synthesis of that study). If you are
+confident that this does not represent a conflict of interest, explain
+why you think so. PRISMA: 26.
 </div>
 </div>
 </div>
-<div id="preregr-form-EVMNfbTDjg" class="section level4">
+<div id="preregr-form-EP4jbBGnxO" class="section level4">
 <h4>Section: Search strategy</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -770,7 +1097,9 @@ databases
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the databases you will search (e.g., ArXiv, PubMed, Scopus, Web of Science, PsycINFO, AGRIS, BioOne, PubChem). Note that these are different from interfaces (see below and here). PRISMA: 6.
+List the databases you will search (e.g., ArXiv, PubMed, Scopus, Web of
+Science, PsycINFO, AGRIS, BioOne, PubChem). Note that these are
+different from interfaces (see below and here). PRISMA: 6.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -783,7 +1112,11 @@ interfaces
 </div>
 </div>
 <div class="preregr-item-spec-text">
-For each database, list the interface you used to search that database (e.g., Ovid or EBSCO). Some databases are provided by the same organisation, in which case the interface can have the same name (e.g., PubMed, ArXiv). For more information about the distinction, see here. PRISMA: 6.
+For each database, list the interface you used to search that database
+(e.g., Ovid or EBSCO). Some databases are provided by the same
+organisation, in which case the interface can have the same name (e.g.,
+PubMed, ArXiv). For more information about the distinction, see here.
+PRISMA: 6.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -796,7 +1129,12 @@ grey_literature
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List your strategies for locating grey literature (i.e., sources not indexed in the databases you search) such as pre-prints (e.g., disciplinary repositories such as ArXiv or PsyArXiv or university repositories using for example, DSpace), dissertations and theses, conference proceedings and abstracts, government/industry reports etc. PRISMA: 6.
+List your strategies for locating grey literature (i.e., sources not
+indexed in the databases you search) such as pre-prints (e.g.,
+disciplinary repositories such as ArXiv or PsyArXiv or university
+repositories using for example, DSpace), dissertations and theses,
+conference proceedings and abstracts, government/industry reports etc.
+PRISMA: 6.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -809,7 +1147,14 @@ inclusions_exclusion_criteria
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the specific inclusion and exclusion criteria that you used to inform your search strategy. Also list the framework(s) you used to establish your exclusion and inclusion criteria and use them to develop your search query, if any. Examples of the latter are PICO (Population, Intervention, Comparison, Outcome) and SPIDER (Sample, Phenomenon of Interest, Design, Evaluation, Research type), but many more exist (see here for an overview based on the medical and health sciences). PRISMA: 5 and 13a.
+List the specific inclusion and exclusion criteria that you used to
+inform your search strategy. Also list the framework(s) you used to
+establish your exclusion and inclusion criteria and use them to develop
+your search query, if any. Examples of the latter are PICO (Population,
+Intervention, Comparison, Outcome) and SPIDER (Sample, Phenomenon of
+Interest, Design, Evaluation, Research type), but many more exist (see
+here for an overview based on the medical and health sciences). PRISMA:
+5 and 13a.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -822,7 +1167,12 @@ query_strings
 </div>
 </div>
 <div class="preregr-item-spec-text">
-For each database/interface combination, list the query you will input (note that the available fields and operators can differ by database and by interface). The query string can be based on, for example, your inclusion criteria, the entities you want to extract (see “extraction”) and design requirements (e.g., qualitative studies, RCTs, or prevalence studies). PRISMA: 7.
+For each database/interface combination, list the query you will input
+(note that the available fields and operators can differ by database and
+by interface). The query string can be based on, for example, your
+inclusion criteria, the entities you want to extract (see “extraction”)
+and design requirements (e.g., qualitative studies, RCTs, or prevalence
+studies). PRISMA: 7.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -835,7 +1185,10 @@ search_validation_procedure
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Explain whether you plan to employ a search validation procedure, and if so, describe the procedure. For example, you can use a number of sources that you know your search strategy will have to turn up to validate your strategy and make adjustments if needed. PRISMA: 7.
+Explain whether you plan to employ a search validation procedure, and if
+so, describe the procedure. For example, you can use a number of sources
+that you know your search strategy will have to turn up to validate your
+strategy and make adjustments if needed. PRISMA: 7.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -848,7 +1201,11 @@ other_search_strategies
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List any additional search strategies you aim to employ, such as using the ascendancy approach (look through other sources cited in your included sources), the descendancy approach (look through the sources that cite your included sources using systems such as Crossref), or using other systems such as CoCites. PRISMA: 7.
+List any additional search strategies you aim to employ, such as using
+the ascendancy approach (look through other sources cited in your
+included sources), the descendancy approach (look through the sources
+that cite your included sources using systems such as Crossref), or
+using other systems such as CoCites. PRISMA: 7.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -861,7 +1218,11 @@ procedure_for_contacting_authors
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe your procedures for contacting authors. Will you contact authors? When? How will you follow-up on your first contact? Do you plan to share meta-data about those communications, and if so, how do you ask authors’ permission for that? Will you Note that templates are available at <a href="https://osf.io/q8stz/" class="uri">https://osf.io/q8stz/</a>. PRISMA: 7.
+Describe your procedures for contacting authors. Will you contact
+authors? When? How will you follow-up on your first contact? Do you plan
+to share meta-data about those communications, and if so, how do you ask
+authors’ permission for that? Will you Note that templates are available
+at <a href="https://osf.io/q8stz/" class="uri">https://osf.io/q8stz/</a>. PRISMA: 7.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -874,7 +1235,9 @@ results_of_contacting_authors
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether you plan to report the outcomes of contacting the authors (e.g., how many authors responded, how many authors sent data), and if so, how. PRISMA: 16a.
+Describe whether you plan to report the outcomes of contacting the
+authors (e.g., how many authors responded, how many authors sent data),
+and if so, how. PRISMA: 16a.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -887,7 +1250,11 @@ search_expiration_and_repetition
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Depending on how quickly the literature in an area expands, searches can have limited expiration dates; and for living reviews, repetition is planned regardless of ideas about expiration. Will you repeat your search (for example, in the case of a living review), and if so, how many months or years after your first search? PRISMA: 7.
+Depending on how quickly the literature in an area expands, searches can
+have limited expiration dates; and for living reviews, repetition is
+planned regardless of ideas about expiration. Will you repeat your
+search (for example, in the case of a living review), and if so, how
+many months or years after your first search? PRISMA: 7.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -900,7 +1267,11 @@ search_strategy_justification
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Search strategies are often compromises, balancing pragmatic considerations with scientific rigour. Here, describe the justifications for your decisions about the databases, interfaces, grey literature strategies, query strings, author contact procedures, and search expiration date. PRISMA: 7.
+Search strategies are often compromises, balancing pragmatic
+considerations with scientific rigour. Here, describe the justifications
+for your decisions about the databases, interfaces, grey literature
+strategies, query strings, author contact procedures, and search
+expiration date. PRISMA: 7.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -913,11 +1284,12 @@ misc_search_strategy_details
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, you can describe any details that are not captured in the other fields in this section. PRISMA: 7.
+Here, you can describe any details that are not captured in the other
+fields in this section. PRISMA: 7.
 </div>
 </div>
 </div>
-<div id="preregr-form-bWIFGuwpRm" class="section level4">
+<div id="preregr-form-9IiAnydFSV" class="section level4">
 <h4>Section: Screening</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -929,7 +1301,13 @@ screening_stages
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the stages you will use for screening. For example, if you expect many hits, you may want to first screen based on titles only, in a second round also include abstracts and keywords, and in a third round screen based on full texts. Also indicate for each round whether the screening is done by a computer (e.g., AI), a human, or a computer supervised by a human. Don’t forget to describe the deduplication procedure, if you implement it. PRISMA: 8.
+Describe the stages you will use for screening. For example, if you
+expect many hits, you may want to first screen based on titles only, in
+a second round also include abstracts and keywords, and in a third round
+screen based on full texts. Also indicate for each round whether the
+screening is done by a computer (e.g., AI), a human, or a computer
+supervised by a human. Don’t forget to describe the deduplication
+procedure, if you implement it. PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -942,7 +1320,10 @@ screened_fields_masking
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe which bibliographic fields (e.g., title, abstract, authors) are visible during the screening, and which fields are masked. For example, journal names, authors, and publication years can be hidden from screeners in an effort to minimize bias. PRISMA: 8.
+Describe which bibliographic fields (e.g., title, abstract, authors) are
+visible during the screening, and which fields are masked. For example,
+journal names, authors, and publication years can be hidden from
+screeners in an effort to minimize bias. PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -955,7 +1336,12 @@ used_exclusion_criteria
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the specific exclusion criteria that you apply in your screening to eliminate sources from the set of sources identified in your search. Note that inclusion criteria are typically used to inform the search strategy; during screening, as soon as an exclusion criterion is met, an entry is excluded, and so, inclusion criteria are reformulated into exclusion criteria where applicable. PRISMA: 8.
+List the specific exclusion criteria that you apply in your screening to
+eliminate sources from the set of sources identified in your search.
+Note that inclusion criteria are typically used to inform the search
+strategy; during screening, as soon as an exclusion criterion is met, an
+entry is excluded, and so, inclusion criteria are reformulated into
+exclusion criteria where applicable. PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -981,7 +1367,12 @@ screening_reliability
 </div>
 </div>
 <div class="preregr-item-spec-text">
-For each screening round, list the number of screeners and the procedure used to ensure independent screening.This can also mean that you declare that you only use one screener, use multiple screeners that work together, or that you will not implement procedures to ensure that the screening is conducted independently. Also explain the test you will use, if any, to assess screener agreement. PRISMA: 8.
+For each screening round, list the number of screeners and the procedure
+used to ensure independent screening.This can also mean that you declare
+that you only use one screener, use multiple screeners that work
+together, or that you will not implement procedures to ensure that the
+screening is conducted independently. Also explain the test you will
+use, if any, to assess screener agreement. PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -994,7 +1385,9 @@ screening_reconciliation_procedure
 </div>
 </div>
 <div class="preregr-item-spec-text">
-If you use more than one screener, describe the procedure to deal with divergent screener decisions for each screener round (e.g., through discussion or input from an additional screener). PRISMA: 8.
+If you use more than one screener, describe the procedure to deal with
+divergent screener decisions for each screener round (e.g., through
+discussion or input from an additional screener). PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1007,7 +1400,16 @@ sampling_and_sample_size
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether you plan to use all sources included through the screening procedure, or whether you plan to sample from these sources (note that in most cases, all studies identified at this stage are kept). In case of the latter, describe the procedure you plan to use, the sample size analyses you conducted or will conduct, and the resulting required sample size if that is already available. If you plan to refrain from drawing conclusions, or draw more nuanced conclusions, describe that here as well. Finally, describe what you will do if a minimum required sample size or power is not reached (for your main analysis and any supplementary analyses). PRISMA: 8.
+Describe whether you plan to use all sources included through the
+screening procedure, or whether you plan to sample from these sources
+(note that in most cases, all studies identified at this stage are
+kept). In case of the latter, describe the procedure you plan to use,
+the sample size analyses you conducted or will conduct, and the
+resulting required sample size if that is already available. If you plan
+to refrain from drawing conclusions, or draw more nuanced conclusions,
+describe that here as well. Finally, describe what you will do if a
+minimum required sample size or power is not reached (for your main
+analysis and any supplementary analyses). PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1020,7 +1422,10 @@ screening_procedure_justification
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Screening procedures are often compromises, balancing pragmatic considerations with scientific rigour. Here, describe the justifications for your decisions about the screening rounds, blinding, in/exclusion criteria, assurance, and reconciliation procedures. PRISMA: 8.
+Screening procedures are often compromises, balancing pragmatic
+considerations with scientific rigour. Here, describe the justifications
+for your decisions about the screening rounds, blinding, in/exclusion
+criteria, assurance, and reconciliation procedures. PRISMA: 8.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1033,7 +1438,11 @@ screening_data_management_and_sharing
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether and how you plan to share the sources you obtained from the searches in the databases (see Search Strategy) and the decisions each screener made in each screening round. List both the file format (e.g., BibTeX, RIS, CSV, XLSX), the repository, and any potential embargos or conditions for access. PRISMA: 27.
+Describe whether and how you plan to share the sources you obtained from
+the searches in the databases (see Search Strategy) and the decisions
+each screener made in each screening round. List both the file format
+(e.g., BibTeX, RIS, CSV, XLSX), the repository, and any potential
+embargos or conditions for access. PRISMA: 27.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1046,11 +1455,12 @@ misc_screening_details
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, you can describe any details that are not captured in the other fields in this section. PRISMA: 8.
+Here, you can describe any details that are not captured in the other
+fields in this section. PRISMA: 8.
 </div>
 </div>
 </div>
-<div id="preregr-form-agLGVIsoPu" class="section level4">
+<div id="preregr-form-cmRM9N7syA" class="section level4">
 <h4>Section: Extraction</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1062,7 +1472,16 @@ entities_to_extract
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List all entities that will be extracted from each included source. Entities can be, for example, 1) variables such as values of independent and dependent variables, and potential moderators (e.g., means, standard deviations); 2) estimations of associations between variables or effect sizes (e.g., Pearson’s r or Cohen’s d); 3) qualitative data fragments; 4) descriptions of the used methods such as the included studies’ designs, sample sizes, sample characteristics, time between data collection sessions, and blinding procedures; 5) metadata such as authors, institutions, and year of publication; 6) and (other) risk of bias indicators. PRISMA: 10a, 10b, and 12.
+List all entities that will be extracted from each included source.
+Entities can be, for example, 1) variables such as values of independent
+and dependent variables, and potential moderators (e.g., means, standard
+deviations); 2) estimations of associations between variables or effect
+sizes (e.g., Pearson’s r or Cohen’s d); 3) qualitative data fragments;
+4) descriptions of the used methods such as the included studies’
+designs, sample sizes, sample characteristics, time between data
+collection sessions, and blinding procedures; 5) metadata such as
+authors, institutions, and year of publication; 6) and (other) risk of
+bias indicators. PRISMA: 10a, 10b, and 12.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1075,7 +1494,13 @@ extraction_stages
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the stages you will use for extraction. Examples of stages are: a training stage, a reliability verification stage, and a final extraction stage; or first extracting primary data and in a second stage risk of bias information; or two extractors working sequentially or in parallel. Also indicate for each stage whether the extraction is done by a computer (e.g., AI), a human, or a computer supervised by a human. PRISMA: 9.
+Describe the stages you will use for extraction. Examples of stages are:
+a training stage, a reliability verification stage, and a final
+extraction stage; or first extracting primary data and in a second stage
+risk of bias information; or two extractors working sequentially or in
+parallel. Also indicate for each stage whether the extraction is done by
+a computer (e.g., AI), a human, or a computer supervised by a human.
+PRISMA: 9.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1088,7 +1513,8 @@ extractor_instructions
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List or upload the instructions provided to the extractors (i.e., those performing the data extraction). PRISMA: 9.
+List or upload the instructions provided to the extractors (i.e., those
+performing the data extraction). PRISMA: 9.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1101,7 +1527,13 @@ extractor_blinding
 </div>
 </div>
 <div class="preregr-item-spec-text">
-If blinding is used, describe the procedure used to blind extractors from the research questions, hypotheses, and/or specific roles of each entity to extract in this review. For example, extractors can be research assistants who are not informed of the study’s background or research questions, but who are trained to extract entities using the coding instructions you developed for each entity; or entity extraction can be crowdsourced to citizen scientists. PRISMA: 9.
+If blinding is used, describe the procedure used to blind extractors
+from the research questions, hypotheses, and/or specific roles of each
+entity to extract in this review. For example, extractors can be
+research assistants who are not informed of the study’s background or
+research questions, but who are trained to extract entities using the
+coding instructions you developed for each entity; or entity extraction
+can be crowdsourced to citizen scientists. PRISMA: 9.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1114,7 +1546,12 @@ extraction_reliability
 </div>
 </div>
 <div class="preregr-item-spec-text">
-For each extraction round, list the number of extractors and the procedure used to ensure independent extraction (this can also mean that you declare that you use one extractor, or will not implement procedures to ensure that the extractions are conducted independently). Also explain the test you will use, if any, to assess extractor agreement. PRISMA: 9.
+For each extraction round, list the number of extractors and the
+procedure used to ensure independent extraction (this can also mean that
+you declare that you use one extractor, or will not implement procedures
+to ensure that the extractions are conducted independently). Also
+explain the test you will use, if any, to assess extractor agreement.
+PRISMA: 9.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1127,7 +1564,9 @@ extraction_reconciliation_procedure
 </div>
 </div>
 <div class="preregr-item-spec-text">
-For each extraction round, describe the procedure to deal with divergent extraction decisions (if applicable, i.e., if you use more than one extractor). PRISMA: 9.
+For each extraction round, describe the procedure to deal with divergent
+extraction decisions (if applicable, i.e., if you use more than one
+extractor). PRISMA: 9.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1140,7 +1579,11 @@ extraction_procedure_justification
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Extraction procedures are often compromises, balancing pragmatic considerations with scientific rigour. Here, describe the justifications for your decisions about the justification of each entity that will be extracted, the extraction rounds, reliability assurance, and reconciliation procedures. PRISMA: 9.
+Extraction procedures are often compromises, balancing pragmatic
+considerations with scientific rigour. Here, describe the justifications
+for your decisions about the justification of each entity that will be
+extracted, the extraction rounds, reliability assurance, and
+reconciliation procedures. PRISMA: 9.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1153,7 +1596,13 @@ extraction_data_management_and_sharing
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether and how you will share the files with the extracted entities (as specified in the corresponding field above; i.e., everything extracted from every source, including metadata, method characteristics, variables, associations, etc). List both the file format (e.g., CSV, XLSX, RData), the repository, and any potential embargos or conditions for access. Describe efforts made to share FAIR, 5-star open data, if any such efforts will be made. PRISMA: 27.
+Describe whether and how you will share the files with the extracted
+entities (as specified in the corresponding field above; i.e.,
+everything extracted from every source, including metadata, method
+characteristics, variables, associations, etc). List both the file
+format (e.g., CSV, XLSX, RData), the repository, and any potential
+embargos or conditions for access. Describe efforts made to share FAIR,
+5-star open data, if any such efforts will be made. PRISMA: 27.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1166,11 +1615,12 @@ misc_extraction_details
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, you can describe any details that are not captured in the other fields in this section. PRISMA: 9.
+Here, you can describe any details that are not captured in the other
+fields in this section. PRISMA: 9.
 </div>
 </div>
 </div>
-<div id="preregr-form-kpe41C53aV" class="section level4">
+<div id="preregr-form-WwixL7ACTa" class="section level4">
 <h4>Section: Synthesis and Quality Assessment</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1182,7 +1632,16 @@ planned_data_transformations
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe your plans for transforming the raw extracted data. This may include converting effect sizes to other metrics (e.g., convert all metrics to Pearson correlation coefficients); recoding or (re)categorizing extracted qualitative data fragments (e.g., coding extracted music genres within an existing taxonomy); and aggregating extracted data prior to the main synthesis procedures (e.g., compute the mean of a variable over all samples in one source). Applying these transformations to the raw extracted entities from the Extraction section should yield data that corresponds to the variables of interest listed in the Review Methods section. PRISMA: 13b.
+Describe your plans for transforming the raw extracted data. This may
+include converting effect sizes to other metrics (e.g., convert all
+metrics to Pearson correlation coefficients); recoding or
+(re)categorizing extracted qualitative data fragments (e.g., coding
+extracted music genres within an existing taxonomy); and aggregating
+extracted data prior to the main synthesis procedures (e.g., compute the
+mean of a variable over all samples in one source). Applying these
+transformations to the raw extracted entities from the Extraction
+section should yield data that corresponds to the variables of interest
+listed in the Review Methods section. PRISMA: 13b.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1195,7 +1654,10 @@ missing_data
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe how you will deal with missing data (i.e., cases where it is not possible to extract one or more entities from the source material, and your efforts to obtain the missing information, for example by contacting the authors, are not fruitful). PRISMA: 10b.
+Describe how you will deal with missing data (i.e., cases where it is
+not possible to extract one or more entities from the source material,
+and your efforts to obtain the missing information, for example by
+contacting the authors, are not fruitful). PRISMA: 10b.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1208,7 +1670,11 @@ data_validation
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe your process of ensuring that the data are correct and useful (e.g., identifying outliers, identifying retractions, or triangulating with other sources). Also describe your criteria for assessing data validity and how you will deal with data violating those criteria. PRISMA: 10b.
+Describe your process of ensuring that the data are correct and useful
+(e.g., identifying outliers, identifying retractions, or triangulating
+with other sources). Also describe your criteria for assessing data
+validity and how you will deal with data violating those criteria.
+PRISMA: 10b.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1221,7 +1687,10 @@ quality_assessment
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the analyses you plan to do to assess and weigh the quality of the included sources with respect to your research question(s). Examples of tools to use for quality evaluation are Cochrane’s Risk of Bias tool and GRADE. PRISMA: 11.
+Describe the analyses you plan to do to assess and weigh the quality of
+the included sources with respect to your research question(s). Examples
+of tools to use for quality evaluation are Cochrane’s Risk of Bias tool
+and GRADE. PRISMA: 11.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1234,7 +1703,16 @@ synthesis_plan
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the specific procedure you will apply to arrive at an answer to the research question(s). For example, in meta-analyses this is the full analysis plan, including any planned subgroup analyses and moderator analyses, the (multilevel) model specification, and preferably the analysis code. For a qualitative review, it is the procedure you plan to use to collate your results into a coherent picture. If you distinguish synthesis tiers (e.g., primary and secondary analysis, or confirmatory and exploratory analyses), list them and indicate which procedures you plan to use for each. Also specify what you will do if parts of the plan can’t be properly executed. PRISMA: 13c, 13d, and 13e.
+Describe the specific procedure you will apply to arrive at an answer to
+the research question(s). For example, in meta-analyses this is the full
+analysis plan, including any planned subgroup analyses and moderator
+analyses, the (multilevel) model specification, and preferably the
+analysis code. For a qualitative review, it is the procedure you plan to
+use to collate your results into a coherent picture. If you distinguish
+synthesis tiers (e.g., primary and secondary analysis, or confirmatory
+and exploratory analyses), list them and indicate which procedures you
+plan to use for each. Also specify what you will do if parts of the plan
+can’t be properly executed. PRISMA: 13c, 13d, and 13e.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1247,7 +1725,9 @@ criteria_for_conclusions
 </div>
 </div>
 <div class="preregr-item-spec-text">
-If you plan to draw your conclusions based on pre-specified criteria (e.g., a minimal effect size of interest, a significance level, or a saturation point), list these here. PRISMA: 20b.
+If you plan to draw your conclusions based on pre-specified criteria
+(e.g., a minimal effect size of interest, a significance level, or a
+saturation point), list these here. PRISMA: 20b.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1260,7 +1740,15 @@ synthesis_masking
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the procedure, if any, used to mask synthesists (i.e., the persons synthesizing the extracted data to arrive at answers to your research question(s)) from the research questions, hypotheses, and/or specific roles of each extracted entity/variable in this review. For example, for meta-analyses, an analyst external to the main research team can be engaged to perform the analyses without knowing the study’s hypotheses. For qualitative reviews, for the synthesis, other researchers can be involved who are unaware of and are not informed about the research process and expectations. PRISMA: 13d.
+Describe the procedure, if any, used to mask synthesists (i.e., the
+persons synthesizing the extracted data to arrive at answers to your
+research question(s)) from the research questions, hypotheses, and/or
+specific roles of each extracted entity/variable in this review. For
+example, for meta-analyses, an analyst external to the main research
+team can be engaged to perform the analyses without knowing the study’s
+hypotheses. For qualitative reviews, for the synthesis, other
+researchers can be involved who are unaware of and are not informed
+about the research process and expectations. PRISMA: 13d.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1273,7 +1761,10 @@ synthesis_reliability
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the number of synthesists and the procedure used to ensure independent synthesis (this can also mean that you declare that you use one synthesist, or will not implement procedures to ensure that the syntheses are conducted independently). PRISMA: 13d.
+List the number of synthesists and the procedure used to ensure
+independent synthesis (this can also mean that you declare that you use
+one synthesist, or will not implement procedures to ensure that the
+syntheses are conducted independently). PRISMA: 13d.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1286,7 +1777,8 @@ synthesis_reconciliation_procedure
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the procedure to deal with divergent synthesis decisions (if applicable). PRISMA: 13d.
+Describe the procedure to deal with divergent synthesis decisions (if
+applicable). PRISMA: 13d.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1299,7 +1791,10 @@ publication_bias
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the analyses you plan to do to assess publication bias (if any). For an overview of commonly used publication bias correction methods, see Table 1 in Van Aert, Wicherts, &amp; Van Assen (2019) PRISMA: 14.
+Describe the analyses you plan to do to assess publication bias (if
+any). For an overview of commonly used publication bias correction
+methods, see Table 1 in Van Aert, Wicherts, &amp; Van Assen (2019)
+PRISMA: 14.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1312,7 +1807,8 @@ sensitivity_analysis
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the sensitivity analyses or robustness checks you plan to conduct (if any). PRISMA: 13f and 15.
+Describe the sensitivity analyses or robustness checks you plan to
+conduct (if any). PRISMA: 13f and 15.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1325,7 +1821,14 @@ synthesis_procedure_justification
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Extraction procedures are sometimes compromises, balancing pragmatic considerations with scientific rigour. Here, describe the justifications for your decisions about your planned transformations (e.g., if based on assumptions, how do you know those are feasible), your data integrity and missing data checks and corrections, your synthesis plan, the criteria you chose to drive your conclusions/inferences (if any), and your procedures for blinding, and reliability assurance/reconciliation if you use multiple synthesists. PRISMA: 13d.
+Extraction procedures are sometimes compromises, balancing pragmatic
+considerations with scientific rigour. Here, describe the justifications
+for your decisions about your planned transformations (e.g., if based on
+assumptions, how do you know those are feasible), your data integrity
+and missing data checks and corrections, your synthesis plan, the
+criteria you chose to drive your conclusions/inferences (if any), and
+your procedures for blinding, and reliability assurance/reconciliation
+if you use multiple synthesists. PRISMA: 13d.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1338,7 +1841,11 @@ synthesis_data_management_and_sharing
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether and how you will share the files with the analysis scripts, notes, and outputs. List both the file format (e.g., R scripts, RMarkdown files, plain text files, Open Document files), the repository, and any potential embargos or conditions for access. See <a href="https://osf.io/5nk92" class="uri">https://osf.io/5nk92</a> for a generic example of an analysis script. PRISMA: 27.
+Describe whether and how you will share the files with the analysis
+scripts, notes, and outputs. List both the file format (e.g., R scripts,
+RMarkdown files, plain text files, Open Document files), the repository,
+and any potential embargos or conditions for access. See <a href="https://osf.io/5nk92" class="uri">https://osf.io/5nk92</a> for a
+generic example of an analysis script. PRISMA: 27.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -1351,7 +1858,8 @@ misc_synthesis_details
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, you can describe any details that are not captured in the other fields in this section. PRISMA: 13d.
+Here, you can describe any details that are not captured in the other
+fields in this section. PRISMA: 13d.
 </div>
 </div>
 </div>
@@ -1360,7 +1868,7 @@ Here, you can describe any details that are not captured in the other fields in 
 <div class="preregr-spec-end" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-data-UPstZLMTqI`" class="preregr preregr-json" data-preregr="{
+<div id="preregr-data-7U0CN8fsr1`" class="preregr preregr-json" data-preregr="{
   &quot;form&quot;: {
     &quot;instructions&quot;: {
       &quot;Intended Use&quot;: {

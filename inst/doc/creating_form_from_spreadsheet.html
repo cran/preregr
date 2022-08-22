@@ -14,7 +14,19 @@
 
 <title>Creating a form from a spreadsheet</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -24,6 +36,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -125,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -141,65 +334,157 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>In addition to being able to specify <a href="https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html">(pre)registration forms from within R</a> or <a href="https://r-packages.gitlab.io/preregr/articles/importing_form_from_url.html">importing it from the URL of an existing form</a>, you can also specify the form using a spreadsheet. You can use an Excel file (<code>.xlsx</code>) or a Google Sheet. An empty spreadsheet is <a href="https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing">available here</a>.</p>
+<p>In addition to being able to specify <a href="https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html">(pre)registration
+forms from within R</a> or <a href="https://r-packages.gitlab.io/preregr/articles/importing_form_from_url.html">importing
+it from the URL of an existing form</a>, you can also specify the form
+using a spreadsheet. You can use an Excel file (<code>.xlsx</code>) or a
+Google Sheet. An empty spreadsheet is <a href="https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing">available
+here</a>.</p>
 <div id="form-specification-format" class="section level1">
 <h1>Form specification format</h1>
-<p>The spreadsheet should have the following worksheet names (in whichever order):</p>
+<p>The spreadsheet should have the following worksheet names (in
+whichever order):</p>
 <ul>
 <li><code>metadata</code>: metdata about the (pre)registration form</li>
-<li><code>instructions</code>: instructions for the (pre)registration form</li>
-<li><code>sections</code>: the sections in which the (pre)registration form items are organized</li>
+<li><code>instructions</code>: instructions for the (pre)registration
+form</li>
+<li><code>sections</code>: the sections in which the (pre)registration
+form items are organized</li>
 <li><code>items</code>: the items in the (pre)registration form</li>
-<li><code>valueTemplates</code>: the value templates specifying valid values</li>
+<li><code>valueTemplates</code>: the value templates specifying valid
+values</li>
 </ul>
 <div id="metadata" class="section level2">
 <h2>Metadata</h2>
-<p>The <code>metadata</code> worksheet contains two columns (in whichever order): <code>field</code> and <code>content</code>. Every row holds a different bit of metadata. The field name is specified in the <code>field</code> column and the metadata itself is specified in the <code>content</code> column in the corresponding row. Always specify content for at least the following fields: specify the form’s title as <code>title</code>; specify the form’s author(s) as <code>author</code>, specify the date as <code>date</code>, and specify the version as <code>version</code>.</p>
-<p>Regarding versioning, if there is only one version and the creators do not plan to release future version, the recommendation is to set the version to 1.</p>
-<p>If the creators have no clear idea about how to version the form (i.e. there may be improvements in the future), the recommendation is to set the first version to 0.0.1, and roughly adopt the system common for software: increment the first number when the form is substantially updated (e.g. such that preregistrations that used the previous version of the form may no longer be valid given the new version, for example becaue sections were added or removed, or value templates changed, etc), the third number for very small changes (e.g. typos, spelling corrections, clarification or extra explanations, bug fixes in regular expressions in value templates, etc), and the second number for changes in between (e.g. changing the order of items or moving an item to another section, or changing value templates to be more permissive (and so, retaining compatibility with (pre)registrations that used the previous version of the form)). In that case, use version 1.0.0 to signal that the form has reached maturity.</p>
+<p>The <code>metadata</code> worksheet contains two columns (in
+whichever order): <code>field</code> and <code>content</code>. Every row
+holds a different bit of metadata. The field name is specified in the
+<code>field</code> column and the metadata itself is specified in the
+<code>content</code> column in the corresponding row. Always specify
+content for at least the following fields: specify the form’s title as
+<code>title</code>; specify the form’s author(s) as <code>author</code>,
+specify the date as <code>date</code>, and specify the version as
+<code>version</code>.</p>
+<p>Regarding versioning, if there is only one version and the creators
+do not plan to release future version, the recommendation is to set the
+version to 1.</p>
+<p>If the creators have no clear idea about how to version the form
+(i.e. there may be improvements in the future), the recommendation is to
+set the first version to 0.0.1, and roughly adopt the system common for
+software: increment the first number when the form is substantially
+updated (e.g. such that preregistrations that used the previous version
+of the form may no longer be valid given the new version, for example
+becaue sections were added or removed, or value templates changed, etc),
+the third number for very small changes (e.g. typos, spelling
+corrections, clarification or extra explanations, bug fixes in regular
+expressions in value templates, etc), and the second number for changes
+in between (e.g. changing the order of items or moving an item to
+another section, or changing value templates to be more permissive (and
+so, retaining compatibility with (pre)registrations that used the
+previous version of the form)). In that case, use version 1.0.0 to
+signal that the form has reached maturity.</p>
 </div>
 <div id="instructions" class="section level2">
 <h2>Instructions</h2>
-<p>The <code>instructions</code> worksheet contains two columns (in whichever order): <code>heading</code> and <code>description</code>. Every row holds one specific set of instructions in the <code>description</code> columns that will be included under the heading in the <code>heading</code> column.</p>
-<p>These instructions can be used for general instructions about the form, such as the intended use cases or references to background materials.</p>
+<p>The <code>instructions</code> worksheet contains two columns (in
+whichever order): <code>heading</code> and <code>description</code>.
+Every row holds one specific set of instructions in the
+<code>description</code> columns that will be included under the heading
+in the <code>heading</code> column.</p>
+<p>These instructions can be used for general instructions about the
+form, such as the intended use cases or references to background
+materials.</p>
 </div>
 <div id="sections" class="section level2">
 <h2>Sections</h2>
-<p>The sections can be used to organize the items in the form. The <code>sections</code> worksheet has three columns (in whichever order): <code>section_id</code>, <code>section_label</code>, and <code>section_description</code>.</p>
-<p>Every section has a unique section identifier that is specified in <code>section_id</code>. Identifiers can only contain Latin lower- and uppercase letters, Arabic digits, and underscores; and have to start with a letter. These section identifiers are what are specified in the <code>items</code> worksheet to assign an item to a section.</p>
-<p>Sections have brief titles that are specified in <code>section_label</code>, and can have longer descriptions (e.g. instructions, background information etc) in <code>section_description</code>.</p>
+<p>The sections can be used to organize the items in the form. The
+<code>sections</code> worksheet has three columns (in whichever order):
+<code>section_id</code>, <code>section_label</code>, and
+<code>section_description</code>.</p>
+<p>Every section has a unique section identifier that is specified in
+<code>section_id</code>. Identifiers can only contain Latin lower- and
+uppercase letters, Arabic digits, and underscores; and have to start
+with a letter. These section identifiers are what are specified in the
+<code>items</code> worksheet to assign an item to a section.</p>
+<p>Sections have brief titles that are specified in
+<code>section_label</code>, and can have longer descriptions
+(e.g. instructions, background information etc) in
+<code>section_description</code>.</p>
 </div>
 <div id="items" class="section level2">
 <h2>Items</h2>
-<p>The <code>items</code> worksheet contain the following columns (again, in whichever order): <code>section_id</code>, <code>item_id</code>, <code>item_label</code>, <code>item_description</code>, <code>item_valueTemplate</code>, <code>item_validValues</code>, <code>item_validation</code>.</p>
-<p>The section identifier in <code>section_id</code> specifies to which section an item belongs. The <code>item_id</code> is the unique item identifier that users use when specifying (pre)registration content using [preregr::prereg_specify()]. The <code>item_label</code> contains a brief item name, and the <code>item_description</code> a longer description, for example an instruction.</p>
-<p>The <code>item_valueTemplate</code> column is used to specify the value template to use for this item. This determines the valid input formats. The <code>item_validValues</code> column is used to specify the valid values, in case only a few values can be specified for this item; and the <code>item_validation</code> column can be used to override the <code>validation</code> information in the <code>valueTemplates</code> worksheet.</p>
+<p>The <code>items</code> worksheet contain the following columns
+(again, in whichever order): <code>section_id</code>,
+<code>item_id</code>, <code>item_label</code>,
+<code>item_description</code>, <code>item_valueTemplate</code>,
+<code>item_validValues</code>, <code>item_validation</code>.</p>
+<p>The section identifier in <code>section_id</code> specifies to which
+section an item belongs. The <code>item_id</code> is the unique item
+identifier that users use when specifying (pre)registration content
+using [preregr::prereg_specify()]. The <code>item_label</code> contains
+a brief item name, and the <code>item_description</code> a longer
+description, for example an instruction.</p>
+<p>The <code>item_valueTemplate</code> column is used to specify the
+value template to use for this item. This determines the valid input
+formats. The <code>item_validValues</code> column is used to specify the
+valid values, in case only a few values can be specified for this item;
+and the <code>item_validation</code> column can be used to override the
+<code>validation</code> information in the <code>valueTemplates</code>
+worksheet.</p>
 </div>
 <div id="value-templates" class="section level2">
 <h2>Value templates</h2>
-<p>Value templates are used to specify valid user input for form fields. For example, often any text input may be allowed. Sometimes, the text input will have to be a number. And other times, it will be necessary to force users to select one value out of multiple.</p>
-<p>The <code>valueTemplates</code> worksheet has columns <code>identifier</code>, <code>description</code>, <code>validValues</code>, <code>default</code>, <code>examples</code>, <code>validation</code>, <code>error</code> (in whichever order).</p>
-<p>The <code>identifier</code> specifies the unique identifier for the value template as used in the <code>items</code> worksheet to specify which value template applies. The <code>description</code> describes which content is valid for that value template.</p>
-<p>The <code>validValues</code> column can be used to specify a finite list of valid values. These values are then used in the <code>examples</code> column, the <code>validation</code> column, and the <code>error</code> column.</p>
-<p>The <code>default</code> column is not used in <code>preregr</code> - it is retained in the standard for compatibility with the <a href="https://r-packages.gitlab.io/metabefor"><code>metabefor</code></a> package, that also uses value templates.</p>
-<p>As yet, the <code>examples</code> column isn’t used yet, either, although that will likely change in future versions (in which case examples will be shown when the item’s description is shown).</p>
-<p>The <code>validation</code> and <code>error</code> column specify the validation rules (as R script) and the error to show when validation fails, respectively.</p>
+<p>Value templates are used to specify valid user input for form fields.
+For example, often any text input may be allowed. Sometimes, the text
+input will have to be a number. And other times, it will be necessary to
+force users to select one value out of multiple.</p>
+<p>The <code>valueTemplates</code> worksheet has columns
+<code>identifier</code>, <code>description</code>,
+<code>validValues</code>, <code>default</code>, <code>examples</code>,
+<code>validation</code>, <code>error</code> (in whichever order).</p>
+<p>The <code>identifier</code> specifies the unique identifier for the
+value template as used in the <code>items</code> worksheet to specify
+which value template applies. The <code>description</code> describes
+which content is valid for that value template.</p>
+<p>The <code>validValues</code> column can be used to specify a finite
+list of valid values. These values are then used in the
+<code>examples</code> column, the <code>validation</code> column, and
+the <code>error</code> column.</p>
+<p>The <code>default</code> column is not used in <code>preregr</code> -
+it is retained in the standard for compatibility with the <a href="https://r-packages.gitlab.io/metabefor"><code>metabefor</code></a>
+package, that also uses value templates.</p>
+<p>As yet, the <code>examples</code> column isn’t used yet, either,
+although that will likely change in future versions (in which case
+examples will be shown when the item’s description is shown).</p>
+<p>The <code>validation</code> and <code>error</code> column specify the
+validation rules (as R script) and the error to show when validation
+fails, respectively.</p>
 </div>
 </div>
 <div id="example-form-specifications" class="section level1">
 <h1>Example form specifications</h1>
-<p>The spreadsheet specifications for the (pre)registration forms that are included with <code>preregr</code> are publicly available at the following URLs:</p>
+<p>The spreadsheet specifications for the (pre)registration forms that
+are included with <code>preregr</code> are publicly available at the
+following URLs:</p>
 <ul>
-<li>The OSF Prereg form: <a href="https://docs.google.com/spreadsheets/d/1kmghGrkutrt3K9aEFFrWu-BfuJayFRSsV1WKQ-4QSM0" class="uri">https://docs.google.com/spreadsheets/d/1kmghGrkutrt3K9aEFFrWu-BfuJayFRSsV1WKQ-4QSM0</a> (form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html</a>);</li>
-<li>The Inclusive Systematic Review Registration Form: <a href="https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8" class="uri">https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8</a> (form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html</a>);</li>
-<li>The Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template: <a href="https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ" class="uri">https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ</a> (form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html</a>);</li>
-<li>The Preregistration Template for Quantitative Ethnographic Studies: <a href="https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4" class="uri">https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4</a> (form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html</a>);</li>
+<li>The OSF Prereg form: <a href="https://docs.google.com/spreadsheets/d/1kmghGrkutrt3K9aEFFrWu-BfuJayFRSsV1WKQ-4QSM0" class="uri">https://docs.google.com/spreadsheets/d/1kmghGrkutrt3K9aEFFrWu-BfuJayFRSsV1WKQ-4QSM0</a>
+(form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html</a>);</li>
+<li>The Inclusive Systematic Review Registration Form: <a href="https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8" class="uri">https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8</a>
+(form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html</a>);</li>
+<li>The Psychological Research Preregistration-Quantitative (aka
+PRP-QUANT) Template: <a href="https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ" class="uri">https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ</a>
+(form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html</a>);</li>
+<li>The Preregistration Template for Quantitative Ethnographic Studies:
+<a href="https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4" class="uri">https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4</a>
+(form shown in the vignette at <a href="https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html" class="uri">https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html</a>);</li>
 </ul>
-<p>In addition, there’s an empty form <a href="https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing">available here</a>.</p>
+<p>In addition, there’s an empty form <a href="https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing">available
+here</a>.</p>
 </div>
 <div id="importing-a-form-specified-in-a-spreadsheet" class="section level1">
 <h1>Importing a form specified in a spreadsheet</h1>
-<p>To import a form specification in a spreadsheet, use <a href="https://r-packages.gitlab.io/preregr/reference/form_fromSpreadsheet.html">preregr::form_fromSpreadsheet()</a>. For example:</p>
+<p>To import a form specification in a spreadsheet, use <a href="https://r-packages.gitlab.io/preregr/reference/form_fromSpreadsheet.html">preregr::form_fromSpreadsheet()</a>.
+For example:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>form_imported_from_a_spreadsheet <span class="ot">&lt;-</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_fromSpreadsheet</span>(</span>
@@ -216,7 +501,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="directly-initializing-from-a-spreadsheet" class="section level1">
 <h1>Directly initializing from a spreadsheet</h1>
-<p>It’s also impossible to directly initialize a new preregistration from a spreadsheet specification:</p>
+<p>It’s also possible to directly initialize a new preregistration from
+a spreadsheet specification:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>form_initialized_from_a_spreadsheet <span class="ot">&lt;-</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">prereg_initialize</span>(</span>

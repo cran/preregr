@@ -86,8 +86,10 @@ remotes::install_gitlab('r-packages/preregr@dev');
 
 ## Getting started
 
-There are currently six vignettes introducing `preregr`:
+There are currently seven vignettes introducing `preregr`:
 
+-   [General `preregr`
+    intro](https://r-packages.gitlab.io/preregr/articles/preregr_intro.html)
 -   [Specifying (pre)registration
     content](https://r-packages.gitlab.io/preregr/articles/specifying_prereg_content.html)
 -   [Create an R Markdown template from a
@@ -107,22 +109,33 @@ At the moment, five forms come pre-installed with `preregr`:
 
 -   [The OSF prereg
     form](https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html);
--   [The Inclusive Systematic Review Registratio
+-   [The Inclusive Systematic Review Registration
     Form](https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html);
 -   [The Psychological Research Preregistration-Quantitative (aka
     PRP-QUANT)
     Template](https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html);
 -   [Preregistration Template for Qualitative and Quantitative
     Ethnographic
-    Studies](https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html);
+    Studies](https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_94.html);
+-   [Preregistration Template for Secondary Data
+    Analysis](https://r-packages.gitlab.io/preregr/articles/form_prereg2D_v1.html);
+-   [Form: Qualitative Preregistration
+    Template](https://r-packages.gitlab.io/preregr/articles/form_OSFqual1_v1.html);
 -   [Inclusive General-Purpose Registration
-    Form](https://r-packages.gitlab.io/preregr/articles/form_generalPurpose_v1.html);
+    Form](https://r-packages.gitlab.io/preregr/articles/form_generalPurpose_v1_1.html);
 
 Of course, it would be great to add more! Check out the vignette about
 [specifing a (pre) registration form using a
 spreadsheet](https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html)
 and have a look at the specifications of these examples (linked to from
 that vignette) to get started.
+
+Once you’re happy with your form, contact Gjalt-Jorn through, for
+example, <gjalt-jorn.peters@ou.nl> or <https://twitter.com/matherion> -
+or better yet, if you’re familiar with Git, add your form yourself to
+[this
+file](https://gitlab.com/r-packages/preregr/-/blob/dev/R/forms_that_are_included.R)
+and submit a merge request (to the `dev` branch).
 
 ## Future Hopes and plans
 

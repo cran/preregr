@@ -55,6 +55,7 @@ if (exists("updateAllForms") && updateAllForms) {
 
 ### Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template
 if (exists("updateAllForms") && updateAllForms) {
+
   gSheet_url <-
     "https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ";
 
@@ -71,6 +72,7 @@ if (exists("updateAllForms") && updateAllForms) {
     );
 
   usethis::use_data(form_prpQuant_v1, overwrite=TRUE);
+
 }
 
 #' Preregistration Template for Qualitative and Quantitative Ethnographic Studies
@@ -287,6 +289,45 @@ if (exists("updateAllForms") && updateAllForms) {
   usethis::use_data(form_prereg2D_v1, overwrite=TRUE);
 
 }
+
+
+#' Qualitative Preregistration Template
+#'
+#' The Qualitative Preregistration Template was created by researchers from
+#' the qualitative community for registration of primarily qualitative work.
+#' It is available as a registration option on the Open Science
+#' Framework (OSF).
+#'
+#' This form was added to `preregr` by Aleksandra Lazic.
+#'
+#' @format A (pre)registration specification
+#'
+"form_OSFqual1_v1"
+
+### Inclusive General-Purpose Registration Form
+if (exists("updateAllForms") && updateAllForms) {
+
+  gSheet_url <-
+    "https://docs.google.com/spreadsheets/d/1R2Orwb55H239k0fDig5TdM5x7CFhKz8KSC0bBfKZ2cA";
+
+  localBackupFile <-
+    here::here(
+      "inst", "extdata", "preregr-form_OSFqual1_v1.xlsx"
+    );
+
+  form_OSFqual1_v1 <-
+    preregr::form_fromSpreadsheet(
+      gSheet_url,
+      localBackup = localBackupFile,
+      silent=FALSE
+    );
+
+  usethis::use_data(form_OSFqual1_v1, overwrite=TRUE);
+
+}
+
+
+
 
 #' A mostly empty example form specification
 #'

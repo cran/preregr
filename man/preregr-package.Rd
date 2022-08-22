@@ -6,7 +6,7 @@
 \alias{preregr-package}
 \title{preregr: Specify (Pre)Registrations and Export Them Human- And Machine-Readably}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Preregistrations, or more generally, registrations, enable explicit timestamped and (often but not necessarily publicly) frozen documentation of plans and expectations as well as decisions and justifications. In research, preregistrations are commonly used to clearly document plans and facilitate justifications of deviations from those plans, as well as decreasing the effects of publication bias by enabling identification of research that was conducted but not published. Like reporting guidelines, (pre)registration forms often have specific structures that facilitate systematic reporting of important items. The 'preregr' package facilitates specifying (pre)registrations in R and exporting them to a human-readable format (using R Markdown partials or exporting to an 'HTML' file) as well as human-readable embedded data (using 'JSON'), as well as importing such exported (pre)registration specifications from such embedded 'JSON'.
 }
@@ -20,6 +20,13 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Gjalt-Jorn Peters \email{gjalt-jorn@behaviorchange.eu} (\href{https://orcid.org/0000-0002-0336-9589}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Szilvia Zörgő (\href{https://orcid.org/0000-0002-6916-2097}{ORCID}) [contributor]
+  \item Olmo den Akker (\href{https://orcid.org/0000-0002-0712-3746}{ORCID}) [contributor]
+  \item Aleksandra Lazić (\href{https://orcid.org/0000-0002-0433-0483}{ORCID}) [contributor]
+}
 
 }
 \keyword{internal}

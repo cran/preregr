@@ -10,7 +10,7 @@ form_to_rmd_template(
   file = NULL,
   title = NULL,
   author = NULL,
-  date = "`r format(Sys.time(), \\"\%Y-\%m-\%d at \%H:\%M:\%S \%Z (UTC\%z)\\")`",
+  date = "`r format(Sys.time(), '\%Y-\%m-\%d at \%H:\%M:\%S \%Z (UTC\%z)')`",
   output = "html_document",
   yaml = list(title = title, author = author, date = date, output = output),
   includeYAML = TRUE,

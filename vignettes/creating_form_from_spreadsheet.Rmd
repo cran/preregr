@@ -106,7 +106,7 @@ form_imported_from_a_spreadsheet |>
 
 # Directly initializing from a spreadsheet
 
-It's also impossible to directly initialize a new preregistration from a spreadsheet specification:
+It's also possible to directly initialize a new preregistration from a spreadsheet specification:
 
 ```{r, eval=FALSE}
 

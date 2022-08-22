@@ -14,7 +14,19 @@
 
 <title>Form: Inclusive General-Purpose Registration Form (v1.1)</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -24,6 +36,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -125,7 +138,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -137,17 +330,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<h1 class="title toc-ignore">Form: Inclusive General-Purpose Registration Form (v1.1)</h1>
+<h1 class="title toc-ignore">Form: Inclusive General-Purpose
+Registration Form (v1.1)</h1>
 
 
 
-<p>This vignette shows an inclusive general-purpose registration form (previous versions of this form: <a href="https://r-packages.gitlab.io/preregr/articles/form_generalPurpose_v1.html">v1.0</a>). It can be initialized as follows:</p>
+<p>This vignette shows an inclusive general-purpose registration form
+(previous versions of this form: <a href="https://r-packages.gitlab.io/preregr/articles/form_generalPurpose_v1.html">v1.0</a>).
+It can be initialized as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>initialized_generalPurpose_v1 <span class="ot">&lt;-</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">prereg_initialize</span>(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;generalPurpose_v1_1&quot;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  );</span></code></pre></div>
-<p>After this, content can be specified with <a href="https://r-packages.gitlab.io/preregr/reference/prereg_specify.html">preregr::prereg_specify()</a> or <a href="https://r-packages.gitlab.io/preregr/reference/prereg_justify.html">preregr::prereg_justify</a>. To check the next field(s) for which content still has to be specified, use <a href="https://r-packages.gitlab.io/preregr/reference/prereg_next_item.html">preregr::prereg_next_item()</a>.</p>
-<p>The form is defined as follows (use <a href="https://r-packages.gitlab.io/preregr/reference/form_show.html">preregr::form_show()</a> to show the form in the console, instead):</p>
+<p>After this, content can be specified with <a href="https://r-packages.gitlab.io/preregr/reference/prereg_specify.html">preregr::prereg_specify()</a>
+or <a href="https://r-packages.gitlab.io/preregr/reference/prereg_justify.html">preregr::prereg_justify</a>.
+To check the next field(s) for which content still has to be specified,
+use <a href="https://r-packages.gitlab.io/preregr/reference/prereg_next_item.html">preregr::prereg_next_item()</a>.</p>
+<p>The form is defined as follows (use <a href="https://r-packages.gitlab.io/preregr/reference/form_show.html">preregr::form_show()</a>
+to show the form in the console, instead):</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_knit</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;generalPurpose_v1_1&quot;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
@@ -187,18 +387,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="preregr-spec-start" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-form-SwKQs9kdDe" class="section level2 preregr-spec-container preregr-spec-full">
+<div id="preregr-form-BLY1mAIKVi" class="section level2 preregr-spec-container preregr-spec-full">
 <h2>Inclusive General-Purpose Registration Form</h2>
 <div id="instructions" class="section level3">
 <h3>Instructions</h3>
-<div id="preregr-form-G8mD5geNEj" class="section level4">
+<div id="preregr-form-EA54UeRf7J" class="section level4">
 <h4>Intended Use</h4>
-<p>This Inclusive General-Purpose Registration Form is designed to be applicable across disciplines (i.e., psychology, economics, law, physics, or any other field) and across study types (i.e., qualitative studies, quantitative studies, experiments, systematic reviews, case studies, archive studies, comparative legal studies, or any other type of study). This form, therefore, is a fall-back for more specialized forms and can be used if no specialized form or registration platform is available. As such, if at all possible, it is recommended to avoid using this form and instead use a specialized form. This inclusive general-purpose registration form achieves that inclusiveness and general-purposeness at the cost of specificity and comprehensiveness. Still, if specialized forms don’t fit for your study, this form may be a good backup.</p>
+<p>This Inclusive General-Purpose Registration Form is designed to be
+applicable across disciplines (i.e., psychology, economics, law,
+physics, or any other field) and across study types (i.e., qualitative
+studies, quantitative studies, experiments, systematic reviews, case
+studies, archive studies, comparative legal studies, or any other type
+of study). This form, therefore, is a fall-back for more specialized
+forms and can be used if no specialized form or registration platform is
+available. As such, if at all possible, it is recommended to avoid using
+this form and instead use a specialized form. This inclusive
+general-purpose registration form achieves that inclusiveness and
+general-purposeness at the cost of specificity and comprehensiveness.
+Still, if specialized forms don’t fit for your study, this form may be a
+good backup.</p>
 </div>
 </div>
 <div id="sections-and-items" class="section level3">
 <h3>Sections and items</h3>
-<div id="preregr-form-heKajUNRlu" class="section level4">
+<div id="preregr-form-15mBbADChr" class="section level4">
 <h4>Section: Metadata</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -210,7 +422,8 @@ discipline
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here you can specify your discipline (e.g. law, chemistry, anthropology, etc).
+Here you can specify your discipline (e.g. law, chemistry, anthropology,
+etc).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -249,7 +462,8 @@ tasks_and_roles
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the expected tasks and roles of each author/contributor, for example using the Contributor Roles Taxonomy (CRediT).
+Describe the expected tasks and roles of each author/contributor, for
+example using the Contributor Roles Taxonomy (CRediT).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -262,7 +476,8 @@ funding
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the funding sources for everybody that is involved in this study at this stage. If the work is not funded, please state this as such.
+List the funding sources for everybody that is involved in this study at
+this stage. If the work is not funded, please state this as such.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -275,11 +490,15 @@ cois
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List any potential conflicts of interest (e.g., if there is a potential outcome of this study that can in any way have negative or positive effects for anybody involved in this study in terms of funding, prestige, or opportunities). If there are no conflicts of interest, please state this as such.
+List any potential conflicts of interest (e.g., if there is a potential
+outcome of this study that can in any way have negative or positive
+effects for anybody involved in this study in terms of funding,
+prestige, or opportunities). If there are no conflicts of interest,
+please state this as such.
 </div>
 </div>
 </div>
-<div id="preregr-form-aTEhQZNMqu" class="section level4">
+<div id="preregr-form-UE5f7NL9hC" class="section level4">
 <h4>Section: Background</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -291,7 +510,9 @@ type_of_study
 </div>
 </div>
 <div class="preregr-item-spec-text">
-How would you describe the type of study you are (pre)registering (examples are “systematic review”, “cost-effectiveness trial”, or “observational study”, but use your own words)?
+How would you describe the type of study you are (pre)registering
+(examples are “systematic review”, “cost-effectiveness trial”, or
+“observational study”, but use your own words)?
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -304,7 +525,9 @@ background
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Introduce the topic of your study, its aims, and/or provide a short summary of known literature and what you want to add to this literature with your study.
+Introduce the topic of your study, its aims, and/or provide a short
+summary of known literature and what you want to add to this literature
+with your study.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -317,7 +540,11 @@ philsci
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the relevant elements of your ontological perspective (e.g. realism, relativism, pragmatism) and your epistemological perspective (e.g. empiricism, constructivism, skepticism), that is, those elements that are most relevant as a basis for the methodological choices you make in this study.
+Describe the relevant elements of your ontological perspective
+(e.g. realism, relativism, pragmatism) and your epistemological
+perspective (e.g. empiricism, constructivism, skepticism), that is,
+those elements that are most relevant as a basis for the methodological
+choices you make in this study.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -330,7 +557,16 @@ positionality
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe how you (as a person) see your association with the studied phenomenon, describe your position in the research setting / field, and describe your academic and personal standpoints, assumptions and values (to the degree that they may shape how you approach this study). You don’t need to repeat what you already describe in the items “Conflicts of interest” and “Philosophy of Science” (both in the Background section) and “Expectations / hypotheses” (in the Methods section). Instead you can use this item to enter information that wouldn’t fit there but that might nonetheless potentially color your interpretations or otherwise shape your approach.
+Describe how you (as a person) see your association with the studied
+phenomenon, describe your position in the research setting / field, and
+describe your academic and personal standpoints, assumptions and values
+(to the degree that they may shape how you approach this study). You
+don’t need to repeat what you already describe in the items “Conflicts
+of interest” and “Philosophy of Science” (both in the Background
+section) and “Expectations / hypotheses” (in the Methods section).
+Instead you can use this item to enter information that wouldn’t fit
+there but that might nonetheless potentially color your interpretations
+or otherwise shape your approach.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -343,7 +579,9 @@ stages
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate the stages in which you will conduct this study. Common stages are preparation, data collection, and analysis, specify the stages you will use using your own words.
+Indicate the stages in which you will conduct this study. Common stages
+are preparation, data collection, and analysis, specify the stages you
+will use using your own words.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -356,7 +594,9 @@ stage
 </div>
 </div>
 <div class="preregr-item-spec-text">
-From the list you specified in the “Study stages” item, indicate in which stage you are at this moment (i.e., when you freeze this registration).
+From the list you specified in the “Study stages” item, indicate in
+which stage you are at this moment (i.e., when you freeze this
+registration).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -369,7 +609,8 @@ start_date
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate the planned start date, or if you already started, the actual start date.
+Indicate the planned start date, or if you already started, the actual
+start date.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -382,11 +623,12 @@ end_date
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate the planned end date, or if you already completed the study, the actual end date.
+Indicate the planned end date, or if you already completed the study,
+the actual end date.
 </div>
 </div>
 </div>
-<div id="preregr-form-pSR0wvW5zu" class="section level4">
+<div id="preregr-form-yBegJ32hSf" class="section level4">
 <h4>Section: Methods</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -398,7 +640,11 @@ primary_research_question
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the specific questions this study is meant to answer (i.e., the questions that ultimately informed the decisions made when designing the study plans you are registering). Note that all analyses pertaining to primary research questions should normally be reported in the final report.
+List the specific questions this study is meant to answer (i.e., the
+questions that ultimately informed the decisions made when designing the
+study plans you are registering). Note that all analyses pertaining to
+primary research questions should normally be reported in the final
+report.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -411,7 +657,11 @@ secondary_research_question
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List additional research questions that you will examine, but that took less central roles in informing the study’s design. Note that all analyses pertaining to secondary research questions should normally be reported in the final report (the difference is that the study’s design is mainly geared towards answering the primary research questions).
+List additional research questions that you will examine, but that took
+less central roles in informing the study’s design. Note that all
+analyses pertaining to secondary research questions should normally be
+reported in the final report (the difference is that the study’s design
+is mainly geared towards answering the primary research questions).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -424,7 +674,10 @@ expectations_hypotheses
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe any hypotheses and/or expectations you have. These can pertain to your research questions, the types of sources you will find, social and political contexts, and contextual information that you know may color your interpretations and decisions.
+Describe any hypotheses and/or expectations you have. These can pertain
+to your research questions, the types of sources you will find, social
+and political contexts, and contextual information that you know may
+color your interpretations and decisions.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -437,20 +690,31 @@ main_vars
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the concepts or main / dependent / outcome variables you are interested in. If this study concerns one or more associations, list the outcome variable(s) or dependent variables. If this study does not concern one or more associations, list the main variables of interest here.
+List the concepts or main / dependent / outcome variables you are
+interested in. If this study concerns one or more associations, list the
+outcome variable(s) or dependent variables. If this study does not
+concern one or more associations, list the main variables of interest
+here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
 <div class="preregr-item-label">
-Secondary variable(s) / independent variable(s) / intervention(s) / treatment(s)
+Secondary variable(s) / independent variable(s) / intervention(s) /
+treatment(s)
 </div>
 <div class="preregr-item-id">
 secondary_vars
 </div>
 </div>
 <div class="preregr-item-spec-text">
-If this study’s research question(s) concerns one or more associations or effects, list the variable(s) that theoretically cause them or are assumed to otherwise explain the main variable(s) / dependent variable(s) / outcome(s). If this is a manipulation, treatment, or intervention, make sure to describe it in full: that means also describing all groups, including any control group(s) or comparator(s). If there are no secondary variables, you can just state that.
+If this study’s research question(s) concerns one or more associations
+or effects, list the variable(s) that theoretically cause them or are
+assumed to otherwise explain the main variable(s) / dependent
+variable(s) / outcome(s). If this is a manipulation, treatment, or
+intervention, make sure to describe it in full: that means also
+describing all groups, including any control group(s) or comparator(s).
+If there are no secondary variables, you can just state that.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -463,7 +727,10 @@ additional_vars
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, list any additional variables you are interested in that were not included in the two lists above, such as covariates, moderators, or mediators. If there are no additional variables, you can just state that.
+Here, list any additional variables you are interested in that were not
+included in the two lists above, such as covariates, moderators, or
+mediators. If there are no additional variables, you can just state
+that.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -476,7 +743,16 @@ data_origin
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the origin of the data you will examine. Data here is meant as a broad term: it refers to primary or secondary data; data you will collect or data that already existed; data that are measurements, recordings, existing documents or reports. Basically, which bits of the world will you look at to answer your research question(s), and how will you obtain those bits? For example, will you study humans, animals, chemicals, laws? Which procedures do you plan to employ? If your study does not involve the analysis of data at all, you can also indicate that here (but in that case this form will probably mostly not be applicable).
+Describe the origin of the data you will examine. Data here is meant as
+a broad term: it refers to primary or secondary data; data you will
+collect or data that already existed; data that are measurements,
+recordings, existing documents or reports. Basically, which bits of the
+world will you look at to answer your research question(s), and how will
+you obtain those bits? For example, will you study humans, animals,
+chemicals, laws? Which procedures do you plan to employ? If your study
+does not involve the analysis of data at all, you can also indicate that
+here (but in that case this form will probably mostly not be
+applicable).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -489,7 +765,17 @@ data_sampling
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether you will sample your data from a larger population. If not (i.e. if you will study an entire population), you can also indicatie that here. If you do plan to sample from a larger set of potential research units, this is where you can describe your sampling procedure, explain why that procedure fits with your goals, and explain how you will minimize bias (e.g. various forms of selection bias). If you aim to obtain a sample with specific characteristics (e.g. stratified according to some variable or optimized for heterogeneity in some respects), you can also describe that here, explain why you strive for that, and explain why you believe that your procedure will achieve your aims.
+Describe whether you will sample your data from a larger population. If
+not (i.e. if you will study an entire population), you can also
+indicatie that here. If you do plan to sample from a larger set of
+potential research units, this is where you can describe your sampling
+procedure, explain why that procedure fits with your goals, and explain
+how you will minimize bias (e.g. various forms of selection bias). If
+you aim to obtain a sample with specific characteristics
+(e.g. stratified according to some variable or optimized for
+heterogeneity in some respects), you can also describe that here,
+explain why you strive for that, and explain why you believe that your
+procedure will achieve your aims.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -502,7 +788,15 @@ data_registration
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe how you will register your data. If you will obtain your data through measurement, state the measurement instruments that you will use and expain your basis for assuming that those measurement instruments are appropriate (e.g., given the sample and context of your study). If you will not use measurement to obtain your data, explain how you will register the data you will use. Here, you can also explain what the data will look like after registration, for example by describing the columns in the dataset you will analyze, or the media you will use to store your data (e.g. bitrates).
+Describe how you will register your data. If you will obtain your data
+through measurement, state the measurement instruments that you will use
+and expain your basis for assuming that those measurement instruments
+are appropriate (e.g., given the sample and context of your study). If
+you will not use measurement to obtain your data, explain how you will
+register the data you will use. Here, you can also explain what the data
+will look like after registration, for example by describing the columns
+in the dataset you will analyze, or the media you will use to store your
+data (e.g. bitrates).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -515,7 +809,17 @@ data_bias_minimization
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe whether any procedures are in place to minimize bias that may be introduced as data are obtained. For example, will masking be applied? If data will be collected by people, will they be masked from the implications of patterns in the data for the research questions? If data will be collected from people (e.g., archivists, clerks, or research participants), will they be masked from the researchers’ expectations regarding those data? If data are collected by an automated procedure (e.g., scraping websites), will the algorithms performing the data collection be vetted by others to try to identify biases? If no procedures will be implemented to minimize bias, you can also indicate and explain that here.
+Describe whether any procedures are in place to minimize bias that may
+be introduced as data are obtained. For example, will masking be
+applied? If data will be collected by people, will they be masked from
+the implications of patterns in the data for the research questions? If
+data will be collected from people (e.g., archivists, clerks, or
+research participants), will they be masked from the researchers’
+expectations regarding those data? If data are collected by an automated
+procedure (e.g., scraping websites), will the algorithms performing the
+data collection be vetted by others to try to identify biases? If no
+procedures will be implemented to minimize bias, you can also indicate
+and explain that here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -528,7 +832,20 @@ data_amount
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe how much data you plan to collect. For example, here you can explain whether you will study one research unit (often referred to as a case study), study the entire population, or for anything in between, how much data you plan to collect and why. If your data consists of archival records, social media data, case law, or chat logs, you can explain how many data sources you will analyse. If you will collect qualitative data, you can describe how much you plan to collect, and if you use saturation as a stopping rule, how you operationalize saturation. If you will conduct quantitative analyses, you can describe your sample size computations and which parameters you use (e.g. SESOI, alpha, power). In all cases, this is also where you explain why that amount of data is appropriate given your aims. If you have no specific plans for how much data you will collect, you can also explain that here.
+Describe how much data you plan to collect. For example, here you can
+explain whether you will study one research unit (often referred to as a
+case study), study the entire population, or for anything in between,
+how much data you plan to collect and why. If your data consists of
+archival records, social media data, case law, or chat logs, you can
+explain how many data sources you will analyse. If you will collect
+qualitative data, you can describe how much you plan to collect, and if
+you use saturation as a stopping rule, how you operationalize
+saturation. If you will conduct quantitative analyses, you can describe
+your sample size computations and which parameters you use (e.g. SESOI,
+alpha, power). In all cases, this is also where you explain why that
+amount of data is appropriate given your aims. If you have no specific
+plans for how much data you will collect, you can also explain that
+here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -541,7 +858,8 @@ anyware
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the software and hardware you plan to use for the study. Include model/version numbers, producers, and operating systems, if applicable.
+List the software and hardware you plan to use for the study. Include
+model/version numbers, producers, and operating systems, if applicable.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -554,7 +872,9 @@ repositories
 </div>
 </div>
 <div class="preregr-item-spec-text">
-List the repositories you will use to publish your data, analyses, materials, and documentation. If you do not plan to publish one or more of these, you can indicate and explain that here.
+List the repositories you will use to publish your data, analyses,
+materials, and documentation. If you do not plan to publish one or more
+of these, you can indicate and explain that here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -567,7 +887,9 @@ preprint
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Indicate which preprint server you plan to use to publish the preprint(s) from this project. If you do not plan to publish a preprint, you can indicate and explain that here.
+Indicate which preprint server you plan to use to publish the
+preprint(s) from this project. If you do not plan to publish a preprint,
+you can indicate and explain that here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -580,11 +902,12 @@ misc_methods_details
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, you can describe any details that are not captured in the other fields in this section.
+Here, you can describe any details that are not captured in the other
+fields in this section.
 </div>
 </div>
 </div>
-<div id="preregr-form-ZlnOa37oPj" class="section level4">
+<div id="preregr-form-cTlpZvbeOi" class="section level4">
 <h4>Section: Analyses</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -596,7 +919,10 @@ missing_data
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe how you plan to deal with missing data (e.g. observations that cannot go through as planned, archive materials that cannot be obtained, problems with recordings, missing data points, participants who drop out, etc).
+Describe how you plan to deal with missing data (e.g. observations that
+cannot go through as planned, archive materials that cannot be obtained,
+problems with recordings, missing data points, participants who drop
+out, etc).
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -609,7 +935,13 @@ data_validation
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe your process of ensuring that the data are correct and useful (e.g., identifying outliers, establishing correct and valid application of measurement instruments, triangulating with other sources, or other methods of verifying data integrity). Also describe your criteria for assessing data validity and how you will deal with data violating those criteria. Or, if you will not assess the correctness, usefulness, or validity of your data, you can explain that here.
+Describe your process of ensuring that the data are correct and useful
+(e.g., identifying outliers, establishing correct and valid application
+of measurement instruments, triangulating with other sources, or other
+methods of verifying data integrity). Also describe your criteria for
+assessing data validity and how you will deal with data violating those
+criteria. Or, if you will not assess the correctness, usefulness, or
+validity of your data, you can explain that here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -622,7 +954,14 @@ analysis_plan
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the specific procedure you will apply to arrive at an answer to the research question(s). If you distinguish analysis tiers (e.g., primary and secondary analyses, or confirmatory and exploratory analyses), list them and indicate which procedures you plan to use for each. Also specify what you will do if parts of the plan cannot be properly executed. This is also where you can explain your reasons for assuming that your chosen procedure is appropriate to arrive at the answers you seek.
+Describe the specific procedure you will apply to arrive at an answer to
+the research question(s). If you distinguish analysis tiers (e.g.,
+primary and secondary analyses, or confirmatory and exploratory
+analyses), list them and indicate which procedures you plan to use for
+each. Also specify what you will do if parts of the plan cannot be
+properly executed. This is also where you can explain your reasons for
+assuming that your chosen procedure is appropriate to arrive at the
+answers you seek.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -635,7 +974,14 @@ criteria_for_conclusions
 </div>
 </div>
 <div class="preregr-item-spec-text">
-If you plan to draw your conclusions based on pre-specified criteria (e.g., a minimal effect size of interest, a significance level, or a saturation point), list these here, explain what they were based on, and explain your reasoning. If you plan to draw conclusions but will not use pre-specified criteria, you can explain why you will establish criteria later, by what procedure, and how you plan to ameliorate the risk of bias. Finally, if you will not draw any inferences (e.g., about theories or hypotheses), you can also explain that here.
+If you plan to draw your conclusions based on pre-specified criteria
+(e.g., a minimal effect size of interest, a significance level, or a
+saturation point), list these here, explain what they were based on, and
+explain your reasoning. If you plan to draw conclusions but will not use
+pre-specified criteria, you can explain why you will establish criteria
+later, by what procedure, and how you plan to ameliorate the risk of
+bias. Finally, if you will not draw any inferences (e.g., about theories
+or hypotheses), you can also explain that here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -648,7 +994,11 @@ analyst_masking
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Describe the procedure, if any, used to mask analysts (i.e., the person(s) analyzing the extracted data to arrive at answers to your research question(s)) from the research questions, expectations, hypotheses, and/or specific roles of each variable in this study. If you decide to not use masked analysists, you can state that decision here.
+Describe the procedure, if any, used to mask analysts (i.e., the
+person(s) analyzing the extracted data to arrive at answers to your
+research question(s)) from the research questions, expectations,
+hypotheses, and/or specific roles of each variable in this study. If you
+decide to not use masked analysists, you can state that decision here.
 </div>
 </div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
@@ -661,7 +1011,8 @@ misc_analysis_details
 </div>
 </div>
 <div class="preregr-item-spec-text">
-Here, you can describe any details that are not captured in the other fields in this section.
+Here, you can describe any details that are not captured in the other
+fields in this section.
 </div>
 </div>
 </div>
@@ -670,7 +1021,7 @@ Here, you can describe any details that are not captured in the other fields in 
 <div class="preregr-spec-end" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-data-NStVgvwZ5m`" class="preregr preregr-json" data-preregr="{
+<div id="preregr-data-6GsFHuoJlC`" class="preregr preregr-json" data-preregr="{
   &quot;form&quot;: {
     &quot;instructions&quot;: {
       &quot;Intended Use&quot;: {
