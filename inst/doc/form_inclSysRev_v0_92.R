@@ -4,11 +4,16 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  initialized_inclSysRev_v0_92 <-
-#    preregr::prereg_initialize(
-#      "inclSysRev_v0_92"
-#    );
+## -----------------------------------------------------------------------------
+initialized_inclSysRev_v0_92 <-
+  preregr::prereg_initialize(
+    "inclSysRev_v0_92"
+  );
+
+## ---- echo=FALSE--------------------------------------------------------------
+knitr::kable(
+  initialized_inclSysRev_v0_92$form$metadata
+);
 
 ## ---- eval=TRUE, echo=FALSE---------------------------------------------------
 

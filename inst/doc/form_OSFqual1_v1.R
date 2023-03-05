@@ -4,11 +4,16 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  initialized_OSFqual1_v1 <-
-#    preregr::prereg_initialize(
-#      "OSFqual1_v1"
-#    );
+## -----------------------------------------------------------------------------
+initialized_OSFqual1_v1 <-
+  preregr::prereg_initialize(
+    "OSFqual1_v1"
+  );
+
+## ---- echo=FALSE--------------------------------------------------------------
+knitr::kable(
+  initialized_OSFqual1_v1$form$metadata
+);
 
 ## ---- eval=TRUE, echo=FALSE---------------------------------------------------
 

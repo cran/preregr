@@ -6,7 +6,7 @@
 \usage{
 heading(
   ...,
-  headingLevel = ufs::opts$get("defaultHeadingLevel"),
+  headingLevel = preregr::opts$get("defaultHeadingLevel"),
   output = "markdown",
   cat = TRUE
 )
@@ -15,7 +15,7 @@ heading(
 \item{...}{The heading text: pasted together with no separator.}
 
 \item{headingLevel}{The level of the heading; the default can be set
-with e.g. \code{ufs::opts$set(defaultHeadingLevel=1)}.}
+with e.g. \code{preregr::opts$set(defaultHeadingLevel=1)}.}
 
 \item{output}{Whether to output to HTML ("\code{html}") or markdown (anything
 else).}

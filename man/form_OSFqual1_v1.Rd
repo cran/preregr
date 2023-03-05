@@ -3,6 +3,7 @@
 \docType{data}
 \name{form_OSFqual1_v1}
 \alias{form_OSFqual1_v1}
+\alias{OSFqual1_v1}
 \title{Qualitative Preregistration Template}
 \format{
 A (pre)registration specification

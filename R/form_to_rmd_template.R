@@ -4,14 +4,14 @@
 #' (pre)registrations form specification. Pass it the URL to a Google
 #' Sheet holding the (pre)registration form specification (in {preregr}
 #' format), see the
-#' "[Creating a form from a spreadsheet](https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html)"
+#' "[Creating a form from a spreadsheet](https://preregr.opens.science/articles/creating_form_from_spreadsheet.html)"
 #' vignette), the path to a file with a spreadsheet holding such a
 #' specification, or a loaded or imported {preregr} (pre)registration form.
 #'
 #' @param x The (pre)registration form (as produced by a call
 #' to [preregr::form_create()] or [preregr::import_from_html()]) or
 #' initialized `preregr` object (as produced by a call to
-#' [preregr::prereg_initialize()] or [preregr::import_from_html()); or, for
+#' [preregr::prereg_initialize()] or [preregr::import_from_html()]); or, for
 #' the printing method, the R Markdown template produced by a call to
 #' [preregr::form_to_rmd_template()].
 #' @param title The title to specify in the template's YAML front matter.

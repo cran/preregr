@@ -194,5 +194,5 @@ slug <- paste0("preregr-data-", preregr::randomSlug());
 
 ```
 
-<div id="`r slug``" class="preregr preregr-json" data-preregr='`r preregrJSON`' class="preregr hidden" style="display:none"></div>
+<div id="`r slug`" class="preregr preregr-json" data-preregr='`r preregrJSON`' class="preregr hidden" style="display:none"></div>
 

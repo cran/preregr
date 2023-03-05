@@ -37,16 +37,17 @@ file. To embed it in an R Markdown file, use
 \code{\link[=prereg_knit_item_content]{prereg_knit_item_content()}} instead.
 }
 \examples{
-\donttest{
 ### Use a temporary file to write to
 tmpFile <- tempfile(fileext = ".pdf");
 
 ### Load an example (pre)registration specification
 data("examplePrereg_1", package = "preregr");
 
-preregr::prereg_spec_to_pdf(
-  examplePrereg_1,
-  file = tmpFile
-);
+### Only run this if you have a functional LaTeX installation
+if (FALSE) {
+  preregr::prereg_spec_to_pdf(
+    examplePrereg_1,
+    file = tmpFile
+  );
 }
 }

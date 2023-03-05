@@ -146,6 +146,9 @@ opts$defaults <-
                                   c("\\\\", "/"),
                                   c("[^a-zA-Z0-9;)(,._/`-]", " ")),
 
+    ### Headings
+    defaultHeadingLevel = 3,
+
     ### For validation
     validation_replacementDelimiters = c("{{", "}}"),
 

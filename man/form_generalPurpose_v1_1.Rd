@@ -4,6 +4,8 @@
 \name{form_generalPurpose_v1_1}
 \alias{form_generalPurpose_v1_1}
 \alias{form_generalPurpose_v1}
+\alias{generalPurpose_v1}
+\alias{generalPurpose_v1_1}
 \title{Inclusive General-Purpose Registration Form}
 \format{
 A (pre)registration form specification

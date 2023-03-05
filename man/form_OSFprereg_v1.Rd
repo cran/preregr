@@ -3,6 +3,7 @@
 \docType{data}
 \name{form_OSFprereg_v1}
 \alias{form_OSFprereg_v1}
+\alias{OSFprereg_v1}
 \title{OSF Prereg form}
 \format{
 A (pre)registration form specification

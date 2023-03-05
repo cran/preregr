@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-In addition to being able to specify [(pre)registration forms from within R](https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html) or [importing it from the URL of an existing form](https://r-packages.gitlab.io/preregr/articles/importing_form_from_url.html), you can also specify the form using a spreadsheet. You can use an Excel file (`.xlsx`) or a Google Sheet. An empty spreadsheet is [available here](https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing).
+In addition to being able to specify [(pre)registration forms from within R](https://preregr.opens.science/articles/creating_prereg_form.html) or [importing it from the URL of an existing form](https://preregr.opens.science/articles/importing_form_from_url.html), you can also specify the form using a spreadsheet. You can use an Excel file (`.xlsx`) or a Google Sheet. An empty spreadsheet is [available here](https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing).
 
 # Form specification format
 
@@ -76,16 +76,16 @@ The `validation` and `error` column specify the validation rules (as R script) a
 
 The spreadsheet specifications for the (pre)registration forms that are included with `preregr` are publicly available at the following URLs:
 
-- The OSF Prereg form: https://docs.google.com/spreadsheets/d/1kmghGrkutrt3K9aEFFrWu-BfuJayFRSsV1WKQ-4QSM0 (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html);
-- The Inclusive Systematic Review Registration Form: https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8 (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html);
-- The Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template: https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html);
-- The Preregistration Template for Quantitative Ethnographic Studies: https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4 (form shown in the vignette at https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_93.html);
+- The OSF Prereg form: https://docs.google.com/spreadsheets/d/1kmghGrkutrt3K9aEFFrWu-BfuJayFRSsV1WKQ-4QSM0 (form shown in the vignette at https://preregr.opens.science/articles/form_OSFprereg_v1.html);
+- The Inclusive Systematic Review Registration Form: https://docs.google.com/spreadsheets/d/1bHDzpCu4CwEa5_3_q_9vH2691XPhCS3e4Aj_HLhw_U8 (form shown in the vignette at https://preregr.opens.science/articles/form_inclSysRev_v0_92.html);
+- The Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template: https://docs.google.com/spreadsheets/d/1bVXx_RrXp0Yf2k6pE84HYm2DD1GG-alysEMsaKmqkoQ (form shown in the vignette at https://preregr.opens.science/articles/form_prpQuant_v1.html);
+- The Preregistration Template for Quantitative Ethnographic Studies: https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4 (form shown in the vignette at https://preregr.opens.science/articles/form_preregQE_v0_93.html);
 
 In addition, there's an empty form [available here](https://docs.google.com/spreadsheets/d/14Qbak7JbBhTqmJaMgJ4tU9ZROaBbUfq37_UzkoHnM60/edit?usp=sharing).
 
 # Importing a form specified in a spreadsheet
 
-To import a form specification in a spreadsheet, use [preregr::form_fromSpreadsheet()](https://r-packages.gitlab.io/preregr/reference/form_fromSpreadsheet.html). For example:
+To import a form specification in a spreadsheet, use [preregr::form_fromSpreadsheet()](https://preregr.opens.science/reference/form_fromSpreadsheet.html). For example:
 
 ```{r, eval=FALSE}
 

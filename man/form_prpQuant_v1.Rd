@@ -3,6 +3,7 @@
 \docType{data}
 \name{form_prpQuant_v1}
 \alias{form_prpQuant_v1}
+\alias{prpQuant_v1}
 \title{Psychological Research Preregistration-Quantitative (aka PRP-QUANT) Template}
 \format{
 A (pre)registration form specification

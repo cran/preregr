@@ -7,7 +7,7 @@ knitr::opts_chunk$set(
 ## -----------------------------------------------------------------------------
 importedExample <-
   preregr::import_from_html(
-    "https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html"
+    "https://preregr.opens.science/articles/creating_prereg_form.html"
   );
 
 ## -----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ freshPrereg;
 ## -----------------------------------------------------------------------------
 importedExample_2 <-
   preregr::import_from_html(
-    "https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html",
+    "https://preregr.opens.science/articles/creating_prereg_form.html",
     select = 2
   );
 

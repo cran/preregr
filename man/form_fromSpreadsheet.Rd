@@ -34,7 +34,7 @@ The preregr form specification
 With this function, you can import a (pre) registration from a
 spreadsheet. See the "Creating a form from a spreadsheet" vignette
 for more information. That is available at
-\url{https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html}
+\url{https://preregr.opens.science/articles/creating_form_from_spreadsheet.html}
 or can be shown by running \code{vignette("creating_form_from_spreadsheet",
 package = "preregr")}
 }

@@ -16,17 +16,18 @@
 #' @return x, invisibly
 #' @export
 #'
-#' @examples \donttest{
-#' ### Use a temporary file to write to
+#' @examples ### Use a temporary file to write to
 #' tmpFile <- tempfile(fileext = ".pdf");
 #'
 #' ### Load an example (pre)registration specification
 #' data("examplePrereg_1", package = "preregr");
 #'
-#' preregr::prereg_spec_to_pdf(
-#'   examplePrereg_1,
-#'   file = tmpFile
-#' );
+#' ### Only run this if you have a functional LaTeX installation
+#' if (FALSE) {
+#'   preregr::prereg_spec_to_pdf(
+#'     examplePrereg_1,
+#'     file = tmpFile
+#'   );
 #' }
 prereg_spec_to_pdf <- function(x,
                                file,

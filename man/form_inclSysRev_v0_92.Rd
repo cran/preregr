@@ -3,6 +3,7 @@
 \docType{data}
 \name{form_inclSysRev_v0_92}
 \alias{form_inclSysRev_v0_92}
+\alias{inclSysRev_v0_92}
 \title{Inclusive Systematic Review Registration Form}
 \format{
 A (pre)registration form specification

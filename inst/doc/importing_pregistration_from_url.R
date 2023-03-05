@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
 
 ## -----------------------------------------------------------------------------
 importedExample <-
-  preregr::import_from_html("https://r-packages.gitlab.io/preregr/articles/specifying_prereg_content.html");
+  preregr::import_from_html("https://preregr.opens.science/articles/specifying_prereg_content.html");
 
 ## -----------------------------------------------------------------------------
 importedExample;

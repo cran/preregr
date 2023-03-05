@@ -4,11 +4,16 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  initialized_generalPurpose_v1 <-
-#    preregr::prereg_initialize(
-#      "generalPurpose_v1_1"
-#    );
+## -----------------------------------------------------------------------------
+initialized_generalPurpose_v1 <-
+  preregr::prereg_initialize(
+    "generalPurpose_v1_1"
+  );
+
+## ---- echo=FALSE--------------------------------------------------------------
+knitr::kable(
+  initialized_generalPurpose_v1$form$metadata
+);
 
 ## ---- eval=TRUE, echo=FALSE---------------------------------------------------
 

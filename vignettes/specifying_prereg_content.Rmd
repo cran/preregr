@@ -40,7 +40,7 @@ preregExample <-
 
 ```
 
-To see which items to complete next, we can use [`preregr::prereg_next_item()`](https://r-packages.gitlab.io/preregr/reference/prereg_next_item.html).
+To see which items to complete next, we can use [`preregr::prereg_next_item()`](https://preregr.opens.science/reference/prereg_next_item.html).
 
 ```{r, preregr-example-1b}
 

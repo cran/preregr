@@ -2,13 +2,13 @@
 #'
 #' To initialize a (pre)registration, pass the URL to a Google Sheet holding
 #' the (pre)registration form specification (in {preregr} format), see the
-#' "[Creating a form from a spreadsheet](https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html)"
+#' "[Creating a form from a spreadsheet](https://preregr.opens.science/articles/creating_form_from_spreadsheet.html)"
 #' vignette), the path to a file with a spreadsheet holding such a
 #' specification, or a loaded or imported {preregr} (pre)registration form.
 #'
 #' For an introduction to working with {preregr} (pre)registrations,
 #' see the
-#' "[Specifying preregistration content](https://r-packages.gitlab.io/preregr/articles/specifying_prereg_content.html)"
+#' "[Specifying preregistration content](https://preregr.opens.science/articles/specifying_prereg_content.html)"
 #'  vignette.
 #'
 #' @param x The (pre)registration form specification, as a URL to a Google

@@ -4,11 +4,16 @@ knitr::opts_chunk$set(
   comment = "#>"
 );
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  initialized_preregQE_v0_93 <-
-#    preregr::prereg_initialize(
-#      "preregQE_v0_93"
-#    );
+## -----------------------------------------------------------------------------
+initialized_preregQE_v0_93 <-
+  preregr::prereg_initialize(
+    "preregQE_v0_93"
+  );
+
+## ---- echo=FALSE--------------------------------------------------------------
+knitr::kable(
+  initialized_preregQE_v0_93$form$metadata
+);
 
 ## ---- eval=TRUE, echo=FALSE---------------------------------------------------
 

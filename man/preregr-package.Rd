@@ -13,19 +13,20 @@ Preregistrations, or more generally, registrations, enable explicit timestamped 
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://r-packages.gitlab.io/preregr}
+  \item \url{https://preregr.opens.science}
   \item Report bugs at \url{https://gitlab.com/r-packages/preregr/-/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Gjalt-Jorn Peters \email{gjalt-jorn@behaviorchange.eu} (\href{https://orcid.org/0000-0002-0336-9589}{ORCID})
+\strong{Maintainer}: Gjalt-Jorn Peters \email{preregr@opens.science} (\href{https://orcid.org/0000-0002-0336-9589}{ORCID})
 
 Other contributors:
 \itemize{
   \item Szilvia Zörgő (\href{https://orcid.org/0000-0002-6916-2097}{ORCID}) [contributor]
   \item Olmo den Akker (\href{https://orcid.org/0000-0002-0712-3746}{ORCID}) [contributor]
   \item Aleksandra Lazić (\href{https://orcid.org/0000-0002-0433-0483}{ORCID}) [contributor]
+  \item Thomas Gültzow (\href{https://orcid.org/0000-0002-9268-1880}{ORCID}) [contributor]
 }
 
 }

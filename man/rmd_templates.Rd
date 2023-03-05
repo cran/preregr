@@ -28,7 +28,7 @@ form_to_rmd_template(
 \item{x}{The (pre)registration form (as produced by a call
 to \code{\link[=form_create]{form_create()}} or \code{\link[=import_from_html]{import_from_html()}}) or
 initialized \code{preregr} object (as produced by a call to
-\code{\link[=prereg_initialize]{prereg_initialize()}} or [preregr::import_from_html()); or, for
+\code{\link[=prereg_initialize]{prereg_initialize()}} or \code{\link[=import_from_html]{import_from_html()}}); or, for
 the printing method, the R Markdown template produced by a call to
 \code{\link[=form_to_rmd_template]{form_to_rmd_template()}}.}
 
@@ -76,7 +76,7 @@ This function creates an R Markdown template from a {preregr}
 (pre)registrations form specification. Pass it the URL to a Google
 Sheet holding the (pre)registration form specification (in {preregr}
 format), see the
-"\href{https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html}{Creating a form from a spreadsheet}"
+"\href{https://preregr.opens.science/articles/creating_form_from_spreadsheet.html}{Creating a form from a spreadsheet}"
 vignette), the path to a file with a spreadsheet holding such a
 specification, or a loaded or imported {preregr} (pre)registration form.
 }

@@ -5,7 +5,7 @@
 #'
 #' @param ... The heading text: pasted together with no separator.
 #' @param headingLevel The level of the heading; the default can be set
-#' with e.g. `ufs::opts$set(defaultHeadingLevel=1)`.
+#' with e.g. `preregr::opts$set(defaultHeadingLevel=1)`.
 #' @param output Whether to output to HTML ("`html`") or markdown (anything
 #' else).
 #' @param cat Whether to cat (print) the heading or just invisibly return it.
@@ -16,7 +16,7 @@
 #' @examples heading("Hello ", "World", headingLevel=5);
 #' ### This produces: "\\n\\n##### Hello World\\n\\n"
 heading <- function(...,
-                    headingLevel = ufs::opts$get("defaultHeadingLevel"),
+                    headingLevel = preregr::opts$get("defaultHeadingLevel"),
                     output = "markdown",
                     cat = TRUE) {
   text <- paste0(..., collapse="");

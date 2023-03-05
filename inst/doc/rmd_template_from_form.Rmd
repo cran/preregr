@@ -68,7 +68,7 @@ cat('```{r including-the-child, child = "C:/Path/To/Child-document.Rmd"}\n');
 cat('```');
 ```
 
-You may also want to save a PDF version of the (pre)registration so that it can be uploaded to a (pre)registration server such as the Open Science Framework. To do that, you can use [preregr::prereg_spec_to_pdf()](https://r-packages.gitlab.io/preregr/reference/prereg_spec_to_pdf.html). For example, using the [here::here()](https://here.r-lib.org/) function, and assuming the project directory contains a sub-directory called `prereg`, the following chunk could be included after the above chunk in the main R Markdown document that included the R Markdown template (i.e. the chunk shown above):
+You may also want to save a PDF version of the (pre)registration so that it can be uploaded to a (pre)registration server such as the Open Science Framework. To do that, you can use [preregr::prereg_spec_to_pdf()](https://preregr.opens.science/reference/prereg_spec_to_pdf.html). For example, using the [here::here()](https://here.r-lib.org/) function, and assuming the project directory contains a sub-directory called `prereg`, the following chunk could be included after the above chunk in the main R Markdown document that included the R Markdown template (i.e. the chunk shown above):
 
 ```{r preregistration-export, echo=FALSE, comment=""}
 cat(

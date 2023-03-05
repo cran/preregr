@@ -3,7 +3,7 @@
 #' With this function, you can import a (pre) registration from a
 #' spreadsheet. See the "Creating a form from a spreadsheet" vignette
 #' for more information. That is available at
-#' <https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html>
+#' <https://preregr.opens.science/articles/creating_form_from_spreadsheet.html>
 #' or can be shown by running \code{vignette("creating_form_from_spreadsheet",
 #' package = "preregr")}
 #'
@@ -38,6 +38,17 @@ form_fromSpreadsheet <- function(x,
   res$sections$section_id <- sanitize_identifiers(res$sections$section_id);
   res$items$item_valueTemplate <- sanitize_identifiers(res$items$item_valueTemplate);
   res$valueTemplates$identifier <- sanitize_identifiers(res$valueTemplates$identifier);
+
+  verify_identifier_uniqueness(res$items$item_id,
+                               dfName="items", colName="item_id");
+  verify_identifier_uniqueness(res$sections$section_id,
+                               dfName="sections", colName="section_id");
+  verify_identifier_uniqueness(res$valueTemplates$identifier,
+                               dfName="valueTemplates", colName="identifier");
+  verify_identifier_uniqueness(res$metadata$field,
+                               dfName="metadata", colName="field");
+  verify_identifier_uniqueness(res$instructions$heading,
+                               dfName="instructions", colName="heading");
 
   if (any(is.na(res$items$item_valueTemplate))) {
     warning("Not all items have a specified value template!");

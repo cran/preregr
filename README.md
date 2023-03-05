@@ -28,7 +28,7 @@ status](https://codecov.io/gl/r-packages/preregr/branch/main/graph/badge.svg)](h
 <!-- badges: end -->
 
 The pkgdown website for this project is located at
-<https://r-packages.gitlab.io/preregr>.
+<https://preregr.opens.science>.
 
 <!--------------------------------------------->
 <!-- Start of a custom bit for every package -->
@@ -89,44 +89,44 @@ remotes::install_gitlab('r-packages/preregr@dev');
 There are currently seven vignettes introducing `preregr`:
 
 -   [General `preregr`
-    intro](https://r-packages.gitlab.io/preregr/articles/preregr_intro.html)
+    intro](https://preregr.opens.science/articles/preregr_intro.html)
 -   [Specifying (pre)registration
-    content](https://r-packages.gitlab.io/preregr/articles/specifying_prereg_content.html)
+    content](https://preregr.opens.science/articles/specifying_prereg_content.html)
 -   [Create an R Markdown template from a
-    form](https://r-packages.gitlab.io/preregr/articles/rmd_template_from_form.html)
+    form](https://preregr.opens.science/articles/rmd_template_from_form.html)
 -   [Creating a new (pre)registration form from
-    R](https://r-packages.gitlab.io/preregr/articles/creating_prereg_form.html)
+    R](https://preregr.opens.science/articles/creating_prereg_form.html)
 -   [Specifing a (pre) registration form using a
-    spreadsheet](https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html)
+    spreadsheet](https://preregr.opens.science/articles/creating_form_from_spreadsheet.html)
 -   [Importing a (pre)registration from the embedded JSON from a
-    URL](https://r-packages.gitlab.io/preregr/articles/importing_pregistration_from_url.html)
+    URL](https://preregr.opens.science/articles/importing_pregistration_from_url.html)
 -   [Initializing a (pre)registration form from the embedded JSON from a
-    URL](https://r-packages.gitlab.io/preregr/articles/importing_form_from_url.html)
+    URL](https://preregr.opens.science/articles/importing_form_from_url.html)
 
 ## Included (pre)registration forms
 
 At the moment, five forms come pre-installed with `preregr`:
 
 -   [The OSF prereg
-    form](https://r-packages.gitlab.io/preregr/articles/form_OSFprereg_v1.html);
+    form](https://preregr.opens.science/articles/form_OSFprereg_v1.html);
 -   [The Inclusive Systematic Review Registration
-    Form](https://r-packages.gitlab.io/preregr/articles/form_inclSysRev_v0_92.html);
+    Form](https://preregr.opens.science/articles/form_inclSysRev_v0_92.html);
 -   [The Psychological Research Preregistration-Quantitative (aka
     PRP-QUANT)
-    Template](https://r-packages.gitlab.io/preregr/articles/form_prpQuant_v1.html);
+    Template](https://preregr.opens.science/articles/form_prpQuant_v1.html);
 -   [Preregistration Template for Qualitative and Quantitative
     Ethnographic
-    Studies](https://r-packages.gitlab.io/preregr/articles/form_preregQE_v0_94.html);
+    Studies](https://preregr.opens.science/articles/form_preregQE_v0_94.html);
 -   [Preregistration Template for Secondary Data
-    Analysis](https://r-packages.gitlab.io/preregr/articles/form_prereg2D_v1.html);
+    Analysis](https://preregr.opens.science/articles/form_prereg2D_v1.html);
 -   [Form: Qualitative Preregistration
-    Template](https://r-packages.gitlab.io/preregr/articles/form_OSFqual1_v1.html);
+    Template](https://preregr.opens.science/articles/form_OSFqual1_v1.html);
 -   [Inclusive General-Purpose Registration
-    Form](https://r-packages.gitlab.io/preregr/articles/form_generalPurpose_v1_1.html);
+    Form](https://preregr.opens.science/articles/form_generalPurpose_v1_1.html);
 
 Of course, it would be great to add more! Check out the vignette about
 [specifing a (pre) registration form using a
-spreadsheet](https://r-packages.gitlab.io/preregr/articles/creating_form_from_spreadsheet.html)
+spreadsheet](https://preregr.opens.science/articles/creating_form_from_spreadsheet.html)
 and have a look at the specifications of these examples (linked to from
 that vignette) to get started.
 

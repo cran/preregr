@@ -3,6 +3,7 @@
 \docType{data}
 \name{form_prereg2D_v1}
 \alias{form_prereg2D_v1}
+\alias{prereg2D_v1}
 \title{Preregistration Template for Secondary Data Analysis}
 \format{
 A (pre)registration specification

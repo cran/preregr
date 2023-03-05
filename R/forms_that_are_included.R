@@ -14,6 +14,7 @@ updateAllForms <- FALSE;
 #' platform is available.
 #'
 #' @format A (pre)registration form specification
+#' @aliases form_inclSysRev_v0_92 inclSysRev_v0_92
 #' @source \doi{10.31222/osf.io/3nbea}
 #'
 "form_inclSysRev_v0_92"
@@ -49,6 +50,7 @@ if (exists("updateAllForms") && updateAllForms) {
 #' comprehensive review of many other preregistration templates.
 #'
 #' @format A (pre)registration form specification
+#' @aliases form_prpQuant_v1 prpQuant_v1
 #' @source \doi{ http://dx.doi.org/10.23668/psycharchives.4584}
 #'
 "form_prpQuant_v1"
@@ -86,11 +88,12 @@ if (exists("updateAllForms") && updateAllForms) {
 #' studies, but due to its modular nature, it can be employed for qualitative
 #' studies as well.
 #'
-#' @aliases form_preregQE_v0_93 form_preregQE_v0_94
+#' @aliases form_preregQE_v0_93 preregQE_v0_93 form_preregQE_v0_94 preregQE_v0_94
+#' form_preregQE_v0_95 preregQE_v0_95
 #' @format A (pre)registration form specification
 #' @source \doi{http://dx.doi.org/10.23668/psycharchives.4584}
 #'
-"form_preregQE_v0_94"
+"form_preregQE_v0_95"
 
 
 ### Preregistration Template for Qualitative and Quantitative Ethnographic Studies
@@ -98,17 +101,20 @@ if (exists("updateAllForms") && updateAllForms) {
 
   gSheet_url <-
     # v0.93 "https://docs.google.com/spreadsheets/d/1l3N0bWnKlRvXuHO-JFg3XHdWzgJWLNli90bnUUa5op4";
-    "https://docs.google.com/spreadsheets/d/1ArM4kwHC9meVSiwCkR-WzF6m8YkwgEYyfxllhEz2vro";
+    # v0.94 "https://docs.google.com/spreadsheets/d/1ArM4kwHC9meVSiwCkR-WzF6m8YkwgEYyfxllhEz2vro";
+    "https://docs.google.com/spreadsheets/d/1BsG8q04n4kCsYU3CcIEQZOf35EW1cAHa9JNdVjRuUJ0";
 
   localBackupFile <-
     here::here(
       "inst", "extdata",
       #"preregr-form_preregQE_v0_93.xlsx"
-      "preregr-form_preregQE_v0_94.xlsx"
+      #"preregr-form_preregQE_v0_94.xlsx"
+      "preregr-form_preregQE_v0_95.xlsx"
     );
 
   #form_preregQE_v0_93 <-
-  form_preregQE_v0_94 <-
+  #form_preregQE_v0_94 <-
+  form_preregQE_v0_95 <-
     preregr::form_fromSpreadsheet(
       gSheet_url,
       localBackup = localBackupFile,
@@ -117,7 +123,8 @@ if (exists("updateAllForms") && updateAllForms) {
 
   usethis::use_data(
     #form_preregQE_v0_93,
-    form_preregQE_v0_94,
+    #form_preregQE_v0_94,
+    form_preregQE_v0_95,
     overwrite=TRUE
   );
 
@@ -142,6 +149,7 @@ if (exists("updateAllForms") && updateAllForms) {
 #' are available at: https://osf.io/zab38/"
 #'
 #' @format A (pre)registration form specification
+#' @aliases form_OSFprereg_v1 OSFprereg_v1
 #' @source \doi{https://doi.org/10.31222/osf.io/epgjd}
 #'
 "form_OSFprereg_v1"
@@ -182,7 +190,7 @@ if (exists("updateAllForms") && updateAllForms) {
 #' Still, if specialized forms don't fit for your study, this form may be a
 #' good backup.
 #'
-#' @aliases form_generalPurpose_v1 form_generalPurpose_v1_1
+#' @aliases form_generalPurpose_v1 generalPurpose_v1 form_generalPurpose_v1_1 generalPurpose_v1_1
 #' @format A (pre)registration form specification
 #'
 "form_generalPurpose_v1_1"
@@ -194,6 +202,7 @@ if (exists("updateAllForms") && updateAllForms) {
 #' specification.
 #'
 #' @format An example of a (pre)registration specification
+#' @aliases examplePrereg_1
 #'
 "examplePrereg_1"
 
@@ -265,6 +274,7 @@ if (exists("updateAllForms") && updateAllForms) {
 #' template (see https://doi.org/10.15626/MP.2020.2625).
 #'
 #' @format A (pre)registration specification
+#' @aliases form_prereg2D_v1 prereg2D_v1
 #'
 "form_prereg2D_v1"
 
@@ -301,6 +311,7 @@ if (exists("updateAllForms") && updateAllForms) {
 #' This form was added to `preregr` by Aleksandra Lazic.
 #'
 #' @format A (pre)registration specification
+#' @aliases form_OSFqual1_v1 OSFqual1_v1
 #'
 "form_OSFqual1_v1"
 
@@ -323,6 +334,61 @@ if (exists("updateAllForms") && updateAllForms) {
     );
 
   usethis::use_data(form_OSFqual1_v1, overwrite=TRUE);
+
+}
+
+###-----------------------------------------------------------------------------
+###-----------------------------------------------------------------------------
+###-----------------------------------------------------------------------------
+
+#' Inclusivity & Diversity Add-on for preregistration forms
+#'
+#' This form is meant as a generic add-on that can be added to any
+#' preregistration form to ensure that researchers are mindful about
+#' issues related to inclusivity and diversity. With inclusivity we mean
+#' "The fact or quality of being inclusive; (now) esp. the practice or
+#' policy of not excluding any person on the grounds of race, gender,
+#' religion, age, disability, etc.; inclusiveness."
+#' (Oxford University Press, n.d.-b).
+#'
+#' With diversity we refer to "The fact, condition, or practice of
+#' including or involving people from a range of different social and
+#' ethnic backgrounds, and (more recently) of different genders, sexual
+#' orientations, etc." (Oxford University Press, n.d.-a).
+#'
+#' Oxford University Press. (n.d.-a). Diversity, n. In OED Online. Oxford
+#' University Press. Retrieved November 29, 2022, from
+#' https://www.oed.com/view/Entry/56064
+#'
+#' Oxford University Press. (n.d.-b). Inclusivity, n. In OED Online. Oxford
+#' University Press. Retrieved November 29, 2022,
+#' from https://www.oed.com/view/Entry/93584"
+#'
+#' @format A (pre)registration specification
+#' @aliases form_inclDivAddon_v0_1 inclDivAddon_v0_1
+#'
+"form_inclDivAddon_v0_1"
+
+### Inclusive General-Purpose Registration Form
+if (exists("updateAllForms") && updateAllForms) {
+
+  gSheet_url <-
+     "https://docs.google.com/spreadsheets/d/1WCYVO56SPo0QrCy0GIbPMEuju8bqmwGgHey-RJCN72w";
+    #"https://docs.google.com/spreadsheets/d/1MiP0ZCAKWAKRVSLM11w9fb8dgxdpDc7yZE-Z19lPCNc";
+
+  localBackupFile <-
+    here::here(
+      "inst", "extdata", "preregr-form_inclDivAddon_v0_1.xlsx"
+    );
+
+  form_inclDivAddon_v0_1 <-
+    preregr::form_fromSpreadsheet(
+      gSheet_url,
+      localBackup = localBackupFile,
+      silent=FALSE
+    );
+
+  usethis::use_data(form_inclDivAddon_v0_1, overwrite=TRUE);
 
 }
 
