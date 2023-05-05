@@ -12,7 +12,7 @@
 
 
 
-<title>Creating a (pre)registration form</title>
+<title>Form: Generalized Systematic Review Registration Form (v1)</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -329,119 +329,65 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Creating a (pre)registration form</h1>
+<h1 class="title toc-ignore">Form: Generalized Systematic Review
+Registration Form (v1)</h1>
 
 
 
-<p>To start creating a (pre)registration form, use
-<code>preregr::form_create()</code>. Only the title and the version
-fields are mandatory, but when the author isn’t specified, this is shown
-as <code>NA</code>. When the date is omitted, today’s date is inserted.
-The form is prefilled with one instruction, one section, and one
-item.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>formExample <span class="ot">&lt;-</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_create</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Minimal form with only a few fields&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">version =</span> <span class="st">&quot;0.0.1&quot;</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">author =</span> <span class="st">&quot;Stibbons, P.&quot;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_show</span>();</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── (Pre)registration form ──────────────────────────────────────────────────────</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Title: Minimal form with only a few fields</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Author: Stibbons, P.</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Date: 2023-05-04</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Instructions ────────────────────────────────────────────────────────────────</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── First instruction ──</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Actual instructions</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Sections and items ──────────────────────────────────────────────────────────</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Section: Example Section ──</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Example Label [example_item]: Example item description</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
-<p>To add actual content, use
-<code>preregr::form_add_instruction()</code>,
-<code>preregr::form_add_section()</code>, and
-<code>preregr::form_add_item()</code>. If the default instruction,
-section, and items still exist, they will be replaced.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>formExample <span class="ot">&lt;-</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  formExample <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_add_instruction</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading =</span> <span class="st">&quot;Instructions&quot;</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">paste0</span>(</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;This form is simple, so it doesn&#39;t require much &quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;instruction. Still, it&#39;s advisable to always RTFM, &quot;</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;and in the case of (pre)registration forms, the &quot;</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;instructions are the manual. So better read closely!&quot;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_add_section</span>(</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;only_section&quot;</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Only Section&quot;</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">paste0</span>(</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;This is the only section in this form. That&#39;s &quot;</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;because this is such a simple form. However, that &quot;</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;means this section is very important, because it &quot;</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;contains all the items. Therefore, you may want to &quot;</span>,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;study this section description very carefully.&quot;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_add_item</span>(</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;study_title&quot;</span>,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Study Title&quot;</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">section_id =</span> <span class="st">&quot;only_section&quot;</span>,</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">paste0</span>(</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Think of a catchy title, preferably with a colon in &quot;</span>,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;the middle. Bonus points for pop culture references.&quot;</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_add_item</span>(</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="st">&quot;registration_type&quot;</span>,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Registration type&quot;</span>,</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">section_id =</span> <span class="st">&quot;only_section&quot;</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">description =</span> <span class="fu">paste0</span>(</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Describe briefly why you are (pre)registering this &quot;</span>,</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;study. For example, this might be a preregistration &quot;</span>,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;to allow others to know you&#39;re doing this study; or to &quot;</span>,</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;make it clear you value transparency in science; or to &quot;</span>,</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;remember your original plans later on. Or this might be &quot;</span>,</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;a registration to update your plans after the data came &quot;</span>,</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;in; or to document pragmatic changes in plans.&quot;</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">form_show</span>();</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── (Pre)registration form ──────────────────────────────────────────────────────</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Title: Minimal form with only a few fields</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Author: Stibbons, P.</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Date: 2023-05-04</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Instructions ────────────────────────────────────────────────────────────────</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Instructions ──</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; This form is simple, so it doesn&#39;t require much instruction. Still, it&#39;s</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; advisable to always RTFM, and in the case of (pre)registration forms, the</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; instructions are the manual. So better read closely!</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Sections and items ──────────────────────────────────────────────────────────</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ── Section: Only Section ──</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Study Title [study_title]: Think of a catchy title, preferably with a colon in the middle. Bonus points for pop culture references.</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ℹ Registration type [registration_type]: Describe briefly why you are (pre)registering this study. For example, this might be a preregistration to allow others to know you&#39;re doing this study; or to make it clear you value transparency in science; or to remember your original plans later on. Or this might be a registration to update your plans after the data came in; or to document pragmatic changes in plans.</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
-<p>It is also possible to insert the form into an R Markdown document
-using <code>preregr::form_knit()</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_knit</span>(formExample);</span></code></pre></div>
+<p>This vignette shows the Generalized Systematic Review Registration
+Form. It can be initialized as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>initialized_genSysRev_v1 <span class="ot">&lt;-</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  preregr<span class="sc">::</span><span class="fu">prereg_initialize</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;genSysRev_v1&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  );</span></code></pre></div>
+<p>After this, content can be specified with <a href="https://preregr.opens.science/reference/prereg_specify.html">preregr::prereg_specify()</a>
+or <a href="https://preregr.opens.science/reference/prereg_justify.html">preregr::prereg_justify</a>.
+To check the next field(s) for which content still has to be specified,
+use <a href="https://preregr.opens.science/reference/prereg_next_item.html">preregr::prereg_next_item()</a>.</p>
+<p>The form’s metadata is:</p>
+<table>
+<colgroup>
+<col width="3%" />
+<col width="96%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">field</th>
+<th align="left">content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">title</td>
+<td align="left">Generalized Systematic Review Registration Form</td>
+</tr>
+<tr class="even">
+<td align="left">author</td>
+<td align="left">Olmo R. van den Akker, Gjalt-Jorn Ygram Peters, Caitlin
+Bakker, Rickard Carlsson, Nicholas Coles, Katherine S. Corker, Gilad
+Feldman, David Moreau, Thomas Nordström, Jade S. Pickering, Amy
+Riegelman, Marta Topor, Nieky van Veggel, Siu Kit Yeung, Mark Call,
+David Mellor, &amp; Nicole Pfeiffer,</td>
+</tr>
+<tr class="odd">
+<td align="left">date</td>
+<td align="left">2023-05-05</td>
+</tr>
+<tr class="even">
+<td align="left">comments</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">version</td>
+<td align="left">1.00</td>
+</tr>
+</tbody>
+</table>
+<p>The form is defined as follows (use <a href="https://preregr.opens.science/reference/form_show.html">preregr::form_show()</a>
+to show the form in the console, instead):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_knit</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;genSysRev_v1&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
 <style>
 .preregr {
 }
@@ -477,205 +423,11 @@ color: black;
 <div class="preregr-spec-start" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-form-QephP9Kynk" class="section level2 preregr-spec-container preregr-spec-full">
-<h2>Minimal form with only a few fields</h2>
+<div id="preregr-form-ZfLojeNa9V" class="section level2 preregr-spec-container preregr-spec-full">
+<h2>Generalized Systematic Review Registration Form</h2>
 <div id="instructions" class="section level3">
 <h3>Instructions</h3>
-<div id="preregr-form-VEu39P2hwe" class="section level4">
-<h4>Instructions</h4>
-<p>This form is simple, so it doesn’t require much instruction. Still,
-it’s advisable to always RTFM, and in the case of (pre)registration
-forms, the instructions are the manual. So better read closely!</p>
-</div>
-</div>
-<div id="sections-and-items" class="section level3">
-<h3>Sections and items</h3>
-<div id="preregr-form-bXd2Nu98Rl" class="section level4">
-<h4>Section: Only Section</h4>
-<div class="preregr preregr-form-item-spec preregr-form-item">
-<div class="preregr-item-heading">
-<div class="preregr-item-label">
-Study Title
-</div>
-<div class="preregr-item-id">
-study_title
-</div>
-</div>
-<div class="preregr-item-spec-text">
-Think of a catchy title, preferably with a colon in the middle. Bonus
-points for pop culture references.
-</div>
-</div>
-<div class="preregr preregr-form-item-spec preregr-form-item">
-<div class="preregr-item-heading">
-<div class="preregr-item-label">
-Registration type
-</div>
-<div class="preregr-item-id">
-registration_type
-</div>
-</div>
-<div class="preregr-item-spec-text">
-Describe briefly why you are (pre)registering this study. For example,
-this might be a preregistration to allow others to know you’re doing
-this study; or to make it clear you value transparency in science; or to
-remember your original plans later on. Or this might be a registration
-to update your plans after the data came in; or to document pragmatic
-changes in plans.
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="preregr-spec-end" style="display:block;clear:both;">
-
-</div>
-<div id="preregr-data-A1426sGStV" class="preregr preregr-json" data-preregr="{
-  &quot;form&quot;: {
-    &quot;instructions&quot;: {
-      &quot;Instructions&quot;: {
-        &quot;heading&quot;: [&quot;Instructions&quot;],
-        &quot;description&quot;: [&quot;This form is simple, so it doesn&#39;t require much instruction. Still, it&#39;s advisable to always RTFM, and in the case of (pre)registration forms, the instructions are the manual. So better read closely!&quot;]
-      }
-    },
-    &quot;metadata&quot;: {
-      &quot;title&quot;: {
-        &quot;field&quot;: [&quot;title&quot;],
-        &quot;contents&quot;: [&quot;Minimal form with only a few fields&quot;]
-      },
-      &quot;version&quot;: {
-        &quot;field&quot;: [&quot;version&quot;],
-        &quot;contents&quot;: [&quot;0.0.1&quot;]
-      },
-      &quot;author&quot;: {
-        &quot;field&quot;: [&quot;author&quot;],
-        &quot;contents&quot;: [&quot;Stibbons, P.&quot;]
-      },
-      &quot;date&quot;: {
-        &quot;field&quot;: [&quot;date&quot;],
-        &quot;contents&quot;: [&quot;2023-05-04&quot;]
-      }
-    },
-    &quot;items&quot;: {
-      &quot;study_title&quot;: {
-        &quot;section_id&quot;: [&quot;only_section&quot;],
-        &quot;item_id&quot;: [&quot;study_title&quot;],
-        &quot;item_label&quot;: [&quot;Study Title&quot;],
-        &quot;item_description&quot;: [&quot;Think of a catchy title, preferably with a colon in the middle. Bonus points for pop culture references.&quot;],
-        &quot;item_valueTemplate&quot;: [&quot;string&quot;],
-        &quot;item_validValues&quot;: [null],
-        &quot;item_validation&quot;: [null]
-      },
-      &quot;registration_type&quot;: {
-        &quot;section_id&quot;: [&quot;only_section&quot;],
-        &quot;item_id&quot;: [&quot;registration_type&quot;],
-        &quot;item_label&quot;: [&quot;Registration type&quot;],
-        &quot;item_description&quot;: [&quot;Describe briefly why you are (pre)registering this study. For example, this might be a preregistration to allow others to know you&#39;re doing this study; or to make it clear you value transparency in science; or to remember your original plans later on. Or this might be a registration to update your plans after the data came in; or to document pragmatic changes in plans.&quot;],
-        &quot;item_valueTemplate&quot;: [&quot;string&quot;],
-        &quot;item_validValues&quot;: [null],
-        &quot;item_validation&quot;: [null]
-      }
-    },
-    &quot;sections&quot;: {
-      &quot;only_section&quot;: {
-        &quot;section_id&quot;: [&quot;only_section&quot;],
-        &quot;section_label&quot;: [&quot;Only Section&quot;],
-        &quot;section_description&quot;: [&quot;This is the only section in this form. That&#39;s because this is such a simple form. However, that means this section is very important, because it contains all the items. Therefore, you may want to study this section description very carefully.&quot;]
-      }
-    },
-    &quot;valueTemplates&quot;: {
-      &quot;numeric&quot;: {
-        &quot;identifier&quot;: [&quot;numeric&quot;],
-        &quot;description&quot;: [&quot;Any valid number&quot;],
-        &quot;validValues&quot;: [null],
-        &quot;default&quot;: [null],
-        &quot;examples&quot;: [&quot;2.3 || 643.2&quot;],
-        &quot;validation&quot;: [&quot;is.na(VALUE) || (is.numeric(VALUE) &amp;&amp; (length(VALUE) == 1))&quot;],
-        &quot;error&quot;: [&quot;NAME is not numeric, or contains more than one value.&quot;]
-      },
-      &quot;integer&quot;: {
-        &quot;identifier&quot;: [&quot;integer&quot;],
-        &quot;description&quot;: [&quot;Any valid whole number&quot;],
-        &quot;validValues&quot;: [null],
-        &quot;default&quot;: [null],
-        &quot;examples&quot;: [&quot;30 || 8762&quot;],
-        &quot;validation&quot;: [&quot;is.na(VALUE) || (is.numeric(VALUE) &amp;&amp; (VALUE%%1==0) &amp;&amp; (length(VALUE) == 1))&quot;],
-        &quot;error&quot;: [&quot;NAME is not numeric, contains more than one value, or contains decimals.&quot;]
-      },
-      &quot;string&quot;: {
-        &quot;identifier&quot;: [&quot;string&quot;],
-        &quot;description&quot;: [&quot;A single character value&quot;],
-        &quot;validValues&quot;: [null],
-        &quot;default&quot;: [null],
-        &quot;examples&quot;: [&quot;&#39;Example&#39; || &#39;Another example&#39;&quot;],
-        &quot;validation&quot;: [&quot;is.na(VALUE) || (is.character(VALUE) &amp;&amp; length(VALUE) == 1)&quot;],
-        &quot;error&quot;: [&quot;NAME is not a single text string.&quot;]
-      },
-      &quot;categorical&quot;: {
-        &quot;identifier&quot;: [&quot;categorical&quot;],
-        &quot;description&quot;: [&quot;A string that has to exactly match one of the values specified in the &#39;items_validValues&#39; column of the items sheet&quot;],
-        &quot;validValues&quot;: [null],
-        &quot;default&quot;: [null],
-        &quot;examples&quot;: [&quot;VALIDVALUES&quot;],
-        &quot;validation&quot;: [&quot;is.na(VALUE) || (VALUE %in% VALIDVALUES)&quot;],
-        &quot;error&quot;: [&quot;NAME is not one of VALIDVALUES.&quot;]
-      }
-    }
-  }
-}" style="display:none">
-
-</div>
-<p>Alternatively, you can export the form to a local spreadsheet file so
-you can import it later:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_to_xlsx</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  formExample,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;C:/Data/Research/amazing-new-project/prereg-form.xlsx&quot;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
-<div id="a-full-example" class="section level1">
-<h1>A full example</h1>
-<p>For example, this is a general (pre)registration form for systematic
-reviews:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>preregr<span class="sc">::</span><span class="fu">form_knit</span>(systematicReview_exampleForm);</span></code></pre></div>
-<style>
-.preregr {
-}
-.preregr-item-spec {
-padding: 5px;
-}
-.preregr-form-item-spec {
-padding: 5px;
-}
-.preregr-unspecified {
-background-color: #FDFAF2;
-color: #F0C566;
-}
-.preregr-specified {
-background-color: #F2FAF8;
-}
-.preregr-item-heading {
-display: block;
-}
-.preregr-item-label {
-font-weight: bold;
-display: inline; color: black;
-}
-.preregr-item-id {
-display: inline;
-float: right;
-font-family: monospace;
-color: black;
-}
-.preregr-item-spec-text {
-}
-</style>
-<div class="preregr-spec-start" style="display:block;clear:both;">
-
-</div>
-<div id="preregr-form-o9lOMuHYi6" class="section level2 preregr-spec-container preregr-spec-full">
-<h2>Inclusive Systematic Review Registration Form</h2>
-<div id="instructions-1" class="section level3">
-<h3>Instructions</h3>
-<div id="preregr-form-TbvfxwgsuJ" class="section level4">
+<div id="preregr-form-Ju6TaWZXSp" class="section level4">
 <h4>Intended Use</h4>
 <p>This Systematic Review Registration Form is intended as a
 general-purpose registration form. The form is designed to be applicable
@@ -692,9 +444,17 @@ consider:</p>
 database of review protocols for health-related systematic reviews.</p>
 <p><strong>Specialized Guidance</strong>: - The Non-Interventional,
 Reproducible, and Open (NIRO) Systematic Reviews guideline also includes
-fields specific to non-interventional reviews.</p>
+fields specific to non-interventional reviews. - Methodological
+Expectations of Cochrane Intervention Reviews (MECIR): CID:
+20.500.12592/vxj0sb - Methodological Expectations of Campbell
+Collaboration Intervention Reviews (MECCIR): <a href="https://www.campbellcollaboration.org/meccir.html" class="uri">https://www.campbellcollaboration.org/meccir.html</a> -
+Preferred Reporting Items for Systematic reviews and Meta-Analysis
+Protocols (PRISMA-P): <a href="https://doi.org/gcpzzq" class="uri">https://doi.org/gcpzzq</a> - Preferred Reporting Items for
+Systematic reviews and Meta-Analyses literature Search extension
+(PRISMA-S): <a href="https://doi.org/gh2z2k" class="uri">https://doi.org/gh2z2k</a> - Peer Review of Electronic
+Search Strategies (PRESS): <a href="https://doi.org/10.1016/j.jclinepi.2016.01.021" class="uri">https://doi.org/10.1016/j.jclinepi.2016.01.021</a></p>
 </div>
-<div id="preregr-form-ZToHBt3evU" class="section level4">
+<div id="preregr-form-PvOWmXw8IH" class="section level4">
 <h4>Relation to reporting guidelines</h4>
 <p>Many disciplines have developed reporting guidelines for specific
 types of reviews (e.g., ROSES: the RepOrting standards for Systematic
@@ -717,7 +477,7 @@ reporting standard to report the results of their review, should enter
 the information required by that reporting standard in the corresponding
 (overarching) fields of this form.</p>
 </div>
-<div id="preregr-form-v1ZxojXUpH" class="section level4">
+<div id="preregr-form-aCAgcp41io" class="section level4">
 <h4>Instructions for effectively using the form</h4>
 <p>Due to the general intended use of this form, items may not be
 applicable to all types of reviews. Therefore, none of the items are
@@ -733,7 +493,7 @@ the form (e.g., you anticipate that you will not have enough studies in
 a moderator group), provide a contingency plan for these deviations in
 the relevant parts of the registration.</p>
 </div>
-<div id="preregr-form-OzjRvabtp3" class="section level4">
+<div id="preregr-form-YceIaEUlnj" class="section level4">
 <h4>Planned improvements / extensions</h4>
 <p>The aim of this registration form is to be optimally inclusive (i.e.,
 to be usable for registration of any systematic review, regardless of
@@ -756,23 +516,10 @@ PRISMA</li>
 </ul>
 </div>
 </div>
-<div id="sections-and-items-1" class="section level3">
+<div id="sections-and-items" class="section level3">
 <h3>Sections and items</h3>
-<div id="preregr-form-yIdLptefwX" class="section level4">
+<div id="preregr-form-gmVfMbKCEJ" class="section level4">
 <h4>Section: Metadata</h4>
-<div class="preregr preregr-form-item-spec preregr-form-item">
-<div class="preregr-item-heading">
-<div class="preregr-item-label">
-Target discipline
-</div>
-<div class="preregr-item-id">
-target_discipline
-</div>
-</div>
-<div class="preregr-item-spec-text">
-NA
-</div>
-</div>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
 <div class="preregr-item-label">
@@ -789,10 +536,23 @@ Prisma: 1.
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
 <div class="preregr-item-label">
-Author(s) / contributor(s)
+Contributors
 </div>
 <div class="preregr-item-id">
 authors
+</div>
+</div>
+<div class="preregr-item-spec-text">
+NA
+</div>
+</div>
+<div class="preregr preregr-form-item-spec preregr-form-item">
+<div class="preregr-item-heading">
+<div class="preregr-item-label">
+Subjects
+</div>
+<div class="preregr-item-id">
+target_discipline
 </div>
 </div>
 <div class="preregr-item-spec-text">
@@ -814,7 +574,7 @@ example using the Contributor Roles Taxonomy (CRediT).
 </div>
 </div>
 </div>
-<div id="preregr-form-PyaAwus6xX" class="section level4">
+<div id="preregr-form-m59XpQLqfA" class="section level4">
 <h4>Section: Review methods</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1082,7 +842,7 @@ why you think so. PRISMA: 26.
 </div>
 </div>
 </div>
-<div id="preregr-form-vGmZCYJHw7" class="section level4">
+<div id="preregr-form-hHQbY05aNq" class="section level4">
 <h4>Section: Search strategy</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1286,7 +1046,7 @@ fields in this section. PRISMA: 7.
 </div>
 </div>
 </div>
-<div id="preregr-form-eTKWfVunUq" class="section level4">
+<div id="preregr-form-ASBYrWgk9x" class="section level4">
 <h4>Section: Screening</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1457,7 +1217,7 @@ fields in this section. PRISMA: 8.
 </div>
 </div>
 </div>
-<div id="preregr-form-SjDHFy3PO7" class="section level4">
+<div id="preregr-form-ekoMJ38bPl" class="section level4">
 <h4>Section: Extraction</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1617,7 +1377,7 @@ fields in this section. PRISMA: 9.
 </div>
 </div>
 </div>
-<div id="preregr-form-J5VhDQ8Fku" class="section level4">
+<div id="preregr-form-GNlCsQvmwJ" class="section level4">
 <h4>Section: Synthesis and Quality Assessment</h4>
 <div class="preregr preregr-form-item-spec preregr-form-item">
 <div class="preregr-item-heading">
@@ -1865,12 +1625,12 @@ fields in this section. PRISMA: 13d.
 <div class="preregr-spec-end" style="display:block;clear:both;">
 
 </div>
-<div id="preregr-data-63r9XLizCu" class="preregr preregr-json" data-preregr="{
+<div id="preregr-data-W0awx6RJvS" class="preregr preregr-json" data-preregr="{
   &quot;form&quot;: {
     &quot;instructions&quot;: {
       &quot;Intended Use&quot;: {
         &quot;heading&quot;: [&quot;Intended Use&quot;],
-        &quot;description&quot;: [&quot;This Systematic Review Registration Form is intended as a general-purpose registration form. The form is designed to be applicable to reviews across disciplines (i.e., psychology, economics, law, physics, or any other field) and across review types (i.e., scoping review, review of qualitative studies, meta-analysis, or any other type of review). That means that the reviewed records may include research reports as well as archive documents, case law, books, poems, etc. This form, therefore, is a fall-back for more specialized forms and can be used if no specialized form or registration platform is available. Below are some currently available specialized registration tools you may consider:\n\n**Specialized Registration Platforms**:\n- PROSPERO is a database of review protocols for health-related systematic reviews.\n\n**Specialized Guidance**:\n- The Non-Interventional, Reproducible, and Open (NIRO) Systematic Reviews guideline also includes fields specific to non-interventional reviews.&quot;]
+        &quot;description&quot;: [&quot;This Systematic Review Registration Form is intended as a general-purpose registration form. The form is designed to be applicable to reviews across disciplines (i.e., psychology, economics, law, physics, or any other field) and across review types (i.e., scoping review, review of qualitative studies, meta-analysis, or any other type of review). That means that the reviewed records may include research reports as well as archive documents, case law, books, poems, etc. This form, therefore, is a fall-back for more specialized forms and can be used if no specialized form or registration platform is available. Below are some currently available specialized registration tools you may consider:\n\n**Specialized Registration Platforms**:\n- PROSPERO is a database of review protocols for health-related systematic reviews.\n\n**Specialized Guidance**:\n- The Non-Interventional, Reproducible, and Open (NIRO) Systematic Reviews guideline also includes fields specific to non-interventional reviews.\n- Methodological Expectations of Cochrane Intervention Reviews (MECIR): CID: 20.500.12592/vxj0sb\r\n- Methodological Expectations of Campbell Collaboration Intervention Reviews (MECCIR): https://www.campbellcollaboration.org/meccir.html\r\n- Preferred Reporting Items for Systematic reviews and Meta-Analysis Protocols (PRISMA-P): https://doi.org/gcpzzq\r\n- Preferred Reporting Items for Systematic reviews and Meta-Analyses literature Search extension (PRISMA-S): https://doi.org/gh2z2k\r\n- Peer Review of Electronic Search Strategies (PRESS): https://doi.org/10.1016/j.jclinepi.2016.01.021&quot;]
       },
       &quot;Relation to reporting guidelines&quot;: {
         &quot;heading&quot;: [&quot;Relation to reporting guidelines&quot;],
@@ -1888,15 +1648,15 @@ fields in this section. PRISMA: 13d.
     &quot;metadata&quot;: {
       &quot;title&quot;: {
         &quot;field&quot;: [&quot;title&quot;],
-        &quot;content&quot;: [&quot;Inclusive Systematic Review Registration Form&quot;]
+        &quot;content&quot;: [&quot;Generalized Systematic Review Registration Form&quot;]
       },
       &quot;author&quot;: {
         &quot;field&quot;: [&quot;author&quot;],
-        &quot;content&quot;: [&quot;Olmo R. van den Akker, Gjalt-Jorn Ygram Peters, Caitlin Bakker, Rickard Carlsson, Nicholas Coles, Katherine S. Corker, Gilad Feldman, David Mellor, David Moreau, Thomas Nordström, Nicole Pfeiffer, Jade S. Pickering, Amy Riegelman, Marta Topor, Nieky van Veggel &amp; Siu Kit Yeung&quot;]
+        &quot;content&quot;: [&quot;Olmo R. van den Akker, Gjalt-Jorn Ygram Peters, Caitlin Bakker, Rickard Carlsson, Nicholas Coles, Katherine S. Corker, Gilad Feldman, David Moreau, Thomas Nordström, Jade S. Pickering, Amy Riegelman, Marta Topor, Nieky van Veggel, Siu Kit Yeung, Mark Call, David Mellor, &amp; Nicole Pfeiffer,&quot;]
       },
       &quot;date&quot;: {
         &quot;field&quot;: [&quot;date&quot;],
-        &quot;content&quot;: [&quot;2020-10-09&quot;]
+        &quot;content&quot;: [&quot;2023-05-05&quot;]
       },
       &quot;comments&quot;: {
         &quot;field&quot;: [&quot;comments&quot;],
@@ -1904,19 +1664,10 @@ fields in this section. PRISMA: 13d.
       },
       &quot;version&quot;: {
         &quot;field&quot;: [&quot;version&quot;],
-        &quot;content&quot;: [&quot;0.92&quot;]
+        &quot;content&quot;: [&quot;1.00&quot;]
       }
     },
     &quot;items&quot;: {
-      &quot;target_discipline&quot;: {
-        &quot;section_id&quot;: [&quot;metadata&quot;],
-        &quot;item_id&quot;: [&quot;target_discipline&quot;],
-        &quot;item_label&quot;: [&quot;Target discipline&quot;],
-        &quot;item_description&quot;: [null],
-        &quot;item_valueTemplate&quot;: [&quot;string&quot;],
-        &quot;item_validValues&quot;: [null],
-        &quot;item_validation&quot;: [null]
-      },
       &quot;title&quot;: {
         &quot;section_id&quot;: [&quot;metadata&quot;],
         &quot;item_id&quot;: [&quot;title&quot;],
@@ -1929,7 +1680,16 @@ fields in this section. PRISMA: 13d.
       &quot;authors&quot;: {
         &quot;section_id&quot;: [&quot;metadata&quot;],
         &quot;item_id&quot;: [&quot;authors&quot;],
-        &quot;item_label&quot;: [&quot;Author(s) / contributor(s)&quot;],
+        &quot;item_label&quot;: [&quot;Contributors&quot;],
+        &quot;item_description&quot;: [null],
+        &quot;item_valueTemplate&quot;: [&quot;string&quot;],
+        &quot;item_validValues&quot;: [null],
+        &quot;item_validation&quot;: [null]
+      },
+      &quot;target_discipline&quot;: {
+        &quot;section_id&quot;: [&quot;metadata&quot;],
+        &quot;item_id&quot;: [&quot;target_discipline&quot;],
+        &quot;item_label&quot;: [&quot;Subjects&quot;],
         &quot;item_description&quot;: [null],
         &quot;item_valueTemplate&quot;: [&quot;string&quot;],
         &quot;item_validValues&quot;: [null],
@@ -2603,7 +2363,6 @@ fields in this section. PRISMA: 13d.
   }
 }" style="display:none">
 
-</div>
 </div>
 
 

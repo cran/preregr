@@ -1,7 +1,7 @@
 Package: preregr
 Title: Specify (Pre)Registrations and Export Them Human- And
         Machine-Readably
-Version: 0.2.8
+Version: 0.2.9
 Authors@R: c(
     person(given = "Gjalt-Jorn",
            family = "Peters",
@@ -55,7 +55,7 @@ Config/testthat/edition: 3
 Depends: R (>= 4.1)
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-03-05 14:38:02 UTC; gjalt
+Packaged: 2023-05-04 18:15:16 UTC; gjalt
 Author: Gjalt-Jorn Peters [aut, cre] (<https://orcid.org/0000-0002-0336-9589>),
   Szilvia Zörgő [ctb] (<https://orcid.org/0000-0002-6916-2097>),
   Olmo den Akker [ctb] (<https://orcid.org/0000-0002-0712-3746>),
@@ -63,4 +63,4 @@ Author: Gjalt-Jorn Peters [aut, cre] (<https://orcid.org/0000-0002-0336-9589>),
   Thomas Gültzow [ctb] (<https://orcid.org/0000-0002-9268-1880>)
 Maintainer: Gjalt-Jorn Peters <preregr@opens.science>
 Repository: CRAN
-Date/Publication: 2023-03-05 22:00:11 UTC
+Date/Publication: 2023-05-05 07:30:02 UTC

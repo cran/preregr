@@ -1,6 +1,51 @@
 ### Easily update all forms
 updateAllForms <- FALSE;
 
+#' Generalized Systematic Review Registration Form
+#'
+#' This paper presents a generalized registration form for systematic reviews
+#' that can be used when currently available forms are not adequate. The form
+#' is designed to be applicable across disciplines (i.e., psychology,
+#' economics, law, physics, or any other field) and across review types
+#' (i.e., scoping review, review of qualitative studies, meta-analysis, or
+#' any other type of review). That means that the reviewed records may include
+#' research reports as well as archive documents, case law, books, poems, etc.
+#' Items were selected and formulated to optimize broad applicability instead
+#' of specificity, forgoing some benefits afforded by a tighter focus. This
+#' PRISMA 2020 compliant form is a fallback for more specialized forms and
+#' can be used if no specialized form or registration platform is available.
+#' When accessing this form on the Open Science Framework website, users will
+#' therefore first be guided to specialized forms when they exist. In addition
+#' to this use case, the form can also serve as a starting point for creating
+#' registration forms that cater to specific fields or review types.
+#'
+#' @format A (pre)registration form specification
+#' @aliases form_genSysRev_v1
+#' @source \doi{10/g5fj}
+#'
+"form_genSysRev_v1"
+
+### Systematic review prereg form
+if (exists("updateAllForms") && updateAllForms) {
+  gSheet_url <-
+    "https://docs.google.com/spreadsheets/d/1b5tQZSAgUNzAJH0ACw-xc0RyMq-8gazRcs-rYsQQPQc";
+
+  localBackupFile <-
+    here::here(
+      "inst", "extdata", "preregr-form_form_genSysRev_v1.xlsx"
+    );
+
+  form_genSysRev_v1 <-
+    preregr::form_fromSpreadsheet(
+      gSheet_url,
+      localBackup = localBackupFile,
+      silent=FALSE
+    );
+
+  usethis::use_data(form_genSysRev_v1, overwrite=TRUE);
+}
+
+
 #' Inclusive Systematic Review Registration Form
 #'
 #' This Systematic Review Registration Form is intended as a general-purpose
